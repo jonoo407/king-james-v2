@@ -1,0 +1,48 @@
+/* King James 2 — HUD (top bar) */
+
+.kj-hud {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: rgba(0,0,0,0.55);
+  border-bottom: 2px solid gold;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.kj-hud-left,
+.kj-hud-right {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.kj-hud-gold,
+.kj-hud-charms {
+  font-size: 18px;
+  color: #fff;
+  font-weight: bold;
+}
+.kj-hud-center {
+  font-size: 26px;
+}
+.kj-hud-crown {
+  display: inline-block;
+  transform-origin: center bottom;
+}
+.kj-crown-fit-0 { animation: kj-wobble 0.6s ease-in-out infinite; }
+.kj-crown-fit-1 { animation: kj-wobble 1.0s ease-in-out infinite; }
+.kj-crown-fit-2 { animation: kj-wobble 1.6s ease-in-out infinite; }
+.kj-crown-fit-3 { animation: kj-pulse 2s ease-in-out infinite; filter: drop-shadow(0 0 4px gold); }
+.kj-crown-fit-4 { filter: drop-shadow(0 0 6px gold); }
+.kj-crown-fit-5 { filter: drop-shadow(0 0 10px gold); animation: kj-pulse 2s ease-in-out infinite; }
+.kj-hud-btn {
+  font-size: 20px;
+  background: rgba(255,255,255,0.12);
+  border: 2px solid rgba(255,255,255,0.2);
+  color: #fff;
+  border-radius: 10px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+.kj-hud-btn:active { transform: scale(0.95); }

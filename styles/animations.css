@@ -1,0 +1,108 @@
+/* King James 2 — Animations (keyframes + shared effect styles) */
+
+@keyframes kj-bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+@keyframes kj-wobble { 0%,100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
+@keyframes kj-shake {
+  0%,100% { transform: translateX(0); }
+  20% { transform: translateX(-6px); } 40% { transform: translateX(6px); }
+  60% { transform: translateX(-6px); } 80% { transform: translateX(6px); }
+}
+@keyframes kj-popIn {
+  0% { transform: scale(0); opacity: 0; }
+  60% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes kj-fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes kj-pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+@keyframes kj-confetti-fall {
+  0%   { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+@keyframes kj-bigtext-pop {
+  0%   { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+  25%  { transform: translate(-50%, -50%) scale(1.3); opacity: 1; }
+  70%  { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1) translateY(-60px); opacity: 0; }
+}
+@keyframes kj-float-up {
+  0%   { transform: translateY(0) scale(1); opacity: 0.9; }
+  100% { transform: translateY(-100px) scale(1.4); opacity: 0; }
+}
+@keyframes kj-damage-up {
+  0%   { transform: translate(-50%, 0) scale(1); opacity: 1; }
+  100% { transform: translate(-50%, -60px) scale(1.2); opacity: 0; }
+}
+@keyframes kj-toast-in {
+  from { opacity: 0; transform: translate(-50%, 20px); }
+  to   { opacity: 1; transform: translate(-50%, 0); }
+}
+
+.kj-shake { animation: kj-shake 0.5s ease-in-out; }
+
+/* Confetti */
+.confetti-piece {
+  position: fixed;
+  width: 12px; height: 12px;
+  border-radius: 2px;
+  z-index: 1000;
+  animation: kj-confetti-fall 3s ease-out forwards;
+}
+
+/* Big floating text */
+.big-text-popup {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 52px;
+  font-weight: bold;
+  color: gold;
+  text-shadow: 3px 3px 10px rgba(0,0,0,0.8);
+  z-index: 999;
+  pointer-events: none;
+  animation: kj-bigtext-pop 1.5s ease-out forwards;
+  white-space: nowrap;
+}
+
+/* Floating emoji (used in scenes for ambience) */
+.floating-emoji {
+  position: absolute;
+  font-size: 32px;
+  animation: kj-float-up 2.5s ease-out infinite;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Damage numbers */
+.damage-number {
+  position: fixed;
+  font-size: 26px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+  z-index: 900;
+  pointer-events: none;
+  animation: kj-damage-up 1s ease-out forwards;
+  transform: translate(-50%, 0);
+}
+.damage-number.crit  { color: #ffbb33; font-size: 34px; }
+.damage-number.super { color: #ff66ff; font-size: 32px; }
+
+/* Toasts */
+.kj-toast {
+  position: fixed;
+  bottom: 30px; left: 50%;
+  transform: translate(-50%, 0);
+  background: rgba(0,0,0,0.85);
+  color: #fff;
+  border: 2px solid gold;
+  padding: 10px 18px;
+  border-radius: 14px;
+  font-size: 17px;
+  font-weight: bold;
+  z-index: 800;
+  animation: kj-toast-in 0.22s ease-out;
+}
+.kj-toast--out { opacity: 0; transition: opacity 0.4s; }

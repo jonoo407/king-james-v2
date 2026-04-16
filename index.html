@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#2d1b69">
+<title>King James 2</title>
+
+<!-- Styles (order doesn't matter much, but we group logically) -->
+<link rel="stylesheet" href="styles/base.css">
+<link rel="stylesheet" href="styles/animations.css">
+<link rel="stylesheet" href="styles/hud.css">
+<link rel="stylesheet" href="styles/castle.css">
+<link rel="stylesheet" href="styles/scene.css">
+<link rel="stylesheet" href="styles/battle.css">
+<link rel="stylesheet" href="styles/character.css">
+</head>
+<body>
+
+<div id="app"></div>
+
+<!--
+  Script load order MATTERS.
+  1) Engine foundation   2) Engine systems   3) Engine UI
+  4) Data catalogs       5) Data quests      6) Boot (last)
+-->
+
+<!-- 1. Engine foundation -->
+<script src="engine/constants.js"></script>
+<script src="engine/events.js"></script>
+<script src="engine/registry.js"></script>
+<script src="engine/state.js"></script>
+<script src="engine/audio.js"></script>
+<script src="engine/effects.js"></script>
+
+<!-- 2. Engine systems -->
+<script src="engine/scene.js"></script>
+<script src="engine/combat.js"></script>
+
+<!-- 3. Engine UI renderers -->
+<script src="engine/ui/hud.js"></script>
+<script src="engine/ui/castle.js"></script>
+<script src="engine/ui/map.js"></script>
+<script src="engine/ui/character.js"></script>
+<script src="engine/ui/gear-chest.js"></script>
+<script src="engine/ui/ally-room.js"></script>
+<script src="engine/ui/trophy-hall.js"></script>
+<script src="engine/ui/levelup.js"></script>
+<script src="engine/ui/library.js"></script>
+<!-- Scene-type renderers (each registers with Registry.sceneTypes) -->
+<script src="engine/ui/choice.js"></script>
+<script src="engine/ui/dialogue.js"></script>
+<script src="engine/ui/puzzle.js"></script>
+<script src="engine/ui/battle.js"></script>
+
+<!-- 4. Data catalogs (order: types before consumers; quests last) -->
+<script src="data/types.js"></script>
+<script src="data/moves.js"></script>
+<script src="data/gear.js"></script>
+<script src="data/allies.js"></script>
+<script src="data/enemies.js"></script>
+<script src="data/treasures.js"></script>
+<script src="data/regions.js"></script>
+<script src="data/traits.js"></script>
+<script src="data/badges.js"></script>
+<script src="data/crown-dialogue.js"></script>
+<script src="data/scrolls.js"></script>
+
+<!-- 5. Quests (data). Adding a new quest = one new file + one <script src> here. -->
+<script src="data/quests/intro.js"></script>
+<script src="data/quests/forest.js"></script>
+<script src="data/quests/mountain.js"></script>
+<script src="data/quests/beach.js"></script>
+<script src="data/quests/desert.js"></script>
+<script src="data/quests/volcano.js"></script>
+
+<!-- 6. Boot (runs after DOMContentLoaded to mount the game) -->
+<script src="engine/boot.js"></script>
+</body>
+</html>

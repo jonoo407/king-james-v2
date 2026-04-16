@@ -1,0 +1,51 @@
+// King James 2 — Badges
+// Each: id, name, emoji, description, predicate(state), hidden, goldReward.
+
+(function () {
+  const B = [
+    { id: 'first_friend', name: 'First Friend', emoji: '🤝',
+      description: 'Recruit your first ally.',
+      predicate: (s) => Object.keys(s.roster.allies).length >= 1,
+      hidden: false, goldReward: 20 },
+
+    { id: 'triple_squad', name: 'Triple Squad', emoji: '🎭',
+      description: 'Collect 3 allies.',
+      predicate: (s) => Object.keys(s.roster.allies).length >= 3,
+      hidden: false, goldReward: 50 },
+
+    { id: 'patient', name: 'Patient', emoji: '🧘',
+      description: 'Solve all Riddle Tree riddles with no hints.',
+      predicate: (s) => s.progress.flags['riddle_tree_no_hints'] === true,
+      hidden: false, goldReward: 30 },
+
+    { id: 'first_boss', name: 'First Boss', emoji: '🗿',
+      description: 'Defeat your first boss.',
+      predicate: (s) => (s.progress.trophies || []).length >= 1,
+      hidden: false, goldReward: 40 },
+
+    { id: 'wealthy',   name: 'Gold Hoarder', emoji: '💰',
+      description: 'Save 500 gold at once.',
+      predicate: (s) => s.inventory.gold >= 500,
+      hidden: true, goldReward: 0 },
+
+    { id: 'explorer',  name: 'Explorer', emoji: '🧭',
+      description: 'Find a wild creature on a side path.',
+      predicate: (s) => s.progress.flags['found_wild_pond'] === true,
+      hidden: false, goldReward: 25 },
+
+    // Mountain badges
+    { id: 'brave_mind', name: 'Brave Mind', emoji: '🧠',
+      description: 'Answer all of Sir Frostbeard\'s riddles.',
+      predicate: (s) => s.progress.flags['frostbeard_riddles_solved'] === true,
+      hidden: false, goldReward: 40 },
+    { id: 'gentle_giant', name: 'Gentle Giant', emoji: '🦍',
+      description: 'Befriend the Yeti instead of attacking.',
+      predicate: (s) => s.progress.flags['yeti_friend'] === true,
+      hidden: false, goldReward: 40 },
+    { id: 'crown_carrier', name: 'Two-Treasure King', emoji: '👑',
+      description: 'Collect 2 Crown Treasures.',
+      predicate: (s) => (s.progress.treasures || []).length >= 2,
+      hidden: false, goldReward: 80 },
+  ];
+  B.forEach(b => KJ.Registry.badges.add(b));
+})();

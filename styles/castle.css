@@ -1,0 +1,123 @@
+/* King James 2 — Castle / Throne Hall */
+
+.kj-castle-bg {
+  background: linear-gradient(180deg, #3a2a73 0%, #1c0e49 100%);
+}
+.kj-castle-throne {
+  text-align: center;
+  padding: 20px 14px 10px;
+}
+.kj-throne-crown {
+  font-size: 96px;
+  display: inline-block;
+  animation: kj-wobble 2.4s ease-in-out infinite;
+}
+.kj-crown-bubble {
+  margin: 10px auto;
+  max-width: 360px;
+  background: #fff;
+  color: #2d1b69;
+  border: 2px solid gold;
+  border-radius: 16px;
+  padding: 10px 14px;
+  font-size: 16px;
+  font-weight: 600;
+  position: relative;
+  animation: kj-fadeIn 0.4s ease-out;
+}
+.kj-crown-bubble::before {
+  content: '';
+  position: absolute;
+  top: -10px; left: 50%; transform: translateX(-50%);
+  width: 0; height: 0;
+  border-bottom: 10px solid #fff;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+}
+.kj-castle-rooms {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 10px 6px;
+}
+.kj-room-card {
+  background: rgba(255,255,255,0.1);
+  border: 2px solid gold;
+  border-radius: 14px;
+  padding: 14px 8px;
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.12s;
+}
+.kj-room-card:active { transform: scale(0.95); }
+.kj-room-emoji { font-size: 38px; }
+.kj-room-name  { font-size: 16px; font-weight: bold; margin-top: 6px; }
+.kj-castle-footer {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+/* Region backgrounds (applied to scene wrappers via kj-bg-<id>) */
+.kj-bg-forest   { background: linear-gradient(180deg, #2d4a2e 0%, #16331a 100%); }
+.kj-bg-mountain { background: linear-gradient(180deg, #5a7d9a 0%, #2e4256 100%); }
+.kj-bg-beach    { background: linear-gradient(180deg, #7ac0d6 0%, #265d74 100%); }
+.kj-bg-desert   { background: linear-gradient(180deg, #d8b974 0%, #8c7232 100%); }
+.kj-bg-volcano  { background: linear-gradient(180deg, #8a2121 0%, #3b0909 100%); }
+.kj-bg-castle   { background: linear-gradient(180deg, #3a2a73 0%, #1c0e49 100%); }
+.kj-bg-rescue   { background: linear-gradient(180deg, #9d7acc 0%, #412768 100%); }
+.kj-bg-neutral  { background: linear-gradient(180deg, #3a2a73 0%, #1c0e49 100%); }
+.kj-bg-forest_clearing { background: linear-gradient(180deg, #3f6140 0%, #1e3a23 100%); }
+
+/* Title screen */
+.kj-title-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  min-height: 100vh;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+}
+.kj-title-screen h1 {
+  font-size: 46px;
+  color: gold;
+  letter-spacing: 2px;
+  text-shadow: 3px 3px 8px rgba(0,0,0,0.7);
+}
+.kj-title-crown {
+  font-size: 110px;
+  animation: kj-wobble 2s ease-in-out infinite;
+}
+.kj-subtitle {
+  color: #ddd;
+  font-size: 18px;
+  margin: 6px 0 20px;
+}
+
+/* Map screen */
+.kj-map-bg { background: linear-gradient(180deg, #3a2a73 0%, #1c0e49 100%); }
+.kj-map-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 10px 6px;
+}
+.kj-region-card {
+  background: rgba(255,255,255,0.1);
+  border: 2px solid gold;
+  border-radius: 14px;
+  padding: 16px 8px;
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+  position: relative;
+  transition: transform 0.12s;
+}
+.kj-region-card.locked { opacity: 0.6; filter: grayscale(0.5); }
+.kj-region-card:active { transform: scale(0.95); }
+.kj-region-emoji { font-size: 40px; }
+.kj-region-name  { font-size: 15px; font-weight: bold; margin-top: 4px; }
+.kj-region-badge { position: absolute; top: 6px; right: 8px; font-size: 18px; }

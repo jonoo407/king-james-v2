@@ -1,0 +1,377 @@
+/* King James 2 — Character sheet, gear chest, ally room */
+
+.kj-char-bg, .kj-gear-bg, .kj-ally-bg, .kj-trophy-bg {
+  background: linear-gradient(180deg, #3a2a73 0%, #1c0e49 100%);
+}
+
+.kj-char-portrait { font-size: 84px; text-align: center; padding: 10px; }
+.kj-char-rank { text-align: center; color: gold; font-weight: bold; font-size: 15px; margin-bottom: 4px; }
+.kj-xpbar {
+  height: 14px;
+  background: rgba(0,0,0,0.35);
+  border-radius: 7px;
+  overflow: hidden;
+  position: relative;
+  margin: 6px 10px;
+}
+.kj-xpbar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #f1c40f, #e67e22);
+  transition: width 0.35s;
+}
+.kj-xpbar-label {
+  position: absolute;
+  top: 50%; left: 50%; transform: translate(-50%,-50%);
+  color: #fff; font-size: 11px; font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+}
+
+.kj-stat-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  padding: 8px 10px;
+}
+.kj-stat-row {
+  display: grid;
+  grid-template-columns: 90px 1fr 130px;
+  gap: 10px;
+  align-items: center;
+}
+.kj-stat-label { font-weight: bold; font-size: 14px; }
+.kj-stat-value { font-weight: bold; font-size: 16px; text-align: right; }
+.kj-stat-breakdown { font-size: 11px; color: rgba(255,255,255,0.6); font-weight: normal; }
+.kj-stat-bar {
+  width: 100%;
+  height: 10px;
+  background: rgba(0,0,0,0.4);
+  border-radius: 5px;
+  overflow: hidden;
+}
+.kj-stat-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3498db, #9b59b6);
+}
+
+.kj-gear-list, .kj-trait-list, .kj-ally-grid, .kj-badge-row {
+  padding: 6px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.kj-trait-list, .kj-badge-row {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.kj-gear-row {
+  background: rgba(255,255,255,0.08);
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+.kj-gear-empty { opacity: 0.6; }
+.kj-gear-stats { color: #9ee; font-size: 12px; }
+.kj-gear-move { color: gold; font-size: 13px; margin-top: 3px; }
+.kj-trait-chip, .kj-badge-chip {
+  background: rgba(241, 196, 15, 0.2);
+  border: 2px solid gold;
+  border-radius: 20px;
+  padding: 4px 10px;
+  font-size: 13px;
+  color: #fff;
+}
+.kj-ally-card {
+  background: rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 14px;
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  gap: 10px;
+  align-items: center;
+}
+.kj-ally-card.in-party {
+  background: rgba(46, 204, 113, 0.15);
+  border: 2px solid #2ecc71;
+}
+.kj-ally-emoji { font-size: 40px; text-align: center; }
+.kj-ally-info strong { font-size: 15px; }
+.kj-ally-hp, .kj-ally-bio { font-size: 12px; color: rgba(255,255,255,0.7); }
+
+/* Gear chest */
+.kj-gear-section {
+  padding: 6px 12px;
+  margin-bottom: 8px;
+}
+.kj-equipped-card {
+  background: rgba(241, 196, 15, 0.15);
+  border: 2px solid gold;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+.kj-gear-options {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.kj-gear-option {
+  background: rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Pompadour */
+.kj-pompadour-card {
+  background: linear-gradient(135deg, rgba(231, 76, 60, 0.2), rgba(155, 89, 182, 0.2));
+  border: 2px dashed #ff66ff;
+  border-radius: 16px;
+  padding: 14px;
+  margin: 8px 10px;
+}
+.kj-pompadour-portrait {
+  font-size: 46px;
+  text-align: center;
+  margin-bottom: 6px;
+}
+.kj-pompadour-dialogue {
+  color: #ffbbff;
+  font-size: 15px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.kj-pompadour-list { display: flex; flex-direction: column; gap: 6px; }
+.kj-pomp-candidate {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0,0,0,0.3);
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* Level-up modal */
+.kj-levelup-bg {
+  background: radial-gradient(ellipse at top, #5a3e9c 0%, #2d1b69 60%, #1a0a3e 100%);
+}
+.kj-levelup-sparkle {
+  font-size: 34px;
+  font-weight: bold;
+  color: gold;
+  text-shadow: 3px 3px 10px rgba(0,0,0,0.8);
+  text-align: center;
+  padding: 20px 0 10px;
+  animation: kj-pulse 1.3s ease-in-out infinite;
+  letter-spacing: 2px;
+}
+.kj-statpt-btn {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 6px 14px;
+  min-width: 44px;
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  border: 2px solid #1e8449;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+}
+.kj-statpt-btn:active { transform: scale(0.92); }
+
+.kj-trait-choices {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px 8px;
+}
+.kj-trait-card {
+  background: linear-gradient(135deg, rgba(241,196,15,0.15), rgba(155,89,182,0.15));
+  border: 3px solid gold;
+  border-radius: 16px;
+  padding: 14px 16px;
+  color: #fff;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 12px;
+  align-items: center;
+  text-align: left;
+  transition: transform 0.12s, filter 0.12s;
+  font-family: inherit;
+}
+.kj-trait-card:active { transform: scale(0.97); filter: brightness(0.92); }
+.kj-trait-emoji { font-size: 44px; text-align: center; }
+.kj-trait-name { font-size: 18px; font-weight: bold; color: gold; margin-bottom: 3px; }
+.kj-trait-desc { font-size: 14px; color: #ddd; line-height: 1.3; }
+
+/* Elements Guide */
+.kj-lib-tabs {
+  display: flex; justify-content: center; padding: 4px 10px 10px;
+}
+.kj-elem-mnemonic {
+  background: rgba(255,255,255,0.1);
+  border: 2px solid gold;
+  border-radius: 14px;
+  padding: 12px 14px;
+  margin: 6px 10px;
+  font-size: 15px;
+  line-height: 1.4;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+}
+.kj-elem-circle {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 4px;
+  padding: 6px;
+  margin: 4px 6px;
+}
+.kj-elem-node {
+  background: rgba(0,0,0,0.3);
+  border: 2px solid rgba(255,255,255,0.3);
+  border-radius: 10px;
+  padding: 6px 4px;
+  text-align: center;
+}
+.kj-elem-big  { font-size: 26px; }
+.kj-elem-name { font-size: 11px; color: #fff; font-weight: bold; margin-top: 2px; }
+.kj-elem-line { font-size: 9px; color: rgba(255,255,255,0.7); margin-top: 3px; line-height: 1.1; }
+.kj-elem-strip {
+  display: flex; justify-content: center; gap: 10px;
+  padding: 6px 10px;
+}
+.kj-elem-btn {
+  font-size: 32px;
+  background: rgba(0,0,0,0.3);
+  border: 2px solid gold;
+  border-radius: 14px;
+  padding: 8px 14px;
+  cursor: pointer;
+  color: #fff;
+}
+.kj-elem-btn:active { transform: scale(0.93); }
+.kj-elem-detail {
+  min-height: 80px;
+  margin: 8px 12px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 15px;
+  color: #fff;
+  text-align: center;
+}
+.kj-elem-card .kj-elem-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: gold;
+  margin-bottom: 6px;
+}
+
+/* Enemy card "strong" resistance tag */
+.kj-cb-strong {
+  font-size: 10px;
+  color: #a5c8ff;
+  margin-top: 1px;
+  font-weight: normal;
+  letter-spacing: 0.3px;
+}
+
+/* Library / scrolls */
+.kj-library-bg {
+  background: linear-gradient(180deg, #3a2a73 0%, #1c0e49 100%);
+}
+.kj-scroll-shop {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 8px 10px;
+}
+.kj-scroll-card {
+  background: rgba(255,255,255,0.08);
+  border: 2px solid rgba(241, 196, 15, 0.5);
+  border-radius: 14px;
+  padding: 12px 14px;
+  color: #fff;
+}
+.kj-scroll-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+.kj-scroll-emoji { font-size: 28px; }
+.kj-scroll-name  { font-size: 17px; font-weight: bold; color: gold; flex: 1; }
+.kj-scroll-owned {
+  background: rgba(0,0,0,0.3);
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 13px;
+}
+.kj-scroll-desc {
+  font-size: 14px;
+  color: #ddd;
+  margin: 4px 0 10px;
+}
+.kj-scroll-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.kj-scroll-price { font-size: 16px; font-weight: bold; color: gold; }
+.kj-scroll-buy:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* Scroll picker in battle */
+.kj-scroll-battle-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.kj-scroll-use-btn {
+  padding: 10px 14px;
+  background: linear-gradient(135deg, #9b59b6, #6c3483);
+  color: #fff;
+  border: 2px solid #ffbbff;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+}
+.kj-scroll-use-btn:active { transform: scale(0.96); }
+.kj-scroll-use-btn .kj-scroll-count {
+  background: rgba(0,0,0,0.35);
+  padding: 1px 7px;
+  border-radius: 10px;
+  font-size: 12px;
+  margin-left: 6px;
+}
+.kj-scroll-sub {
+  font-size: 12px;
+  font-weight: normal;
+  opacity: 0.9;
+  margin-top: 3px;
+}
+
+/* Trophy hall */
+.kj-trophy-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 12px;
+}
+.kj-trophy {
+  background: rgba(241, 196, 15, 0.2);
+  border: 2px solid gold;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-weight: bold;
+}

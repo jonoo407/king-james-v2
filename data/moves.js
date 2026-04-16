@@ -1,0 +1,50 @@
+// King James 2 — Moves Catalog
+// Each move has: id, name, type, power, accuracy, (optional) effect, target, flavor.
+
+(function () {
+  const M = [
+    // --- Gear-based moves (James gets these via equipping) ---
+    { id: 'swing',       name: 'Swing',       type: 'earth', power: 3, accuracy: 0.95, target: 'enemy', flavor: 'A plain wooden swing.' },
+    { id: 'brace',       name: 'Guard Stance', type: 'earth', power: 0, accuracy: 1.0, target: 'self', heal: 4, flavor: 'Tuck in. Recover a bit.' },
+    { id: 'toss',        name: 'Toss',        type: 'earth', power: 2, accuracy: 0.90, target: 'enemy', flavor: 'Throw a rock.' },
+    { id: 'spark',       name: 'Spark',       type: 'fire',  power: 2, accuracy: 0.95, target: 'enemy', flavor: 'Strike the flint. Tiny flame!' },
+    { id: 'ember_burst', name: 'Ember Burst', type: 'fire',  power: 8, accuracy: 0.95, target: 'enemy', flavor: 'Glowing troll-coal erupts!' },
+    { id: 'kick',        name: 'Kick',        type: 'wind',  power: 3, accuracy: 0.95, target: 'enemy', flavor: 'Quick kick.' },
+
+    { id: 'iron_slash',  name: 'Iron Slash',  type: 'earth', power: 7, accuracy: 0.95, target: 'enemy', flavor: 'Sharp iron cut.' },
+    { id: 'brace_plus',  name: 'Guard Plus',  type: 'earth', power: 0, accuracy: 1.0, target: 'self', heal: 7, flavor: 'Deeper breath. Recover more.' },
+    { id: 'lucky_throw', name: 'Lucky Throw', type: 'magic', power: 5, accuracy: 0.85, target: 'enemy', flavor: 'Might crit extra!' },
+    { id: 'leaf_kick',   name: 'Leaf Kick',   type: 'wind',  power: 6, accuracy: 0.95, target: 'enemy', flavor: 'Whoosh of leaves.' },
+
+    { id: 'think_fast',  name: 'Think Fast',  type: 'magic', power: 8, accuracy: 1.0,  target: 'enemy', flavor: 'Outsmart your foe.' },
+
+    // --- Enemy moves ---
+    { id: 'bite',        name: 'Bite',        type: 'earth', power: 4, accuracy: 0.95, target: 'enemy' },
+    { id: 'club_smash',  name: 'Club Smash',  type: 'earth', power: 8, accuracy: 0.85, target: 'enemy' },
+    { id: 'howl',        name: 'Howl',        type: 'wind',  power: 5, accuracy: 0.95, target: 'enemy' },
+    { id: 'thorn_whip',  name: 'Thorn Whip',  type: 'earth', power: 4, accuracy: 0.95, target: 'enemy' },
+    { id: 'yap',         name: 'Yap',         type: 'earth', power: 2, accuracy: 1.0,  target: 'enemy' },
+
+    // --- Ally moves ---
+    { id: 'quick_pounce', name: 'Quick Pounce', type: 'wind',  power: 5, accuracy: 0.95, target: 'enemy', flavor: 'Foxy specialty.' },
+    { id: 'wind_gust',    name: 'Wind Gust',    type: 'wind',  power: 7, accuracy: 0.9,  target: 'enemy' },
+    { id: 'splash',       name: 'Splash',       type: 'water', power: 4, accuracy: 1.0,  target: 'enemy', flavor: 'Wet slap.' },
+    { id: 'bubble',       name: 'Bubble',       type: 'water', power: 6, accuracy: 0.9,  target: 'enemy' },
+    { id: 'moon_beam',    name: 'Moon Beam',    type: 'magic', power: 7, accuracy: 0.95, target: 'enemy', flavor: 'Cool silver light.' },
+    { id: 'hoot',         name: 'Hoot',         type: 'magic', power: 4, accuracy: 1.0,  target: 'enemy' },
+
+    // --- Mountain arc (Tier 3) ---
+    { id: 'ice_cut',     name: 'Ice Cut',     type: 'water', power: 9, accuracy: 0.95, target: 'enemy', flavor: 'Chilled blade cuts deep.' },
+    { id: 'ward',        name: 'Ward',        type: 'earth', power: 0, accuracy: 1.0,  target: 'self', heal: 10, flavor: 'A knight\'s protection.' },
+    { id: 'shadow_step', name: 'Shadow Step', type: 'wind',  power: 8, accuracy: 0.95, target: 'enemy', flavor: 'Slip between shadows.' },
+    { id: 'ice_shard',   name: 'Ice Shard',   type: 'water', power: 7, accuracy: 0.95, target: 'enemy', flavor: 'Splinter of cold.' },
+    { id: 'sure_step',   name: 'Sure Step',   type: 'earth', power: 6, accuracy: 1.0,  target: 'enemy', flavor: 'Charge with iron hoof.' },
+    { id: 'brave_strike',name: 'Brave Strike',type: 'wind',  power: 10,accuracy: 0.95, target: 'enemy', flavor: 'The Blade sings; the wind answers.' },
+    { id: 'frost_slash', name: 'Frost Slash', type: 'water', power: 7, accuracy: 0.9,  target: 'enemy' },
+    { id: 'headbutt',    name: 'Headbutt',    type: 'earth', power: 6, accuracy: 0.95, target: 'enemy', flavor: 'Gus leads with the horns.' },
+    { id: 'freeze',      name: 'Freeze',      type: 'water', power: 8, accuracy: 0.85, target: 'enemy', flavor: 'Chill to the bone.' },
+    { id: 'icicle',      name: 'Icicle',      type: 'water', power: 4, accuracy: 0.95, target: 'enemy' },
+  ];
+
+  M.forEach(m => KJ.Registry.moves.add(m));
+})();
