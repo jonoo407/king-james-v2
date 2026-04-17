@@ -173,6 +173,50 @@
         'Poof. How dramatic. HOW. DRAMATIC.',
       ],
     },
+
+    // --- Beach arc enemies ---
+    {
+      id: 'tide_crab', name: 'Tide Crab', emoji: '🦀', type: 'water',
+      level: 4,
+      stats: { hp: 28, atk: 6, def: 5, spd: 4 },
+      moves: ['pinch', 'splash'],
+      behavior: { pattern: 'cycle', sequence: [0, 1, 0, 1] },
+      rewards: { xp: 20, gold: [14, 22], drops: [] },
+      quipLines: ['Snip snip!', 'MY tide pool!', 'Clack clack!', 'BACK! BACK!'],
+    },
+    {
+      id: 'sand_sprite', name: 'Sand Sprite', emoji: '🌪️', type: 'wind',
+      level: 4,
+      stats: { hp: 20, atk: 6, def: 3, spd: 10 },
+      moves: ['sand_blast', 'wind_gust'],
+      behavior: { pattern: 'cycle', sequence: [0, 1, 0] },
+      rewards: { xp: 18, gold: [12, 20], drops: [] },
+      quipLines: ['Whirl!', 'MY dune!', 'Sandy! Sandy!', 'Zoom zip!'],
+    },
+    {
+      id: 'sea_serpent', name: 'Sea Serpent', emoji: '🐉', type: 'water',
+      level: 5,
+      stats: { hp: 48, atk: 8, def: 4, spd: 6 },
+      moves: ['coil', 'splash', 'bubble'],
+      behavior: { pattern: 'cycle', sequence: [0, 2, 1, 0] },
+      rewards: { xp: 40, gold: [28, 44], drops: [{ gear: 'coral_blade', chance: 0.4 }] },
+      quipLines: ['HISSSS!', 'Go. Away.', 'Hungry...', 'MINE. Water.'],
+    },
+    {
+      id: 'drifter', name: 'Drifter', emoji: '🧙‍♀️', type: 'magic',
+      level: 6,
+      stats: { hp: 72, atk: 10, def: 6, spd: 5 },
+      moves: ['sea_hex', 'freeze', 'bubble'],
+      behavior: { pattern: 'cycle', sequence: [0, 1, 2, 0, 1] },
+      rewards: { xp: 105, gold: [120, 165], drops: [{ gear: 'sea_kings_plate', chance: 1.0 }] },
+      quipLines: [
+        'GO AWAY!',
+        'No one comes here. EVER.',
+        'Leave. Me. BE!',
+        'You don\'t know what you\'re doing!',
+        'I didn\'t want any of this...',
+      ],
+    },
   ];
 
   E.forEach(e => KJ.Registry.enemies.add(e));

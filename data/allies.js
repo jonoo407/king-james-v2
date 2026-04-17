@@ -97,6 +97,26 @@
         'Was that a GOAT joke? I\'m watching you.',
       ],
     },
+
+    // Beach arc
+    {
+      id: 'finn', name: 'Finn the Sea Otter', emoji: '🦦', type: 'water',
+      baseStats: { hp: 22, atk: 5, def: 4, spd: 7 },
+      learnset: [
+        { level: 1, move: 'splash' },
+        { level: 3, move: 'bubble' },
+      ],
+      sceneAbility: 'swim',
+      hirePrice: 160,
+      bio: 'Fiercely loyal once you earn it. Dives where no one else can. Will absolutely steal your lunch.',
+      quipLines: [
+        'Easy. Watch.',
+        '*splash*',
+        'You\'re slow on land. I\'m not.',
+        'I dove for you. You\'re welcome.',
+        'Three tides. I waited three tides.',
+      ],
+    },
   ];
 
   A.forEach(a => KJ.Registry.allies.add(a));

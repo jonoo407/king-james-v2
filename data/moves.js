@@ -44,6 +44,18 @@
     { id: 'headbutt',    name: 'Headbutt',    type: 'earth', power: 6, accuracy: 0.95, target: 'enemy', flavor: 'Gus leads with the horns.' },
     { id: 'freeze',      name: 'Freeze',      type: 'water', power: 8, accuracy: 0.85, target: 'enemy', flavor: 'Chill to the bone.' },
     { id: 'icicle',      name: 'Icicle',      type: 'water', power: 4, accuracy: 0.95, target: 'enemy' },
+
+    // --- Beach arc (Tier 4) — James gear moves ---
+    { id: 'tide_slash',  name: 'Tide Slash',  type: 'water', power: 12, accuracy: 0.95, target: 'enemy', flavor: 'Wave-edge cuts deep.' },
+    { id: 'tidal_ward',  name: 'Tidal Ward',  type: 'water', power: 0,  accuracy: 1.0,  target: 'self', heal: 14, flavor: "Sea's embrace restores." },
+    { id: 'pearl_beam',  name: 'Pearl Beam',  type: 'magic', power: 10, accuracy: 0.95, target: 'enemy', flavor: 'Pearl-light sears through.' },
+    { id: 'drift_step',  name: 'Drift Step',  type: 'wind',  power: 9,  accuracy: 0.95, target: 'enemy', flavor: 'Quick as a shore current.' },
+
+    // --- Beach arc — enemy moves ---
+    { id: 'pinch',       name: 'Pinch',       type: 'earth', power: 4,  accuracy: 1.0,  target: 'enemy' },
+    { id: 'sand_blast',  name: 'Sand Blast',  type: 'wind',  power: 6,  accuracy: 0.90, target: 'enemy' },
+    { id: 'coil',        name: 'Coil',        type: 'water', power: 7,  accuracy: 0.90, target: 'enemy' },
+    { id: 'sea_hex',     name: 'Sea Hex',     type: 'magic', power: 9,  accuracy: 0.85, target: 'enemy' },
   ];
 
   M.forEach(m => KJ.Registry.moves.add(m));

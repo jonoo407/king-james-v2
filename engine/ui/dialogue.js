@@ -65,9 +65,10 @@ KJ.UI.DialogueScene = (function () {
       wraith: '👻 Glimmer',
       pompadour: '💅 Dame Pompadour',
       mornox: '🧙‍♂️ Mornox',
-      sirena: '🧜‍♀️ Queen Sirena',
-      finn:   '🐠 Finn',
-      joon:   '👦 Joon',
+      sirena:  '🧜‍♀️ Queen Sirena',
+      finn:    '🦦 Finn',
+      joon:    '👦 Joon',
+      drifter: '🧙‍♀️ Drifter',
     })[s] || (s || '');
   }
 

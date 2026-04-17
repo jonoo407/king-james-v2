@@ -39,6 +39,16 @@
       type: 'water', stats: { def: 3, spd: 2 }, move: 'ice_shard', tier: 3, goldValue: 70 },
     { id: 'crampon_boots',    name: 'Crampon Boots',    slot: 'boots',  emoji: '🥾',
       type: 'earth', stats: { spd: 4, def: 1 }, move: 'sure_step', tier: 3, goldValue: 65 },
+
+    // --- BEACH DROPS (Tier 4) ---
+    { id: 'coral_blade',    name: 'Coral Blade',      slot: 'weapon', emoji: '🪸',
+      type: 'water', stats: { atk: 6 }, move: 'tide_slash', tier: 4, goldValue: 150 },
+    { id: 'sea_kings_plate',name: "Sea King's Plate",  slot: 'armor',  emoji: '🐚',
+      type: 'water', stats: { def: 5, hp: 5 }, move: 'tidal_ward', tier: 4, goldValue: 140 },
+    { id: 'pearl_amulet',   name: 'Pearl Amulet',     slot: 'trinket',emoji: '🪬',
+      type: 'magic', stats: { hp: 4, spd: 2 }, move: 'pearl_beam', tier: 4, goldValue: 130 },
+    { id: 'tidal_boots',    name: 'Tidal Boots',      slot: 'boots',  emoji: '🌊',
+      type: 'wind',  stats: { spd: 5, def: 2 }, move: 'drift_step', tier: 4, goldValue: 120 },
   ];
 
   G.forEach(g => KJ.Registry.gear.add(g));
