@@ -1,6 +1,6 @@
 # Voice System — Status & Handoff
 
-**Last updated:** April 21, 2026
+**Last updated:** April 21, 2026 (round 2)
 **ElevenLabs API Key:** sk_111111822a9879bd2a381eb8271a551f7a54e62a058945f0
 **Model:** eleven_turbo_v2_5
 
@@ -9,23 +9,44 @@
 | Character | Voice | Voice ID | Notes |
 |-----------|-------|----------|-------|
 | 👑 The Crown | George - Warm British Storyteller | JBFqnCBsd6RMkjVDRZzb | Premade. Snarky mentor. Warm but exasperated. |
-| 📜 Narrator | Morgan - Deep Storyteller Pro | SAxJUlDKRc79XAyeWyMu | Professional. Warm storybook narrator. |
+| 📜 Narrator | TBD — auditioning kind woman voices | — | Replacing Morgan. Round 2 auditions in progress. |
+| 🧌 Hoarder Troll | Gregory Grumble - Old Lovable Bedtime Bear | 8TMmdpPgqHKvDOGYP2lN | Grumpy, whiny older male. |
+| 🐺 Briar Wolf | Dracon - Feral, Demonic & Dangerous | A921zklid24OpyVy1Elb | Alpha predator, menacing. |
+| 👺 Goblin Scout | Sean - Squeaky Voice | 4NJLA7OQNVkeKe4jVdHw | Cowardly high-pitched bully. |
+| 🐉 Sea Serpent | Elderbark - Rooted and Deep | 2HmIg4yvRgcH2ZDgiwGz | Ancient, minimal speech. |
+| 🦀 Tide Crab | Poe - Angry and Irritable Villain | KLZOWyG48RjZkAAjuM89 | Territorial, agitated. |
+| 🧚 Forest Sprite | Lumi - Tiny & Sweet | AVYJxaX5Uon5HKPfdVo9 | Mischievous fairy. |
 
 ## Voice Casting — Awaiting Pick
 
 Jon listened to auditions. Needs to pick from round 2:
 
-### 🧒 James (excitable boy king)
-Test line: "Easy! Step one: stab things. Step two: WIN! I am a GENIUS."
-- **Option 4:** Charlie UK (young British) — voice_id: `yJSTU8D97YocC6Dqg20L`
-- **Option 5:** Justin (friendly youthful American) — voice_id: `mBqbvkxIFe5HjjaoiN4P`
-- **Option 6:** Dev (cute, energetic) — voice_id: `5J8HNhWkTAhN2YWsd9Ta`
+### 📜 Narrator (kind woman — round 2)
+Test line: "Once upon a time, in a kingdom not so far away, a young boy king set out on a very important quest. It would not go smoothly."
+- **Option 1:** Carrie — The Gentle Storyteller — voice_id: `sWuGr24LIqDil2oFD3xs`
+- **Option 2:** Linda - Children's Bedtime Storyteller — voice_id: `prqcFePeALHihEWRj5ll`
+- **Option 3:** Sejal - Friendly, Poetic and Kind — voice_id: `5eTCXMQnNm7Zqq5TNx7h`
+- **Option 4:** Opa Johann – gentle & wise — voice_id: `R3XXDwKMU2YHwBcuYUH3`
 
-### 🧙‍♂️ Mornox (ancient cursed wizard villain)
-Test line: "Keep going, little king. Every Treasure you pick up saves me walking to it."
-- **Option 4:** Jessie - Vintage Narrator (raspy old-timer) — voice_id: `KgUSWQPFmuiZ5ycRbnty`
-- **Option 5:** Darkness (suspense/scary, deep menacing) — voice_id: `yftckXjSEXI25jG6Ead9`
-- **Option 6:** Smoke the Dragon (British, commanding) — voice_id: `xsiB5fGhEtknnqzudCO6`
+### 🧒 James (excitable boy king — round 2, more options)
+Test line: "Easy! Step one: stab things. Step two: WIN! I am a GENIUS."
+- **Option 1 (prev):** Charlie UK (young British) — voice_id: `yJSTU8D97YocC6Dqg20L`
+- **Option 2 (prev):** Justin (friendly youthful American) — voice_id: `mBqbvkxIFe5HjjaoiN4P`
+- **Option 3 (prev):** Dev (energetic) — voice_id: `5J8HNhWkTAhN2YWsd9Ta`
+- **Option 4:** Ziggy - Goofy Coyote — voice_id: `87n4zM8Wuy87vFILuKvE`
+- **Option 5:** Tuna - Young and Soft — voice_id: `7mBFv1btncDZu2Bfgv0r`
+- **Option 6:** Darth — voice_id: `ZEchI3lWet1JsdNubYRY`
+- **Option 7:** Freaky and Frenzy Robot — voice_id: `17emZEdpFxzVxRKIMpMN`
+
+### 🧙‍♂️ Mornox (ancient cursed wizard villain — round 2)
+Test line: "Keep going, little king. Every Treasure you pick up saves me walking to it. How... convenient."
+- **Option 1 (prev):** Jessie - Vintage Narrator (raspy old-timer) — voice_id: `KgUSWQPFmuiZ5ycRbnty`
+- **Option 2 (prev):** Darkness (deep menacing) — voice_id: `yftckXjSEXI25jG6Ead9`
+- **Option 3 (prev):** Smoke the Dragon (British, commanding) — voice_id: `xsiB5fGhEtknnqzudCO6`
+- **Option 4:** Bartholomeus - Maximum Evil — voice_id: `rfHVfqlu6LXw4vLf7q4i`
+- **Option 5:** Agatha - Villainous, Ancient Witch — voice_id: `HH3kybY6uEJ2ebSa9Vy3`
+- **Option 6:** Dante - Growly and Menacing Monster — voice_id: `wXvR48IpOq9HACltTmt7`
+- **Option 7:** Bloodgrin VF - Villain — voice_id: `KTAbPR4QFlhaTpde6md8`
 
 ## Still Need Auditions
 
