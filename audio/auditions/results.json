@@ -1,0 +1,160 @@
+[
+  {
+    "id": "troll",
+    "name": "Hoarder Troll",
+    "line": "Mine! Mine! Mine! Leave me ALONE!",
+    "stability": 0.4,
+    "similarity": 0.75,
+    "searches": [
+      "grumpy old man raspy",
+      "old troll deep grumble"
+    ],
+    "options": [
+      {
+        "name": "Sergio - Friendly and Encouraging",
+        "voice_id": "RGbeQtiShYRDVCrd9b9w",
+        "file": "audio/auditions/troll/option_1.mp3"
+      },
+      {
+        "name": "Tran Thanh",
+        "voice_id": "kPNz4WRTiKDplS7jAwHu",
+        "file": "audio/auditions/troll/option_2.mp3"
+      },
+      {
+        "name": "Gregory Grumble - Old Lovable Bedtime Bear",
+        "voice_id": "8TMmdpPgqHKvDOGYP2lN",
+        "file": "audio/auditions/troll/option_3.mp3"
+      }
+    ]
+  },
+  {
+    "id": "wolf",
+    "name": "Briar Wolf",
+    "line": "I eat kings for breakfast. Stay. Down.",
+    "stability": 0.6,
+    "similarity": 0.85,
+    "searches": [
+      "fierce menacing growl",
+      "deep aggressive male"
+    ],
+    "options": [
+      {
+        "name": "Dracon - Feral, Demonic & Dangerous",
+        "voice_id": "A921zklid24OpyVy1Elb",
+        "file": "audio/auditions/wolf/option_1.mp3"
+      },
+      {
+        "name": "Meaghan",
+        "voice_id": "mrmaApeLxpgZi4RK7oGq",
+        "file": "audio/auditions/wolf/option_2.mp3"
+      },
+      {
+        "name": "Dylo - Young, Fierce and Determined",
+        "voice_id": "JjsQrIrIBD6TZ656NQfi",
+        "file": "audio/auditions/wolf/option_3.mp3"
+      }
+    ]
+  },
+  {
+    "id": "goblin",
+    "name": "Goblin Scout",
+    "line": "Get off our road! Retreat! RETREAT!",
+    "stability": 0.35,
+    "similarity": 0.7,
+    "searches": [
+      "squeaky high pitched male",
+      "cartoon villain screechy"
+    ],
+    "options": [
+      {
+        "name": "Sean - Squeaky voice",
+        "voice_id": "4NJLA7OQNVkeKe4jVdHw",
+        "file": "audio/auditions/goblin/option_1.mp3"
+      },
+      {
+        "name": "Nelson - High-Pitched, Anxious Nerd",
+        "voice_id": "EaX6rnyDKjJx35tchi80",
+        "file": "audio/auditions/goblin/option_2.mp3"
+      },
+      {
+        "name": "Katherine - Eccentric Mad Scientist",
+        "voice_id": "342hpGp7PKo7DsTTVSdr",
+        "file": "audio/auditions/goblin/option_3.mp3"
+      }
+    ]
+  },
+  {
+    "id": "serpent",
+    "name": "Sea Serpent",
+    "line": "Go. Away. Hungry...",
+    "stability": 0.75,
+    "similarity": 0.9,
+    "searches": [
+      "deep ancient slow monster",
+      "deep dark sinister male"
+    ],
+    "options": [
+      {
+        "name": "Elderbark – Rooted and Deep",
+        "voice_id": "2HmIg4yvRgcH2ZDgiwGz",
+        "file": "audio/auditions/serpent/option_1.mp3"
+      },
+      {
+        "name": "Jasper Vayne - Epic Grim Dark Narrator ",
+        "voice_id": "ybjoxm7ASLDUFh2pC2eM",
+        "file": "audio/auditions/serpent/option_2.mp3"
+      },
+      {
+        "name": "Caelan - V3 Cinematic Titan ",
+        "voice_id": "482uNsgswFPs3grclyBu",
+        "file": "audio/auditions/serpent/option_3.mp3"
+      }
+    ]
+  },
+  {
+    "id": "crab",
+    "name": "Tide Crab",
+    "line": "MY tide pool! BACK! BACK! Snip snip!",
+    "stability": 0.3,
+    "similarity": 0.7,
+    "searches": [
+      "raspy scratchy aggressive",
+      "irritable frantic male"
+    ],
+    "options": [
+      {
+        "name": "DJ Marathon",
+        "voice_id": "9pKX7TwfPxl7p2PNZQ1B",
+        "file": "audio/auditions/crab/option_1.mp3"
+      },
+      {
+        "name": "Poe - Angry and Irritable Villain",
+        "voice_id": "KLZOWyG48RjZkAAjuM89",
+        "file": "audio/auditions/crab/option_2.mp3"
+      }
+    ]
+  },
+  {
+    "id": "sprite",
+    "name": "Forest Sprite",
+    "line": "Pesky human! Tee hee! Sparkle!",
+    "stability": 0.35,
+    "similarity": 0.7,
+    "searches": [
+      "tiny playful fairy female",
+      "high pitched whimsical female"
+    ],
+    "options": [
+      {
+        "name": "Lumi – Tiny & Sweet ",
+        "voice_id": "AVYJxaX5Uon5HKPfdVo9",
+        "file": "audio/auditions/sprite/option_1.mp3"
+      },
+      {
+        "name": "Candy - Young and Sweet",
+        "voice_id": "Nggzl2QAXh3OijoXD116",
+        "file": "audio/auditions/sprite/option_2.mp3"
+      }
+    ]
+  }
+]
