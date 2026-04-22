@@ -39,17 +39,15 @@ KJ.Boot = (function () {
   function showTitle() {
     const app = document.getElementById('app');
     app.innerHTML = `
-      <div class="kj-title-screen">
-        <div class="kj-title-crown">👑</div>
-        <h1>KING JAMES</h1>
-        <p class="kj-subtitle">The Scattered Crown Treasures</p>
-        <button class="kj-big-btn" id="btn-new">▶️ NEW GAME</button>
+      <div class="kj-title-screen kj-title-has-image">
+        <div class="kj-title-overlay">
+          <button class="kj-big-btn" id="btn-new">▶️ NEW GAME</button>
+        </div>
       </div>
     `;
     document.getElementById('btn-new').onclick = () => {
       KJ.Audio.play('click');
       KJ.State.reset();
-      // NEW GAME → play the intro sequence first (sets the plot), then the castle opens.
       KJ.Scene.goto('intro_mud');
     };
   }
@@ -60,12 +58,12 @@ KJ.Boot = (function () {
     const lvl = state.player.level;
     const treasures = state.progress.treasures.length;
     app.innerHTML = `
-      <div class="kj-title-screen">
-        <div class="kj-title-crown">👑</div>
-        <h1>KING JAMES</h1>
-        <p class="kj-subtitle">Saved: Lv ${lvl} · ${treasures}/5 treasures</p>
-        <button class="kj-big-btn" id="btn-continue">▶️ CONTINUE</button>
-        <button class="kj-btn-secondary" id="btn-new">🆕 NEW GAME (erase save)</button>
+      <div class="kj-title-screen kj-title-has-image">
+        <div class="kj-title-overlay">
+          <p class="kj-subtitle">Lv ${lvl} · ${treasures}/5 treasures</p>
+          <button class="kj-big-btn" id="btn-continue">▶️ CONTINUE</button>
+          <button class="kj-btn-secondary" id="btn-new">🆕 NEW GAME (erase save)</button>
+        </div>
       </div>
     `;
     document.getElementById('btn-continue').onclick = () => {

@@ -75,17 +75,31 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px 20px;
   min-height: 100vh;
-  justify-content: center;
+  justify-content: flex-end;
   text-align: center;
-  gap: 10px;
+  padding: 0;
+  background: #1c0e49;
+}
+.kj-title-screen.kj-title-has-image {
+  background-image: url('../images/title-bg.jpg');
+  background-size: cover;
+  background-position: center top;
+}
+.kj-title-overlay {
+  width: 100%;
+  padding: 60px 24px 40px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.82) 35%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
 }
 .kj-title-screen h1 {
   font-size: 46px;
   color: gold;
   letter-spacing: 2px;
-  text-shadow: 3px 3px 8px rgba(0,0,0,0.7);
+  text-shadow: 3px 3px 8px rgba(0,0,0,0.9);
 }
 .kj-title-crown {
   font-size: 110px;
@@ -94,7 +108,8 @@
 .kj-subtitle {
   color: #ddd;
   font-size: 18px;
-  margin: 6px 0 20px;
+  margin: 4px 0 12px;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.9);
 }
 
 /* Map screen */
