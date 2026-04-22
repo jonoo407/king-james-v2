@@ -57,7 +57,7 @@
 ### ✅ Phase 0 — Voice casting COMPLETE
 All 22 characters cast. See Locked Picks table above.
 
-### 🔄 Phase 1 — Generate all audio files (IN PROGRESS)
+### ✅ Phase 1 — Generate all audio files (COMPLETE)
 - Script: `scripts/generate_voices.js`
 - Output: `audio/voices/{speaker_id}/{scene_id}_{beat_index}.mp3`
 - Example: `audio/voices/crown/forest_intro_0.mp3`
@@ -65,18 +65,10 @@ All 22 characters cast. See Locked Picks table above.
 - Resume-safe: skips files that already exist
 - Run: `node scripts/generate_voices.js`
 
-### Phase 2 — Engine integration
-- Add `engine/audio.js` — audio manager that:
-  - Preloads audio for upcoming scene
-  - Plays clip when dialogue line renders (keyed by speaker + scene + line index)
-  - Handles playback queue for multi-line scenes
-  - Falls back silently if audio file missing (no crash)
-- Add mute/volume toggle to HUD (kid plays at 6am)
-- Add `<script src="engine/audio.js"></script>` to index.html
-
-### Phase 3 — Hook into dialogue renderer
-- Modify `engine/ui/dialogue.js` to call `audio.play(speaker, sceneId, beatIndex)` when each line appears
-- Auto-advance option: wait for audio to finish before showing "next" prompt
+### ✅ Phase 2 & 3 — Engine integration + dialogue hook (COMPLETE)
+- Extended `engine/audio.js`: `KJ.Audio.voice(speaker, sceneId, beatIndex)` plays the clip, `KJ.Audio.toggleVoice()` mutes/unmutes
+- `engine/ui/dialogue.js`: calls `KJ.Audio.voice()` on every beat in `showBeat()`
+- `engine/ui/hud.js`: 🔊/🔇 mute button added to HUD right-side
 
 ### Phase 4 — Deploy
 - Commit audio files + engine changes

@@ -31,6 +31,7 @@ KJ.UI.DialogueScene = (function () {
       const b = beats[idx];
       document.getElementById('kj-dialogue-speaker').innerHTML = speakerDisplay(b.speaker);
       document.getElementById('kj-dialogue-text').textContent = b.text;
+      KJ.Audio.voice(b.speaker, scene.id, idx);
       idx++;
       if (idx >= beats.length) {
         document.getElementById('kj-next').textContent = '▶️ Done';

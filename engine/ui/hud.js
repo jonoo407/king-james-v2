@@ -20,6 +20,7 @@ KJ.UI.HUD = (function () {
           <span class="kj-hud-crown kj-crown-fit-${coherence}" title="Crown Coherence ${coherence}/5">👑</span>
         </div>
         <div class="kj-hud-right">
+          <button class="kj-hud-btn" id="kj-btn-mute"      title="Mute voice">🔊</button>
           <button class="kj-hud-btn" id="kj-btn-party"     title="Allies (swap party between scenes)">🏠</button>
           <button class="kj-hud-btn" id="kj-btn-gear"      title="Gear (swap between scenes)">📦</button>
           <button class="kj-hud-btn" id="kj-btn-character" title="Character sheet">📜</button>
@@ -29,6 +30,11 @@ KJ.UI.HUD = (function () {
   }
 
   function attach() {
+    const muteBtn = document.getElementById('kj-btn-mute');
+    if (muteBtn) muteBtn.onclick = () => {
+      const on = KJ.Audio.toggleVoice();
+      muteBtn.textContent = on ? '🔊' : '🔇';
+    };
     const charBtn = document.getElementById('kj-btn-character');
     if (charBtn) charBtn.onclick = () => {
       KJ.Audio.play('click');

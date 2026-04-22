@@ -98,5 +98,27 @@ KJ.Audio = (function () {
   register('equip',    ({notes}) => notes([440, 660], 0.06, 0.08, 'sine', 0.22));
   register('gold',     ({notes}) => notes([880, 1100, 1320, 1100], 0.04, 0.08, 'sine', 0.2));
 
-  return { register, play, unlock };
+  // ── Voice (MP3 dialogue clips) ─────────────────────────────────────────────
+  let voiceOn = true;
+  let currentVoice = null;
+
+  function voice(speaker, sceneId, beatIndex) {
+    if (!voiceOn) return;
+    if (currentVoice) { currentVoice.pause(); currentVoice = null; }
+    const url = `audio/voices/${speaker}/${sceneId}_${beatIndex}.mp3`;
+    const a = new Audio(url);
+    a.volume = 0.9;
+    currentVoice = a;
+    a.play().catch(() => {}); // silent fail if file missing
+  }
+
+  function toggleVoice() {
+    voiceOn = !voiceOn;
+    if (!voiceOn && currentVoice) { currentVoice.pause(); currentVoice = null; }
+    return voiceOn;
+  }
+
+  function isVoiceOn() { return voiceOn; }
+
+  return { register, play, unlock, voice, toggleVoice, isVoiceOn };
 })();
