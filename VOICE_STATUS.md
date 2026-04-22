@@ -1,10 +1,10 @@
 # Voice System — Status & Handoff
 
-**Last updated:** April 21, 2026 (round 2)
+**Last updated:** April 22, 2026 — FULL CAST LOCKED ✅
 **ElevenLabs API Key:** sk_111111822a9879bd2a381eb8271a551f7a54e62a058945f0
 **Model:** eleven_turbo_v2_5
 
-## Voice Casting — Locked Picks
+## Voice Casting — Locked Picks (Complete)
 
 | Character | Voice | Voice ID | Notes |
 |-----------|-------|----------|-------|
@@ -12,6 +12,18 @@
 | 📜 Narrator | Clara - Calm, Distinctive, and Narrative | 8LVfoRdkh4zgjr8v5ObE | Warm American woman. Storybook narrator. |
 | 🧒 James | Ziggy - Goofy Coyote | 87n4zM8Wuy87vFILuKvE | Excitable boy king. Energetic, goofy. |
 | 🧙‍♂️ Mornox | Dante - Growly and Menacing Monster | wXvR48IpOq9HACltTmt7 | Ancient cursed villain. stability 0.7, similarity 0.88. |
+| 🦊 Foxy | Yee - Nasal, Witty and Sharp | 1Z7qQDyqapTm8qBfJx6e | Quick, sharp, slightly raspy. |
+| 🐸 Ribbit | Constantino | ApsbCjXt5HguctE80a0i | Deep silly croak, comic relief. |
+| 🦉 Owlette | Ms. Harris - Caring Southern Mom | u0REnIJvUgcGQYW2Ux8K | Gentle, wise, deadpan dad-jokes. |
+| 🐐 Gus | Georg - Funny and Emotional | LRpNiUBlcqgIsKUzcrlN | Gruff, stubborn, older. |
+| 🦍❄️ Papa Yeti | Brian - Deep, Resonant & Comforting | nPczCjzI2devNBz1zQrb | Premade. Deep, slow, emotional, broken speech. |
+| 👻 Glimmer (Wraith) | Lily - Velvety Actress | pFZP5JQG7iQjIQuC4Bku | Premade. Echoey, soft, melancholic. British. |
+| 🧔‍♂️ Sir Frostbeard | Jayce - Bassy, Raspy and Rough | dAcds2QMcvmv86jQMC3Y | Rough, working-class. |
+| 💅 Dame Pompadour | Eleonore - Mature Female Narrator | 8SdTD5IMgFKT1jp7JbPC | Over-the-top dramatic, flamboyant. |
+| 🧜‍♀️ Queen Sirena | Kristen - Cold Evil Queen Villain | Qbw4VpyUrHEG7NigKzty | Regal, cold, cracks emotionally at climax. |
+| 🦦 Finn | Alex - Upbeat, Energetic and Clear | yl2ZDV1MzN4HbQJbMihG | Upbeat, chattery, young. |
+| 👦 Joon | Harry - Fierce Warrior | SOYHLrjzK2X1ezoPC6cr | Premade. Small, scared, relieved. |
+| 🧙‍♀️ Drifter | Sarah - Mature, Reassuring | EXAVITQu4vr4xnSDxMaL | Premade. Quiet, hesitant, hurt. American woman. |
 | 🧌 Hoarder Troll | Gregory Grumble - Old Lovable Bedtime Bear | 8TMmdpPgqHKvDOGYP2lN | Grumpy, whiny older male. |
 | 🐺 Briar Wolf | Dracon - Feral, Demonic & Dangerous | A921zklid24OpyVy1Elb | Alpha predator, menacing. |
 | 👺 Goblin Scout | Sean - Squeaky Voice | 4NJLA7OQNVkeKe4jVdHw | Cowardly high-pitched bully. |
