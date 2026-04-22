@@ -19,6 +19,12 @@ KJ.UI.ChoiceScene = (function () {
       </div>
     `;
     KJ.UI.HUD.attach();
+    // Voice the Crown hint line if present
+    if (scene.crownLine && scene.id) {
+      setTimeout(() => KJ.Audio.voicePath(
+        `audio/voices/crown/hint_${scene.id}.mp3`
+      ), 400);
+    }
     const cont = document.getElementById('kj-choices');
     (scene.choices || []).forEach((c, i) => {
       if (!KJ.Scene.checkCondition(c.condition)) return;
