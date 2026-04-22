@@ -9,7 +9,9 @@
 | Character | Voice | Voice ID | Notes |
 |-----------|-------|----------|-------|
 | 👑 The Crown | George - Warm British Storyteller | JBFqnCBsd6RMkjVDRZzb | Premade. Snarky mentor. Warm but exasperated. |
-| 📜 Narrator | TBD — auditioning kind woman voices | — | Replacing Morgan. Round 2 auditions in progress. |
+| 📜 Narrator | TBD — auditioning (round 3) | — | Must be American or Western European. Round 3 in progress. |
+| 🧒 James | Ziggy - Goofy Coyote | 87n4zM8Wuy87vFILuKvE | Excitable boy king. Energetic, goofy. |
+| 🧙‍♂️ Mornox | Dante - Growly and Menacing Monster | wXvR48IpOq9HACltTmt7 | Ancient cursed villain. stability 0.7, similarity 0.88. |
 | 🧌 Hoarder Troll | Gregory Grumble - Old Lovable Bedtime Bear | 8TMmdpPgqHKvDOGYP2lN | Grumpy, whiny older male. |
 | 🐺 Briar Wolf | Dracon - Feral, Demonic & Dangerous | A921zklid24OpyVy1Elb | Alpha predator, menacing. |
 | 👺 Goblin Scout | Sean - Squeaky Voice | 4NJLA7OQNVkeKe4jVdHw | Cowardly high-pitched bully. |
