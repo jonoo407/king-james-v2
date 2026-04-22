@@ -40,6 +40,7 @@ KJ.Boot = (function () {
     const app = document.getElementById('app');
     app.innerHTML = `
       <div class="kj-title-screen kj-title-has-image">
+        <img src="images/title-bg.jpg" class="kj-title-poster" alt="King James">
         <div class="kj-title-overlay">
           <button class="kj-big-btn" id="btn-new">▶️ NEW GAME</button>
         </div>
@@ -59,6 +60,7 @@ KJ.Boot = (function () {
     const treasures = state.progress.treasures.length;
     app.innerHTML = `
       <div class="kj-title-screen kj-title-has-image">
+        <img src="images/title-bg.jpg" class="kj-title-poster" alt="King James">
         <div class="kj-title-overlay">
           <p class="kj-subtitle">Lv ${lvl} · ${treasures}/5 treasures</p>
           <button class="kj-big-btn" id="btn-continue">▶️ CONTINUE</button>

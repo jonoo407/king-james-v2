@@ -76,20 +76,28 @@
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  justify-content: flex-end;
+  justify-content: center;
   text-align: center;
-  padding: 0;
+  gap: 10px;
+  padding: 40px 20px;
   background: #1c0e49;
 }
 .kj-title-screen.kj-title-has-image {
-  background-image: url('../images/title-bg.jpg');
-  background-size: cover;
-  background-position: center top;
+  padding: 0;
+  justify-content: flex-start;
+  background: #0d0820;
+}
+.kj-title-poster {
+  width: 100%;
+  display: block;
+  max-width: 600px;
+  margin: 0 auto;
 }
 .kj-title-overlay {
   width: 100%;
-  padding: 60px 24px 40px;
-  background: linear-gradient(transparent, rgba(0,0,0,0.82) 35%);
+  max-width: 600px;
+  padding: 20px 24px 48px;
+  background: #0d0820;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -99,7 +107,7 @@
   font-size: 46px;
   color: gold;
   letter-spacing: 2px;
-  text-shadow: 3px 3px 8px rgba(0,0,0,0.9);
+  text-shadow: 3px 3px 8px rgba(0,0,0,0.7);
 }
 .kj-title-crown {
   font-size: 110px;
