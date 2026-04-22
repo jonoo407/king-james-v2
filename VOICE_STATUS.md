@@ -9,7 +9,7 @@
 | Character | Voice | Voice ID | Notes |
 |-----------|-------|----------|-------|
 | 👑 The Crown | George - Warm British Storyteller | JBFqnCBsd6RMkjVDRZzb | Premade. Snarky mentor. Warm but exasperated. |
-| 📜 Narrator | TBD — auditioning (round 3) | — | Must be American or Western European. Round 3 in progress. |
+| 📜 Narrator | Clara - Calm, Distinctive, and Narrative | 8LVfoRdkh4zgjr8v5ObE | Warm American woman. Storybook narrator. |
 | 🧒 James | Ziggy - Goofy Coyote | 87n4zM8Wuy87vFILuKvE | Excitable boy king. Energetic, goofy. |
 | 🧙‍♂️ Mornox | Dante - Growly and Menacing Monster | wXvR48IpOq9HACltTmt7 | Ancient cursed villain. stability 0.7, similarity 0.88. |
 | 🧌 Hoarder Troll | Gregory Grumble - Old Lovable Bedtime Bear | 8TMmdpPgqHKvDOGYP2lN | Grumpy, whiny older male. |
