@@ -1,0 +1,32 @@
+[
+  {
+    "option": 1,
+    "name": "Saoirse - Melodic, Warm and Articulate",
+    "voice_id": "EoCDB2f3Y78dStq7vHyr",
+    "accent": ""
+  },
+  {
+    "option": 2,
+    "name": "Clara - Calm, Distinctive, and Narrative",
+    "voice_id": "8LVfoRdkh4zgjr8v5ObE",
+    "accent": ""
+  },
+  {
+    "option": 3,
+    "name": "Marie - Audiobook Narrator and Measured",
+    "voice_id": "yKkxiQD9cEWLnFyMqUBu",
+    "accent": ""
+  },
+  {
+    "option": 4,
+    "name": "Kate - Serene Narrator Pro",
+    "voice_id": "GU72V6Yk5oxNHCpv7yxQ",
+    "accent": ""
+  },
+  {
+    "option": 5,
+    "name": "Jess - Poetic, Soothing and Calm",
+    "voice_id": "Lhz3IUCNLm2vpOD2OX5Q",
+    "accent": ""
+  }
+]
