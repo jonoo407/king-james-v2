@@ -1,17 +1,17 @@
 [
   {
     "option": 1,
-    "name": "Relaxo - Deep & Peaceful Meditation",
-    "voice_id": "XP8l5k4GqNAohbJd9x0e"
+    "name": "Brian - Deep, Resonant & Comforting",
+    "voice_id": "nPczCjzI2devNBz1zQrb"
   },
   {
     "option": 2,
-    "name": "Mikael - Relaxation Voice",
-    "voice_id": "JGvbt2lqOpkcTJb07LIm"
+    "name": "Bill - Wise, Mature, Balanced",
+    "voice_id": "pqHfZKP75CvOlQylNhV4"
   },
   {
     "option": 3,
-    "name": "Maurice - Meditative, Relaxed & Calm",
-    "voice_id": "1sAAE3JN5CrenOZF5R0T"
+    "name": "Adam - Dominant, Firm",
+    "voice_id": "pNInz6obpgDQGcFmaJgB"
   }
 ]

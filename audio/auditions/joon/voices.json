@@ -1,17 +1,17 @@
 [
   {
     "option": 1,
-    "name": "Tuna - Young and Soft",
-    "voice_id": "7mBFv1btncDZu2Bfgv0r"
+    "name": "Will - Relaxed Optimist",
+    "voice_id": "bIHbv24MWmeRgasZH58o"
   },
   {
     "option": 2,
-    "name": "Sonu - Calm and Neutral",
-    "voice_id": "nZrzehiJO7UYXi9GOxS8"
+    "name": "Liam - Energetic, Casual",
+    "voice_id": "TX3LPaxmHKxFdv7VOQHJ"
   },
   {
     "option": 3,
-    "name": "Austin - Timid and Casual",
-    "voice_id": "Xb3zeLrTi6F4ziIcXdwk"
+    "name": "Harry - Fierce Warrior",
+    "voice_id": "SOYHLrjzK2X1ezoPC6cr"
   }
 ]
