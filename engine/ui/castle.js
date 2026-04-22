@@ -15,7 +15,7 @@ KJ.UI.Castle = (function () {
       return;
     }
     const app = document.getElementById('app');
-    const crownLine = pickCrownLine('castle_general');
+    const crownData = pickCrownLine('castle_general');
     const rooms = availableRooms(state);
 
     app.innerHTML = `
@@ -23,7 +23,7 @@ KJ.UI.Castle = (function () {
       <div class="kj-castle-bg kj-scene-wrap">
         <div class="kj-castle-throne">
           <div class="kj-throne-crown" title="Click for crown hint">👑</div>
-          <div class="kj-crown-bubble">${crownLine}</div>
+          <div class="kj-crown-bubble">${crownData.text}</div>
         </div>
 
         <div class="kj-castle-rooms">
@@ -43,6 +43,12 @@ KJ.UI.Castle = (function () {
 
     KJ.UI.HUD.attach();
     attachRooms(rooms);
+    // Voice the crown bubble line (400ms delay so the render is visible first)
+    if (crownData.poolId) {
+      setTimeout(() => KJ.Audio.voicePath(
+        `audio/voices/crown/cd_${crownData.poolId}_${crownData.lineIdx}.mp3`
+      ), 400);
+    }
     const resetBtn = document.getElementById('kj-btn-reset');
     if (resetBtn) resetBtn.onclick = () => {
       if (!confirm('Start over? All progress erased.')) return;
@@ -117,9 +123,10 @@ KJ.UI.Castle = (function () {
       .filter(p => p.context === context && p.coherenceRequired <= coherence);
     // pick highest coherence-required pool the player qualifies for
     pools.sort((a, b) => b.coherenceRequired - a.coherenceRequired);
-    if (!pools.length) return '👑 ...';
+    if (!pools.length) return { text: '👑 ...', poolId: null, lineIdx: 0 };
     const pool = pools[0];
-    return pool.lines[Math.floor(Math.random() * pool.lines.length)];
+    const lineIdx = Math.floor(Math.random() * pool.lines.length);
+    return { text: pool.lines[lineIdx], poolId: pool.id, lineIdx };
   }
 
   function toast(msg) { KJ.Effects.toast(msg); }

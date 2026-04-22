@@ -24,6 +24,10 @@ KJ.UI.BattleScene = (function () {
       // 2 tutorial lines pushed as log entries labelled "crown"
       battle.log.push({ kind: 'crown_tutorial', data: { text: pool.lines[0] } });
       battle.log.push({ kind: 'crown_tutorial', data: { text: pool.lines[3] || pool.lines[0] } });
+      // Voice the first quip once the battle UI has rendered
+      setTimeout(() => KJ.Audio.voicePath(
+        `audio/voices/crown/cd_${pool.id}_0.mp3`
+      ), 600);
     }
 
     function run() {
@@ -428,13 +432,13 @@ KJ.UI.BattleScene = (function () {
     function onDefeat() {
       KJ.Events.emit('party_knocked_out', { scene: scene.id });
       KJ.Audio.play('sad');
-      const line = crownRescueLine();
+      const rescueData = crownRescueLine();
       const app = document.getElementById('app');
       app.innerHTML = `
         ${KJ.UI.HUD.html()}
         <div class="kj-scene-wrap kj-bg-rescue">
           <div class="kj-rescue-crown">👑✨</div>
-          <div class="kj-crown-bubble">${line}</div>
+          <div class="kj-crown-bubble">${rescueData.text}</div>
           <div class="kj-caption">You wake up back at the castle. Your stuff is safe!</div>
           <div class="kj-choices">
             <button class="kj-choice-btn" id="kj-btn-home">🏰 Back to Castle</button>
@@ -442,6 +446,9 @@ KJ.UI.BattleScene = (function () {
         </div>
       `;
       KJ.UI.HUD.attach();
+      if (rescueData.audioPath) {
+        setTimeout(() => KJ.Audio.voicePath(rescueData.audioPath), 800);
+      }
       document.getElementById('kj-btn-home').onclick = () => {
         // Reset the quest to its entry
         const qid = (scene._questId || '');
@@ -453,10 +460,13 @@ KJ.UI.BattleScene = (function () {
     }
 
     function crownRescueLine() {
-      const pools = KJ.Registry.crownDialogue.filter(p => p.context === 'death_rescue');
-      const pool = pools[0];
-      if (!pool || !pool.lines.length) return '👑 "You are safe, somehow."';
-      return '👑 "' + pool.lines[Math.floor(Math.random() * pool.lines.length)] + '"';
+      const pool = KJ.Registry.crownDialogue.filter(p => p.context === 'death_rescue')[0];
+      if (!pool || !pool.lines.length) return { text: '👑 "You are safe, somehow."', audioPath: null };
+      const idx = Math.floor(Math.random() * pool.lines.length);
+      return {
+        text: '👑 "' + pool.lines[idx] + '"',
+        audioPath: `audio/voices/crown/cd_${pool.id}_${idx}.mp3`,
+      };
     }
 
     function checkLevelUp(state) {

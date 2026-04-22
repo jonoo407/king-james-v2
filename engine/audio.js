@@ -112,6 +112,16 @@ KJ.Audio = (function () {
     a.play().catch(() => {}); // silent fail if file missing
   }
 
+  // Play voice by direct relative path (used for crown pool lines, etc.)
+  function voicePath(relPath) {
+    if (!voiceOn) return;
+    if (currentVoice) { currentVoice.pause(); currentVoice = null; }
+    const a = new Audio(relPath);
+    a.volume = 0.9;
+    currentVoice = a;
+    a.play().catch(() => {}); // silent fail if file missing
+  }
+
   function toggleVoice() {
     voiceOn = !voiceOn;
     if (!voiceOn && currentVoice) { currentVoice.pause(); currentVoice = null; }
@@ -120,5 +130,5 @@ KJ.Audio = (function () {
 
   function isVoiceOn() { return voiceOn; }
 
-  return { register, play, unlock, voice, toggleVoice, isVoiceOn };
+  return { register, play, unlock, voice, voicePath, toggleVoice, isVoiceOn };
 })();
