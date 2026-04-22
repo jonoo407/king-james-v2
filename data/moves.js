@@ -39,7 +39,7 @@
     { id: 'shadow_step', name: 'Shadow Step', type: 'wind',  power: 8, accuracy: 0.95, target: 'enemy', flavor: 'Slip between shadows.' },
     { id: 'ice_shard',   name: 'Ice Shard',   type: 'water', power: 7, accuracy: 0.95, target: 'enemy', flavor: 'Splinter of cold.' },
     { id: 'sure_step',   name: 'Sure Step',   type: 'earth', power: 6, accuracy: 1.0,  target: 'enemy', flavor: 'Charge with iron hoof.' },
-    { id: 'brave_strike',name: 'Brave Strike',type: 'wind',  power: 10,accuracy: 0.95, target: 'enemy', flavor: 'The Blade sings; the wind answers.' },
+    { id: 'brave_strike',name: 'Brave Strike',type: 'magic', power: 10,accuracy: 0.95, target: 'enemy', flavor: 'The Blade glows — pure courage, pure force.' },
     { id: 'frost_slash', name: 'Frost Slash', type: 'water', power: 7, accuracy: 0.9,  target: 'enemy' },
     { id: 'headbutt',    name: 'Headbutt',    type: 'earth', power: 6, accuracy: 0.95, target: 'enemy', flavor: 'Gus leads with the horns.' },
     { id: 'freeze',      name: 'Freeze',      type: 'water', power: 8, accuracy: 0.85, target: 'enemy', flavor: 'Chill to the bone.' },
