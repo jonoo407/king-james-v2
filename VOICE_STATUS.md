@@ -10,7 +10,7 @@
 |-----------|-------|----------|-------|
 | 👑 The Crown | George - Warm British Storyteller | JBFqnCBsd6RMkjVDRZzb | Premade. Snarky mentor. Warm but exasperated. |
 | 📜 Narrator | Clara - Calm, Distinctive, and Narrative | 8LVfoRdkh4zgjr8v5ObE | Warm American woman. Storybook narrator. |
-| 🧒 James | Ziggy - Goofy Coyote | 87n4zM8Wuy87vFILuKvE | Excitable boy king. Energetic, goofy. |
+| 🧒 James | Gregory - Tech Reviewer | PzuBz8h2SxBvQ7lnUC44 | Excitable boy king. Energetic, goofy. |
 | 🧙‍♂️ Mornox | Dante - Growly and Menacing Monster | wXvR48IpOq9HACltTmt7 | Ancient cursed villain. stability 0.7, similarity 0.88. |
 | 🦊 Foxy | Yee - Nasal, Witty and Sharp | 1Z7qQDyqapTm8qBfJx6e | Quick, sharp, slightly raspy. |
 | 🐸 Ribbit | Constantino | ApsbCjXt5HguctE80a0i | Deep silly croak, comic relief. |

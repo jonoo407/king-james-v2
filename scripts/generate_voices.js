@@ -19,7 +19,7 @@ const OUT_DIR = path.join(__dirname, '..', 'audio', 'voices');
 const VOICES = {
   crown:      { id: 'JBFqnCBsd6RMkjVDRZzb', stability: 0.55, similarity: 0.80 },
   narrator:   { id: '8LVfoRdkh4zgjr8v5ObE', stability: 0.55, similarity: 0.80 },
-  james:      { id: '87n4zM8Wuy87vFILuKvE', stability: 0.38, similarity: 0.70 },
+  james:      { id: 'PzuBz8h2SxBvQ7lnUC44', stability: 0.38, similarity: 0.70 },
   mornox:     { id: 'wXvR48IpOq9HACltTmt7', stability: 0.70, similarity: 0.88 },
   foxy:       { id: '1Z7qQDyqapTm8qBfJx6e', stability: 0.40, similarity: 0.75 },
   ribbit:     { id: 'ApsbCjXt5HguctE80a0i', stability: 0.45, similarity: 0.75 },
