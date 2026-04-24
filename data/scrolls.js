@@ -21,6 +21,9 @@
     { id: 'scroll_thunder',  name: 'Thunder',      emoji: '⚡', price: 80,
       desc: '10 damage to ALL enemies',
       effect: { kind: 'damage_all_enemies', amount: 10 } },
+    { id: 'scroll_waterskin',name: 'Waterskin',    emoji: '🫗', price: 25,
+      desc: 'Heal party +10 HP',
+      effect: { kind: 'heal_party', amount: 10 } },
   ];
   S.forEach(s => KJ.Registry.scrolls.add(s));
 })();
