@@ -296,13 +296,23 @@ KJ.UI.BattleScene = (function () {
     function showItemPicker(actor) {
       const actions = document.getElementById('kj-battle-actions');
       const owned = scrollsInInventory();
+      const lvl = KJ.State.get().player.level;
+      function livePreview(s) {
+        const e = s.effect || {};
+        const dmg  = e.amount + lvl * 3;
+        const heal = e.amount + Math.floor(lvl * 1.5);
+        if (e.kind === 'heal_party')         return `Heal party +${heal} HP`;
+        if (e.kind === 'damage_enemy')       return `${dmg} damage to one enemy`;
+        if (e.kind === 'damage_all_enemies') return `${dmg} damage to ALL enemies`;
+        return s.desc;
+      }
       actions.innerHTML = `
         <div class="kj-battle-prompt"><strong>🎒 Pick a scroll:</strong></div>
         <div class="kj-scroll-battle-list">
           ${owned.map(o => `
             <button class="kj-scroll-use-btn" data-scroll="${o.scroll.id}">
               <div>${o.scroll.emoji} <strong>${o.scroll.name}</strong> <span class="kj-scroll-count">x${o.count}</span></div>
-              <div class="kj-scroll-sub">${o.scroll.desc}</div>
+              <div class="kj-scroll-sub">${livePreview(o.scroll)}</div>
             </button>
           `).join('')}
           <button class="kj-btn-secondary" id="kj-cancel-item">⬅️ Cancel</button>
@@ -333,11 +343,16 @@ KJ.UI.BattleScene = (function () {
 
     function applyScrollEffect(scroll) {
       const e = scroll.effect || {};
+      // Scale scroll potency with player level so they stay more powerful than
+      // standard moves at every tier and justify their gold cost.
+      const lvl = KJ.State.get().player.level;
+      const dmg  = e.amount + lvl * 3;              // damage scrolls
+      const heal = e.amount + Math.floor(lvl * 1.5); // healing scrolls
       switch (e.kind) {
         case 'heal_party':
           battle.playerTeam.filter(c => c.stats.hp > 0).forEach(c => {
             const before = c.stats.hp;
-            c.stats.hp = Math.min(c.maxHP, c.stats.hp + e.amount);
+            c.stats.hp = Math.min(c.maxHP, c.stats.hp + heal);
             const delta = c.stats.hp - before;
             if (delta > 0) {
               const el = document.querySelector('[data-id="' + c.id + '"]');
@@ -348,17 +363,17 @@ KJ.UI.BattleScene = (function () {
         case 'damage_enemy': {
           const target = battle.enemyTeam.find(c => c.stats.hp > 0);
           if (target) {
-            target.stats.hp = Math.max(0, target.stats.hp - e.amount);
+            target.stats.hp = Math.max(0, target.stats.hp - dmg);
             const el = document.querySelector('[data-id="' + target.id + '"]');
-            if (el) KJ.Effects.damageNumber(el, e.amount, { super: true });
+            if (el) KJ.Effects.damageNumber(el, dmg, { super: true });
           }
           break;
         }
         case 'damage_all_enemies':
           battle.enemyTeam.filter(c => c.stats.hp > 0).forEach(c => {
-            c.stats.hp = Math.max(0, c.stats.hp - e.amount);
+            c.stats.hp = Math.max(0, c.stats.hp - dmg);
             const el = document.querySelector('[data-id="' + c.id + '"]');
-            if (el) KJ.Effects.damageNumber(el, e.amount, { super: true });
+            if (el) KJ.Effects.damageNumber(el, dmg, { super: true });
           });
           break;
       }

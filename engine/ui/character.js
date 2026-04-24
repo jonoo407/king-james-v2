@@ -123,13 +123,8 @@ KJ.UI.Character = (function () {
   }
 
   function rankLabel(id) {
-    return ({
-      peasant_kid: 'Peasant Kid',
-      squire: 'Squire',
-      knight: 'Knight',
-      prince: 'Prince',
-      king: 'KING 👑',
-    })[id] || id;
+    const r = (KJ.ROYAL_RANKS || []).find(x => x.id === id);
+    return r ? r.label : id;
   }
 
   function xpPct(state) {

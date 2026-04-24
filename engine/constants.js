@@ -16,14 +16,29 @@ KJ.GEAR_SLOTS = ['weapon', 'armor', 'trinket', 'boots'];
 // 4 combatant stats
 KJ.STATS = ['hp', 'atk', 'def', 'spd'];
 
-// Royal Rank progression (gates harder quests later)
+// Royal Rank progression — funny, escalating. Updated on level_up.
+// Kid checks their Character sheet and watches the label get cooler.
 KJ.ROYAL_RANKS = [
-  'peasant_kid',
-  'squire',
-  'knight',
-  'prince',
-  'king',
+  { level: 1,  id: 'peasant_kid',      label: '👕 Peasant Kid' },
+  { level: 3,  id: 'mud_scraper',      label: '🥾 Mud-Scraper' },
+  { level: 5,  id: 'stick_menace',     label: '🪵 Stick-Waving Menace' },
+  { level: 7,  id: 'pocket_knight',    label: '🪖 Pocket Knight' },
+  { level: 9,  id: 'actual_knight',    label: '⚔️ Actual Knight-ish' },
+  { level: 11, id: 'small_dog_feared', label: '🏇 Feared by Small Dogs' },
+  { level: 13, id: 'mini_monarch',     label: '👑 Mini Monarch' },
+  { level: 15, id: 'royally_annoying', label: '⚜️ Royally Annoying' },
+  { level: 17, id: 'scary_prince',     label: '🔥 Scary Prince' },
+  { level: 19, id: 'castle_shaker',    label: '💥 Castle-Shaker' },
+  { level: 21, id: 'high_king',        label: '👑 HIGH KING' },
 ];
+KJ.rankForLevel = function (lvl) {
+  let pick = KJ.ROYAL_RANKS[0];
+  for (const r of KJ.ROYAL_RANKS) {
+    if (lvl >= r.level) pick = r;
+    else break;
+  }
+  return pick;
+};
 
 // Castle rooms unlocked on day 1 (before any treasure)
 KJ.DEFAULT_CASTLE_ROOMS = ['throne', 'map', 'gear', 'ally'];

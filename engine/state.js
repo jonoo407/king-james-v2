@@ -111,6 +111,11 @@ KJ.State = (function () {
       let data = JSON.parse(raw);
       if (data.version !== KJ.SAVE_VERSION) data = migrate(data);
       current = data;
+      // Self-heal royalRank against the current level (handles old saves
+      // where the rank system didn't update automatically).
+      if (KJ.rankForLevel) {
+        current.player.royalRank = KJ.rankForLevel(current.player.level).id;
+      }
       return { loaded: true };
     } catch (e) {
       console.error('[state] load failed — starting fresh', e);
@@ -140,6 +145,11 @@ KJ.State = (function () {
       'party_knocked_out',
       'badge_unlocked',
     ].forEach(e => KJ.Events.on(e, saveDebounced));
+    // Keep royalRank in sync with level.
+    KJ.Events.on('level_up', () => {
+      const s = current;
+      if (KJ.rankForLevel) s.player.royalRank = KJ.rankForLevel(s.player.level).id;
+    });
   }
 
   return {

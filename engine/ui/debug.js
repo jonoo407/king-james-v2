@@ -27,9 +27,10 @@ KJ.UI.Debug = (function () {
         <div class="kj-debug-body">
           <button class="kj-debug-btn" data-act="unlock_arcs">${allUnlocked ? '✅ ' : ''}🗺️ All arcs unlocked</button>
           <button class="kj-debug-btn" data-act="heal">❤️ Heal party to full</button>
-          <button class="kj-debug-btn" data-act="levelup">⬆️ Level up ×1</button>
+          <button class="kj-debug-btn" data-act="levelup">⬆️ Level up…</button>
           <button class="kj-debug-btn" data-act="gold">🪙 +500 gold</button>
           <button class="kj-debug-btn" data-act="treasures">👑 Grant all treasures</button>
+          <button class="kj-debug-btn" data-act="gear">🎒 Grant all gear</button>
           <button class="kj-debug-btn" data-act="allies">🧑‍🤝‍🧑 Unlock all allies</button>
           <button class="kj-debug-btn" data-act="winbattle" ${inBattle ? '' : 'disabled'}>🏆 Win current battle</button>
           <button class="kj-debug-btn" data-act="overlay">${_overlayOn ? '✅ ' : ''}🏷️ Scene ID overlay</button>
@@ -75,18 +76,38 @@ KJ.UI.Debug = (function () {
         break;
       }
       case 'levelup': {
-        const nextLvl = state.player.level + 1;
-        const needed = KJ.xpForLevel(nextLvl);
-        state.player.xp = needed;
-        state.player.level = nextLvl;
-        state.player.pendingStatPoints += KJ.STAT_POINTS_PER_LEVEL;
-        if (nextLvl % KJ.TRAIT_EVERY_N_LEVELS === 0) state.player.pendingTraitPicks++;
-        KJ.Events.emit('level_up', { newLevel: nextLvl });
+        const raw = prompt('Level up how many times?', '1');
+        if (raw === null) break;
+        const n = Math.max(1, Math.min(50, parseInt(raw, 10) || 1));
+        for (let i = 0; i < n; i++) {
+          const nextLvl = state.player.level + 1;
+          state.player.xp = KJ.xpForLevel(nextLvl);
+          state.player.level = nextLvl;
+          state.player.pendingStatPoints += KJ.STAT_POINTS_PER_LEVEL;
+          if (nextLvl % KJ.TRAIT_EVERY_N_LEVELS === 0) state.player.pendingTraitPicks++;
+          KJ.Events.emit('level_up', { newLevel: nextLvl });
+        }
         KJ.Audio.play('levelup');
-        KJ.Effects.bigText('LEVEL UP!');
-        KJ.Effects.toast('Level ' + nextLvl, { icon: '⬆️' });
+        KJ.Effects.bigText('LEVEL UP ×' + n + '!');
         KJ.State.save();
-        closeAndRefresh();
+        closeOnly();
+        // Open the level-up UI so the user can spend points / pick traits
+        if (KJ.UI.LevelUp && KJ.UI.LevelUp.showIfPending) {
+          KJ.UI.LevelUp.showIfPending();
+        }
+        break;
+      }
+      case 'gear': {
+        const all = KJ.Registry.gear.all();
+        let added = 0;
+        all.forEach(g => {
+          if (!state.inventory.gear.includes(g.id)) {
+            state.inventory.gear.push(g.id);
+            added++;
+          }
+        });
+        KJ.Effects.toast('Added ' + added + ' gear pieces (' + all.length + ' total in inventory)', { icon: '🎒' });
+        KJ.State.save();
         break;
       }
       case 'gold': {
