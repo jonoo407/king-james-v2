@@ -61,7 +61,7 @@ const POOLS = [
     'See the lightning bolt? That means Super! Beats this monster\'s type.',
     'Gray shield moves are weak. Don\'t waste them.',
     'Every monster has ONE weakness. Find the lightning bolt.',
-    'Goblins are plants. Fire burns plants. Easy.',
+    'Check the monster card — "weak:" tells you what hurts it. Match that type.',
   ]},
 ];
 

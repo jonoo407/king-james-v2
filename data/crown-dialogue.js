@@ -67,7 +67,7 @@
       'See the ⚡? That means Super! Beats this monster\'s type.',
       'Gray 🛡️ moves are weak. Don\'t waste them.',
       'Every monster has ONE weakness. Find the ⚡.',
-      'Goblins are plants. Fire burns plants. Easy.',
+      'Check the monster card — "weak:" tells you what hurts it. Match that type.',
     ]},
   ];
   pools.forEach(p => KJ.Registry.crownDialogue.add(p));
