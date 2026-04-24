@@ -30,6 +30,7 @@ const VOICES = {
   frostbeard: { id: 'dAcds2QMcvmv86jQMC3Y', stability: 0.55, similarity: 0.80 },
   finn:       { id: 'yl2ZDV1MzN4HbQJbMihG', stability: 0.40, similarity: 0.75 },
   drifter:    { id: 'EXAVITQu4vr4xnSDxMaL', stability: 0.55, similarity: 0.82 },
+  zephyra:    { id: 'kkPJzQOWz2Oz9cUaEaQd', stability: 0.55, similarity: 0.85 }, // Beatrice — Mature British Storyteller
 };
 
 // ── Extract scenes from quest files ──────────────────────────────────────────

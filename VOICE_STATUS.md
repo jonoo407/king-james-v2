@@ -1,6 +1,6 @@
 # Voice System — Status & Handoff
 
-**Last updated:** April 24, 2026 — Desert arc written (Zephyra casting pending, ~109 new lines awaiting generation)
+**Last updated:** April 24, 2026 — All 4 shipped arcs (intro + forest + mountain + beach + desert) fully voiced. 392/393 dialogue beats covered (only volcano_stub line uncovered, by design). Zephyra cast as Beatrice. Manifest rebuilt. Orphaned flat-numbered clips purged.
 **ElevenLabs API Key:** sk_111111822a9879bd2a381eb8271a551f7a54e62a058945f0
 **Model:** eleven_turbo_v2_5
 
@@ -30,7 +30,7 @@
 | 🐉 Sea Serpent | Elderbark - Rooted and Deep | 2HmIg4yvRgcH2ZDgiwGz | Ancient, minimal speech. |
 | 🦀 Tide Crab | Poe - Angry and Irritable Villain | KLZOWyG48RjZkAAjuM89 | Territorial, agitated. |
 | 🧚 Forest Sprite | Lumi - Tiny & Sweet | AVYJxaX5Uon5HKPfdVo9 | Mischievous fairy. |
-| 🧙‍♀️ **Zephyra** | **PENDING** — run `scripts/audition_zephyra.js`, pick, add to VOICES map | — | British/Continental mature female, weary + dry. Suggested settings stab 0.55 / sim 0.85. |
+| 🧙‍♀️ Zephyra | Beatrice - Mature Female Storyteller | kkPJzQOWz2Oz9cUaEaQd | British / old / female. Dry, weary. Cast 2026-04-24 via library search (no audition needed — perfect spec match). stability 0.55 / similarity 0.85. |
 
 ## Dialogue Line Counts (exact, from parsed quest files)
 

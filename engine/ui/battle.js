@@ -37,6 +37,13 @@ KJ.UI.BattleScene = (function () {
       nextTurn();
     }
 
+    // Debug hook — KO all enemies and jump to victory
+    KJ.UI.BattleScene._debugForceVictory = function () {
+      battle.enemyTeam.forEach(c => { c.stats.hp = 0; });
+      battle.state = 'VICTORY';
+      onVictory();
+    };
+
     function draw() {
       const app = document.getElementById('app');
       const bg = scene.bg || 'neutral';

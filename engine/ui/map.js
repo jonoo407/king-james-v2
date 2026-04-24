@@ -46,6 +46,7 @@ KJ.UI.Map = (function () {
   }
 
   function isLocked(region, state) {
+    if (state.settings && state.settings.debug && state.progress.flags._debug_unlock_all) return false;
     if (region.locked === false) return false;
     if (!region.unlockCondition) return !!region.locked;
     return !KJ.Scene.checkCondition(region.unlockCondition);

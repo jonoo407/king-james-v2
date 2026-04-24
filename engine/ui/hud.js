@@ -24,6 +24,7 @@ KJ.UI.HUD = (function () {
           <button class="kj-hud-btn" id="kj-btn-party"     title="Allies (swap party between scenes)">🏠</button>
           <button class="kj-hud-btn" id="kj-btn-gear"      title="Gear (swap between scenes)">📦</button>
           <button class="kj-hud-btn" id="kj-btn-character" title="Character sheet">📜</button>
+          ${state.settings.debug ? '<button class="kj-hud-btn" id="kj-btn-debug" title="Debug menu">🐞</button>' : ''}
         </div>
       </div>
     `;
@@ -49,6 +50,11 @@ KJ.UI.HUD = (function () {
       }
       KJ.Audio.play('click');
       if (KJ.UI.GearChest && KJ.UI.GearChest.render) KJ.UI.GearChest.render();
+    };
+    const debugBtn = document.getElementById('kj-btn-debug');
+    if (debugBtn) debugBtn.onclick = () => {
+      KJ.Audio.play('click');
+      if (KJ.UI.Debug && KJ.UI.Debug.open) KJ.UI.Debug.open();
     };
     const partyBtn = document.getElementById('kj-btn-party');
     if (partyBtn) partyBtn.onclick = () => {

@@ -50,6 +50,7 @@ KJ.State = (function () {
       settings: {
         soundOn: true,
         textSpeed: 'normal',
+        debug: true,     // master debug toggle — shows 🐞 HUD button + unlocks cheat menu
       },
       meta: {
         firstPlayedAt: Date.now(),

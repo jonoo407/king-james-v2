@@ -117,7 +117,10 @@ KJ.Audio = (function () {
 
   function _hasClip(path) {
     if (!_manifest) return true; // manifest not loaded yet — optimistically try
-    return _manifest.has(path);
+    // Manifest keys are `speaker/clip` (no `audio/voices/` prefix, no `.mp3`).
+    // Normalize the lookup path to match.
+    const key = path.replace(/^audio\/voices\//, '').replace(/\.mp3$/, '');
+    return _manifest.has(key);
   }
 
   function _prefetchClip(path) {
