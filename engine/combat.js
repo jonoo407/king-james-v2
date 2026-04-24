@@ -276,6 +276,8 @@ KJ.Combat = (function () {
   function enemyToCombatant(id, index) {
     const def = KJ.Registry.enemies.get(id);
     if (!def) return null;
+    const hpMult = (KJ.TUNABLES && KJ.TUNABLES.enemyHpMult) || 1;
+    const hp = Math.round(def.stats.hp * hpMult);
     return {
       side: 'enemy',
       id: id + '_' + index,
@@ -283,8 +285,8 @@ KJ.Combat = (function () {
       name: def.name,
       emoji: def.emoji,
       type: def.type,
-      stats: { ...def.stats },
-      maxHP: def.stats.hp,
+      stats: { ...def.stats, hp },
+      maxHP: hp,
       moves: def.moves.slice(),
       behavior: def.behavior,
       rewards: def.rewards,

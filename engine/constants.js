@@ -68,6 +68,9 @@ KJ.TUNABLES = {
   minDamage: 1,
   critChance: 0.08,
   critMult: 1.5,
+  // Global enemy HP multiplier — bumped so scrolls can be strictly better
+  // than standard moves without trivialising fight length.
+  enemyHpMult: 1.3,
 };
 
 // Simple helper

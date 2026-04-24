@@ -368,8 +368,8 @@ KJ.UI.BattleScene = (function () {
       const lvl = KJ.State.get().player.level;
       function livePreview(s) {
         const e = s.effect || {};
-        const dmg  = e.amount + Math.floor(lvl * 1.5);
-        const heal = e.amount + Math.floor(lvl * 0.7);
+        const dmg  = e.amount + lvl * 4;
+        const heal = e.amount + Math.floor(lvl * 1.2);
         if (e.kind === 'heal_party')         return `Heal party +${heal} HP`;
         if (e.kind === 'damage_enemy')       return `${dmg} damage to one enemy`;
         if (e.kind === 'damage_all_enemies') return `${dmg} damage to ALL enemies`;
@@ -415,8 +415,8 @@ KJ.UI.BattleScene = (function () {
       // Scale scroll potency with player level so they stay more powerful than
       // standard moves at every tier and justify their gold cost.
       const lvl = KJ.State.get().player.level;
-      let dmg  = e.amount + Math.floor(lvl * 1.5); // damage scrolls (was lvl*3 — too strong)
-      let heal = e.amount + Math.floor(lvl * 0.7); // healing scrolls (was lvl*1.5)
+      let dmg  = e.amount + lvl * 4;               // damage scrolls — strictly stronger than gear
+      let heal = e.amount + Math.floor(lvl * 1.2); // healing scrolls
       // Deep Pockets trait — first scroll use per battle hits 1.5× (was 2× — one-shot bosses)
       const james = battle.playerTeam.find(c => c.id === 'james');
       if (james && james._deepPocketsUsed === false && KJ.Traits && KJ.Traits.has('deep_pockets')) {
