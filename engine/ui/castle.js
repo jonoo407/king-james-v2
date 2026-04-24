@@ -102,7 +102,8 @@ KJ.UI.Castle = (function () {
         else toast('Library unavailable');
         break;
       case 'armory':
-        toast('🔨 Armory: a cold forge. (Upgrade-at-armory coming soon — gear you have already works!)');
+        if (KJ.UI.Armory && KJ.UI.Armory.render) KJ.UI.Armory.render();
+        else toast('Armory coming soon');
         break;
       case 'trophy':
         if (KJ.UI.TrophyHall && KJ.UI.TrophyHall.render) KJ.UI.TrophyHall.render();

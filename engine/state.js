@@ -28,6 +28,7 @@ KJ.State = (function () {
       },
       inventory: {
         gear: ['wooden_sword', 'cloth_vest', 'plain_stone', 'old_boots'],
+        enhancedGear: [], // gear ids that have been upgraded at the Armory (+2 to primary stat)
         charms: 1,        // one starting charm
         gold: 10,         // enough to afford one small-cost option on first quest
         consumables: {},  // id -> count
@@ -115,6 +116,10 @@ KJ.State = (function () {
       // where the rank system didn't update automatically).
       if (KJ.rankForLevel) {
         current.player.royalRank = KJ.rankForLevel(current.player.level).id;
+      }
+      // Self-heal: older saves might not have enhancedGear
+      if (!Array.isArray(current.inventory.enhancedGear)) {
+        current.inventory.enhancedGear = [];
       }
       return { loaded: true };
     } catch (e) {

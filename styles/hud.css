@@ -103,6 +103,52 @@
   padding: 1px 6px;
   border-radius: 4px;
 }
+/* Armory */
+.kj-armory-bg { background: linear-gradient(180deg, #2a1e3d, #1a1328); }
+.kj-armory-list {
+  max-width: 520px; margin: 12px auto;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.kj-armory-row {
+  display: flex; justify-content: space-between; align-items: center;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,215,0,0.25);
+  border-radius: 10px;
+  padding: 10px 12px;
+  gap: 10px;
+}
+.kj-armory-row.enhanced {
+  background: rgba(255,215,0,0.1);
+  border-color: gold;
+}
+.kj-armory-row-left { display: flex; align-items: center; gap: 10px; }
+.kj-armory-emoji { font-size: 28px; }
+.kj-armory-name { font-weight: bold; color: #fff; font-size: 15px; }
+.kj-armory-tier { font-size: 11px; color: #ffd700; background: rgba(0,0,0,0.3); padding: 1px 5px; border-radius: 4px; }
+.kj-armory-badge { color: gold; }
+.kj-armory-sub { font-size: 12px; color: #ccc; }
+.kj-armory-enhance-btn {
+  background: rgba(255,215,0,0.12);
+  border: 1px solid rgba(255,215,0,0.4);
+  color: #fff;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 13px;
+  cursor: pointer;
+  text-align: center;
+  min-width: 110px;
+}
+.kj-armory-enhance-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.kj-armory-enhance-btn:hover:not(:disabled) { background: rgba(255,215,0,0.2); }
+.kj-armory-done {
+  color: gold;
+  font-weight: bold;
+  text-align: center;
+  padding: 8px 12px;
+  font-size: 13px;
+  min-width: 110px;
+}
+
 /* Joker unlock overlay */
 .kj-joker-unlock-overlay {
   position: fixed; inset: 0;

@@ -215,15 +215,25 @@ KJ.Scene = (function () {
     const state = KJ.State.get();
     const totals = { hp: 0, atk: 0, def: 0, spd: 0 };
     const moves = [];
+    const enhanced = state.inventory.enhancedGear || [];
     for (const slot of KJ.GEAR_SLOTS) {
       const id = state.player.equipped[slot];
       if (!id) continue;
       const g = KJ.Registry.gear.get(id);
       if (!g) continue;
       for (const s of KJ.STATS) if (g.stats[s]) totals[s] += g.stats[s];
+      // Armory enhancement: +2 to the piece's primary stat
+      if (enhanced.includes(id)) {
+        const prim = primaryStatForSlot(g.slot);
+        totals[prim] += 2;
+      }
       if (g.move) moves.push(g.move);
     }
     return { stats: totals, moves };
+  }
+
+  function primaryStatForSlot(slot) {
+    return ({ weapon: 'atk', armor: 'def', trinket: 'hp', boots: 'spd' })[slot] || 'atk';
   }
 
   // Moves granted by collected treasures (permanent bonus moves on top of gear).
@@ -258,6 +268,6 @@ KJ.Scene = (function () {
 
   return {
     goto, current, applyEffects, checkCondition,
-    totalMaxHP, equippedGear, treasureMoves, defaultMovesForAlly,
+    totalMaxHP, equippedGear, treasureMoves, defaultMovesForAlly, primaryStatForSlot,
   };
 })();
