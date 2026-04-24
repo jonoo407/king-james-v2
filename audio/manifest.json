@@ -1,1 +1,2010 @@
-{}
+{
+  "generated": "2026-04-24",
+  "total": 334,
+  "clips": [
+    {
+      "speaker": "crown",
+      "scene": "beach_cavern_finn",
+      "beat": 4,
+      "path": "audio/voices/crown/beach_cavern_finn_4.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "beach_cavern_gold",
+      "beat": 2,
+      "path": "audio/voices/crown/beach_cavern_gold_2.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "beach_cove_approach",
+      "beat": 2,
+      "path": "audio/voices/crown/beach_cove_approach_2.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "beach_cove_wade",
+      "beat": 2,
+      "path": "audio/voices/crown/beach_cove_wade_2.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "beach_drifter_reveal",
+      "beat": 16,
+      "path": "audio/voices/crown/beach_drifter_reveal_16.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "beach_drifter_reveal",
+      "beat": 9,
+      "path": "audio/voices/crown/beach_drifter_reveal_9.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "beach_dunes_charge",
+      "beat": 2,
+      "path": "audio/voices/crown/beach_dunes_charge_2.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "beach_dunes_sneak",
+      "beat": 3,
+      "path": "audio/voices/crown/beach_dunes_sneak_3.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "beach_finn_freed",
+      "beat": 4,
+      "path": "audio/voices/crown/beach_finn_freed_4.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "beach_finn_skipped",
+      "beat": 1,
+      "path": "audio/voices/crown/beach_finn_skipped_1.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "beach_intro",
+      "beat": 0,
+      "path": "audio/voices/crown/beach_intro_0.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "beach_intro",
+      "beat": 1,
+      "path": "audio/voices/crown/beach_intro_1.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "beach_intro",
+      "beat": 3,
+      "path": "audio/voices/crown/beach_intro_3.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "beach_intro",
+      "beat": 5,
+      "path": "audio/voices/crown/beach_intro_5.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "beach_outro_mornox",
+      "beat": 2,
+      "path": "audio/voices/crown/beach_outro_mornox_2.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "beach_outro_mornox",
+      "beat": 7,
+      "path": "audio/voices/crown/beach_outro_mornox_7.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "beach_outro_mornox",
+      "beat": 8,
+      "path": "audio/voices/crown/beach_outro_mornox_8.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "beach_reward",
+      "beat": 4,
+      "path": "audio/voices/crown/beach_reward_4.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "beach_reward",
+      "beat": 6,
+      "path": "audio/voices/crown/beach_reward_6.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "beach_ruins_read",
+      "beat": 5,
+      "path": "audio/voices/crown/beach_ruins_read_5.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "beach_serpent_approach",
+      "beat": 2,
+      "path": "audio/voices/crown/beach_serpent_approach_2.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "beach_serpent_listen",
+      "beat": 3,
+      "path": "audio/voices/crown/beach_serpent_listen_3.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "beach_serpent_listen",
+      "beat": 6,
+      "path": "audio/voices/crown/beach_serpent_listen_6.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "beach_serpent_toss",
+      "beat": 2,
+      "path": "audio/voices/crown/beach_serpent_toss_2.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "beach_village_child",
+      "beat": 2,
+      "path": "audio/voices/crown/beach_village_child_2.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "beach_village_fisher",
+      "beat": 2,
+      "path": "audio/voices/crown/beach_village_fisher_2.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "beach_village_market",
+      "beat": 1,
+      "path": "audio/voices/crown/beach_village_market_1.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "beach_wreck_finn",
+      "beat": 2,
+      "path": "audio/voices/crown/beach_wreck_finn_2.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "beach_wreck_gold",
+      "beat": 2,
+      "path": "audio/voices/crown/beach_wreck_gold_2.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "cd_battle_open_0",
+      "beat": 0,
+      "path": "audio/voices/crown/cd_battle_open_0_0.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "cd_battle_open_0",
+      "beat": 1,
+      "path": "audio/voices/crown/cd_battle_open_0_1.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "cd_battle_open_0",
+      "beat": 2,
+      "path": "audio/voices/crown/cd_battle_open_0_2.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "cd_battle_tutorial",
+      "beat": 0,
+      "path": "audio/voices/crown/cd_battle_tutorial_0.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "cd_battle_tutorial",
+      "beat": 1,
+      "path": "audio/voices/crown/cd_battle_tutorial_1.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "cd_battle_tutorial",
+      "beat": 2,
+      "path": "audio/voices/crown/cd_battle_tutorial_2.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "cd_battle_tutorial",
+      "beat": 3,
+      "path": "audio/voices/crown/cd_battle_tutorial_3.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "cd_castle_general_0",
+      "beat": 0,
+      "path": "audio/voices/crown/cd_castle_general_0_0.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "cd_castle_general_0",
+      "beat": 1,
+      "path": "audio/voices/crown/cd_castle_general_0_1.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "cd_castle_general_0",
+      "beat": 2,
+      "path": "audio/voices/crown/cd_castle_general_0_2.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "cd_castle_general_0",
+      "beat": 3,
+      "path": "audio/voices/crown/cd_castle_general_0_3.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "cd_castle_general_0",
+      "beat": 4,
+      "path": "audio/voices/crown/cd_castle_general_0_4.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "cd_castle_general_1",
+      "beat": 0,
+      "path": "audio/voices/crown/cd_castle_general_1_0.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "cd_castle_general_1",
+      "beat": 1,
+      "path": "audio/voices/crown/cd_castle_general_1_1.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "cd_castle_general_1",
+      "beat": 2,
+      "path": "audio/voices/crown/cd_castle_general_1_2.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "cd_castle_general_1",
+      "beat": 3,
+      "path": "audio/voices/crown/cd_castle_general_1_3.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "cd_castle_general_3",
+      "beat": 0,
+      "path": "audio/voices/crown/cd_castle_general_3_0.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "cd_castle_general_3",
+      "beat": 1,
+      "path": "audio/voices/crown/cd_castle_general_3_1.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "cd_castle_general_3",
+      "beat": 2,
+      "path": "audio/voices/crown/cd_castle_general_3_2.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "cd_castle_general_5",
+      "beat": 0,
+      "path": "audio/voices/crown/cd_castle_general_5_0.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "cd_castle_general_5",
+      "beat": 1,
+      "path": "audio/voices/crown/cd_castle_general_5_1.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "cd_death_rescue_0",
+      "beat": 0,
+      "path": "audio/voices/crown/cd_death_rescue_0_0.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "cd_death_rescue_0",
+      "beat": 1,
+      "path": "audio/voices/crown/cd_death_rescue_0_1.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "cd_death_rescue_0",
+      "beat": 2,
+      "path": "audio/voices/crown/cd_death_rescue_0_2.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "cd_death_rescue_0",
+      "beat": 3,
+      "path": "audio/voices/crown/cd_death_rescue_0_3.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "cd_death_rescue_0",
+      "beat": 4,
+      "path": "audio/voices/crown/cd_death_rescue_0_4.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "cd_death_rescue_0",
+      "beat": 5,
+      "path": "audio/voices/crown/cd_death_rescue_0_5.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "forest_foxy_miss",
+      "beat": 1,
+      "path": "audio/voices/crown/forest_foxy_miss_1.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "forest_foxy_thorn",
+      "beat": 3,
+      "path": "audio/voices/crown/forest_foxy_thorn_3.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "forest_goblins_bribe",
+      "beat": 1,
+      "path": "audio/voices/crown/forest_goblins_bribe_1.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "forest_goblins_freeze",
+      "beat": 1,
+      "path": "audio/voices/crown/forest_goblins_freeze_1.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "forest_goblins_sneak_safe",
+      "beat": 2,
+      "path": "audio/voices/crown/forest_goblins_sneak_safe_2.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "forest_intro",
+      "beat": 0,
+      "path": "audio/voices/crown/forest_intro_0.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "forest_intro",
+      "beat": 1,
+      "path": "audio/voices/crown/forest_intro_1.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "forest_intro",
+      "beat": 3,
+      "path": "audio/voices/crown/forest_intro_3.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "forest_outro_mornox",
+      "beat": 0,
+      "path": "audio/voices/crown/forest_outro_mornox_0.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "forest_outro_mornox",
+      "beat": 6,
+      "path": "audio/voices/crown/forest_outro_mornox_6.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "forest_outro_mornox",
+      "beat": 7,
+      "path": "audio/voices/crown/forest_outro_mornox_7.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "forest_pond_leave",
+      "beat": 1,
+      "path": "audio/voices/crown/forest_pond_leave_1.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "forest_reward",
+      "beat": 0,
+      "path": "audio/voices/crown/forest_reward_0.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "forest_reward",
+      "beat": 1,
+      "path": "audio/voices/crown/forest_reward_1.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "forest_reward",
+      "beat": 6,
+      "path": "audio/voices/crown/forest_reward_6.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "forest_reward",
+      "beat": 7,
+      "path": "audio/voices/crown/forest_reward_7.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "forest_skip_pond",
+      "beat": 1,
+      "path": "audio/voices/crown/forest_skip_pond_1.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "forest_troll_ambush",
+      "beat": 1,
+      "path": "audio/voices/crown/forest_troll_ambush_1.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "forest_troll_grab",
+      "beat": 1,
+      "path": "audio/voices/crown/forest_troll_grab_1.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "forest_troll_study",
+      "beat": 1,
+      "path": "audio/voices/crown/forest_troll_study_1.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "forest_wolf_climb",
+      "beat": 1,
+      "path": "audio/voices/crown/forest_wolf_climb_1.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "forest_wolf_lure",
+      "beat": 1,
+      "path": "audio/voices/crown/forest_wolf_lure_1.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "forest_wolf_skip_trail",
+      "beat": 1,
+      "path": "audio/voices/crown/forest_wolf_skip_trail_1.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "hint_beach_cavern",
+      "beat": null,
+      "path": "audio/voices/crown/hint_beach_cavern.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "hint_beach_cove_crabs",
+      "beat": null,
+      "path": "audio/voices/crown/hint_beach_cove_crabs.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "hint_beach_dunes",
+      "beat": null,
+      "path": "audio/voices/crown/hint_beach_dunes.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "hint_beach_finn_pool",
+      "beat": null,
+      "path": "audio/voices/crown/hint_beach_finn_pool.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "hint_beach_ruins",
+      "beat": null,
+      "path": "audio/voices/crown/hint_beach_ruins.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "hint_beach_serpent",
+      "beat": null,
+      "path": "audio/voices/crown/hint_beach_serpent.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "hint_beach_village",
+      "beat": null,
+      "path": "audio/voices/crown/hint_beach_village.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "hint_beach_wreck",
+      "beat": null,
+      "path": "audio/voices/crown/hint_beach_wreck.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "hint_forest",
+      "beat": 1,
+      "path": "audio/voices/crown/hint_forest_1.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "hint_forest_glade_choice",
+      "beat": null,
+      "path": "audio/voices/crown/hint_forest_glade_choice.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "hint_forest_goblins",
+      "beat": null,
+      "path": "audio/voices/crown/hint_forest_goblins.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "hint_forest_goblins_sneak_risky",
+      "beat": null,
+      "path": "audio/voices/crown/hint_forest_goblins_sneak_risky.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "hint_forest_path",
+      "beat": null,
+      "path": "audio/voices/crown/hint_forest_path.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "hint_forest_pond",
+      "beat": null,
+      "path": "audio/voices/crown/hint_forest_pond.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "hint_forest_troll_pre",
+      "beat": null,
+      "path": "audio/voices/crown/hint_forest_troll_pre.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "hint_forest_wolf_pre",
+      "beat": null,
+      "path": "audio/voices/crown/hint_forest_wolf_pre.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "hint_mountain_bridge",
+      "beat": null,
+      "path": "audio/voices/crown/hint_mountain_bridge.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "hint_mountain_cave",
+      "beat": null,
+      "path": "audio/voices/crown/hint_mountain_cave.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "hint_mountain_goat",
+      "beat": null,
+      "path": "audio/voices/crown/hint_mountain_goat.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "hint_mountain_knight",
+      "beat": null,
+      "path": "audio/voices/crown/hint_mountain_knight.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "hint_mountain_pass_choice",
+      "beat": null,
+      "path": "audio/voices/crown/hint_mountain_pass_choice.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "hint_mountain_side",
+      "beat": null,
+      "path": "audio/voices/crown/hint_mountain_side.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "hint_mountain_village",
+      "beat": null,
+      "path": "audio/voices/crown/hint_mountain_village.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "hint_mountain_yeti",
+      "beat": null,
+      "path": "audio/voices/crown/hint_mountain_yeti.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "intro_castle_arrival",
+      "beat": 1,
+      "path": "audio/voices/crown/intro_castle_arrival_1.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "intro_castle_arrival",
+      "beat": 2,
+      "path": "audio/voices/crown/intro_castle_arrival_2.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "intro_castle_arrival",
+      "beat": 3,
+      "path": "audio/voices/crown/intro_castle_arrival_3.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "intro_crown_wake",
+      "beat": 1,
+      "path": "audio/voices/crown/intro_crown_wake_1.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "intro_crown_wake",
+      "beat": 3,
+      "path": "audio/voices/crown/intro_crown_wake_3.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "intro_crown_wake",
+      "beat": 5,
+      "path": "audio/voices/crown/intro_crown_wake_5.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "intro_story",
+      "beat": 0,
+      "path": "audio/voices/crown/intro_story_0.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "intro_story",
+      "beat": 1,
+      "path": "audio/voices/crown/intro_story_1.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "intro_story",
+      "beat": 2,
+      "path": "audio/voices/crown/intro_story_2.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "intro_story",
+      "beat": 3,
+      "path": "audio/voices/crown/intro_story_3.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "intro_story",
+      "beat": 4,
+      "path": "audio/voices/crown/intro_story_4.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "intro_story",
+      "beat": 6,
+      "path": "audio/voices/crown/intro_story_6.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "intro_story",
+      "beat": 7,
+      "path": "audio/voices/crown/intro_story_7.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "intro_story",
+      "beat": 9,
+      "path": "audio/voices/crown/intro_story_9.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "mountain_bridge_inch",
+      "beat": 1,
+      "path": "audio/voices/crown/mountain_bridge_inch_1.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "mountain_bridge_ribbit",
+      "beat": 2,
+      "path": "audio/voices/crown/mountain_bridge_ribbit_2.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "mountain_bridge_run",
+      "beat": 1,
+      "path": "audio/voices/crown/mountain_bridge_run_1.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "mountain_cave_helper",
+      "beat": 2,
+      "path": "audio/voices/crown/mountain_cave_helper_2.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "mountain_cave_sneak",
+      "beat": 1,
+      "path": "audio/voices/crown/mountain_cave_sneak_1.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "mountain_goat_butt",
+      "beat": 2,
+      "path": "audio/voices/crown/mountain_goat_butt_2.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "mountain_goat_joke",
+      "beat": 3,
+      "path": "audio/voices/crown/mountain_goat_joke_3.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "mountain_intro",
+      "beat": 0,
+      "path": "audio/voices/crown/mountain_intro_0.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "mountain_intro",
+      "beat": 1,
+      "path": "audio/voices/crown/mountain_intro_1.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "mountain_intro",
+      "beat": 3,
+      "path": "audio/voices/crown/mountain_intro_3.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "mountain_knight_bribe",
+      "beat": 1,
+      "path": "audio/voices/crown/mountain_knight_bribe_1.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "mountain_knight_riddle_done",
+      "beat": 1,
+      "path": "audio/voices/crown/mountain_knight_riddle_done_1.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "mountain_outro_mornox",
+      "beat": 2,
+      "path": "audio/voices/crown/mountain_outro_mornox_2.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "mountain_outro_mornox",
+      "beat": 8,
+      "path": "audio/voices/crown/mountain_outro_mornox_8.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "mountain_outro_mornox",
+      "beat": 9,
+      "path": "audio/voices/crown/mountain_outro_mornox_9.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "mountain_reward",
+      "beat": 3,
+      "path": "audio/voices/crown/mountain_reward_3.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "mountain_reward",
+      "beat": 5,
+      "path": "audio/voices/crown/mountain_reward_5.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "mountain_reward",
+      "beat": 6,
+      "path": "audio/voices/crown/mountain_reward_6.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "mountain_side_charm",
+      "beat": 1,
+      "path": "audio/voices/crown/mountain_side_charm_1.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "mountain_side_friend",
+      "beat": 1,
+      "path": "audio/voices/crown/mountain_side_friend_1.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "mountain_summit",
+      "beat": 0,
+      "path": "audio/voices/crown/mountain_summit_0.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "mountain_summit",
+      "beat": 2,
+      "path": "audio/voices/crown/mountain_summit_2.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "mountain_village_girl",
+      "beat": 1,
+      "path": "audio/voices/crown/mountain_village_girl_1.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "mountain_village_shop",
+      "beat": 1,
+      "path": "audio/voices/crown/mountain_village_shop_1.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "mountain_village_smith",
+      "beat": 2,
+      "path": "audio/voices/crown/mountain_village_smith_2.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "mountain_wraith_reveal",
+      "beat": 6,
+      "path": "audio/voices/crown/mountain_wraith_reveal_6.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "mountain_wraith_reveal",
+      "beat": 9,
+      "path": "audio/voices/crown/mountain_wraith_reveal_9.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "mountain_yeti_attack",
+      "beat": 3,
+      "path": "audio/voices/crown/mountain_yeti_attack_3.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "mountain_yeti_attack",
+      "beat": 4,
+      "path": "audio/voices/crown/mountain_yeti_attack_4.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "mountain_yeti_listen",
+      "beat": 5,
+      "path": "audio/voices/crown/mountain_yeti_listen_5.mp3"
+    },
+    {
+      "speaker": "crown",
+      "scene": "mountain_yeti_toss",
+      "beat": 3,
+      "path": "audio/voices/crown/mountain_yeti_toss_3.mp3"
+    },
+    {
+      "speaker": "drifter",
+      "scene": "beach_drifter_reveal",
+      "beat": 0,
+      "path": "audio/voices/drifter/beach_drifter_reveal_0.mp3"
+    },
+    {
+      "speaker": "drifter",
+      "scene": "beach_drifter_reveal",
+      "beat": 11,
+      "path": "audio/voices/drifter/beach_drifter_reveal_11.mp3"
+    },
+    {
+      "speaker": "drifter",
+      "scene": "beach_drifter_reveal",
+      "beat": 13,
+      "path": "audio/voices/drifter/beach_drifter_reveal_13.mp3"
+    },
+    {
+      "speaker": "drifter",
+      "scene": "beach_drifter_reveal",
+      "beat": 14,
+      "path": "audio/voices/drifter/beach_drifter_reveal_14.mp3"
+    },
+    {
+      "speaker": "drifter",
+      "scene": "beach_drifter_reveal",
+      "beat": 2,
+      "path": "audio/voices/drifter/beach_drifter_reveal_2.mp3"
+    },
+    {
+      "speaker": "drifter",
+      "scene": "beach_drifter_reveal",
+      "beat": 4,
+      "path": "audio/voices/drifter/beach_drifter_reveal_4.mp3"
+    },
+    {
+      "speaker": "drifter",
+      "scene": "beach_drifter_reveal",
+      "beat": 5,
+      "path": "audio/voices/drifter/beach_drifter_reveal_5.mp3"
+    },
+    {
+      "speaker": "drifter",
+      "scene": "beach_drifter_reveal",
+      "beat": 6,
+      "path": "audio/voices/drifter/beach_drifter_reveal_6.mp3"
+    },
+    {
+      "speaker": "drifter",
+      "scene": "beach_drifter_reveal",
+      "beat": 8,
+      "path": "audio/voices/drifter/beach_drifter_reveal_8.mp3"
+    },
+    {
+      "speaker": "drifter",
+      "scene": "beach_reward",
+      "beat": 3,
+      "path": "audio/voices/drifter/beach_reward_3.mp3"
+    },
+    {
+      "speaker": "finn",
+      "scene": "beach_cavern_finn",
+      "beat": 0,
+      "path": "audio/voices/finn/beach_cavern_finn_0.mp3"
+    },
+    {
+      "speaker": "finn",
+      "scene": "beach_cavern_finn",
+      "beat": 2,
+      "path": "audio/voices/finn/beach_cavern_finn_2.mp3"
+    },
+    {
+      "speaker": "finn",
+      "scene": "beach_finn_freed",
+      "beat": 1,
+      "path": "audio/voices/finn/beach_finn_freed_1.mp3"
+    },
+    {
+      "speaker": "finn",
+      "scene": "beach_finn_freed",
+      "beat": 3,
+      "path": "audio/voices/finn/beach_finn_freed_3.mp3"
+    },
+    {
+      "speaker": "finn",
+      "scene": "beach_wreck_finn",
+      "beat": 0,
+      "path": "audio/voices/finn/beach_wreck_finn_0.mp3"
+    },
+    {
+      "speaker": "finn",
+      "scene": "beach_wreck_finn",
+      "beat": 1,
+      "path": "audio/voices/finn/beach_wreck_finn_1.mp3"
+    },
+    {
+      "speaker": "finn",
+      "scene": "beach_wreck_finn",
+      "beat": 4,
+      "path": "audio/voices/finn/beach_wreck_finn_4.mp3"
+    },
+    {
+      "speaker": "foxy",
+      "scene": "beach_dunes_sneak",
+      "beat": 0,
+      "path": "audio/voices/foxy/beach_dunes_sneak_0.mp3"
+    },
+    {
+      "speaker": "foxy",
+      "scene": "beach_dunes_sneak",
+      "beat": 2,
+      "path": "audio/voices/foxy/beach_dunes_sneak_2.mp3"
+    },
+    {
+      "speaker": "foxy",
+      "scene": "forest_foxy_feed",
+      "beat": 0,
+      "path": "audio/voices/foxy/forest_foxy_feed_0.mp3"
+    },
+    {
+      "speaker": "foxy",
+      "scene": "forest_foxy_feed",
+      "beat": 2,
+      "path": "audio/voices/foxy/forest_foxy_feed_2.mp3"
+    },
+    {
+      "speaker": "foxy",
+      "scene": "forest_foxy_miss",
+      "beat": 0,
+      "path": "audio/voices/foxy/forest_foxy_miss_0.mp3"
+    },
+    {
+      "speaker": "foxy",
+      "scene": "forest_foxy_talk",
+      "beat": 0,
+      "path": "audio/voices/foxy/forest_foxy_talk_0.mp3"
+    },
+    {
+      "speaker": "foxy",
+      "scene": "forest_foxy_talk",
+      "beat": 1,
+      "path": "audio/voices/foxy/forest_foxy_talk_1.mp3"
+    },
+    {
+      "speaker": "foxy",
+      "scene": "forest_foxy_talk",
+      "beat": 2,
+      "path": "audio/voices/foxy/forest_foxy_talk_2.mp3"
+    },
+    {
+      "speaker": "foxy",
+      "scene": "forest_foxy_thorn",
+      "beat": 0,
+      "path": "audio/voices/foxy/forest_foxy_thorn_0.mp3"
+    },
+    {
+      "speaker": "foxy",
+      "scene": "forest_foxy_thorn",
+      "beat": 1,
+      "path": "audio/voices/foxy/forest_foxy_thorn_1.mp3"
+    },
+    {
+      "speaker": "foxy",
+      "scene": "forest_foxy_thorn",
+      "beat": 2,
+      "path": "audio/voices/foxy/forest_foxy_thorn_2.mp3"
+    },
+    {
+      "speaker": "foxy",
+      "scene": "forest_foxy_untangle",
+      "beat": 2,
+      "path": "audio/voices/foxy/forest_foxy_untangle_2.mp3"
+    },
+    {
+      "speaker": "foxy",
+      "scene": "forest_goblins_sneak_safe",
+      "beat": 0,
+      "path": "audio/voices/foxy/forest_goblins_sneak_safe_0.mp3"
+    },
+    {
+      "speaker": "foxy",
+      "scene": "forest_troll_ambush",
+      "beat": 0,
+      "path": "audio/voices/foxy/forest_troll_ambush_0.mp3"
+    },
+    {
+      "speaker": "foxy",
+      "scene": "forest_wolf_skip_trail",
+      "beat": 0,
+      "path": "audio/voices/foxy/forest_wolf_skip_trail_0.mp3"
+    },
+    {
+      "speaker": "foxy",
+      "scene": "mountain_cave_sneak",
+      "beat": 0,
+      "path": "audio/voices/foxy/mountain_cave_sneak_0.mp3"
+    },
+    {
+      "speaker": "frostbeard",
+      "scene": "mountain_knight_bribe",
+      "beat": 0,
+      "path": "audio/voices/frostbeard/mountain_knight_bribe_0.mp3"
+    },
+    {
+      "speaker": "frostbeard",
+      "scene": "mountain_knight_riddle_done",
+      "beat": 0,
+      "path": "audio/voices/frostbeard/mountain_knight_riddle_done_0.mp3"
+    },
+    {
+      "speaker": "gus",
+      "scene": "mountain_goat_apple",
+      "beat": 0,
+      "path": "audio/voices/gus/mountain_goat_apple_0.mp3"
+    },
+    {
+      "speaker": "gus",
+      "scene": "mountain_goat_butt",
+      "beat": 1,
+      "path": "audio/voices/gus/mountain_goat_butt_1.mp3"
+    },
+    {
+      "speaker": "gus",
+      "scene": "mountain_goat_joke",
+      "beat": 2,
+      "path": "audio/voices/gus/mountain_goat_joke_2.mp3"
+    },
+    {
+      "speaker": "gus",
+      "scene": "mountain_goat_miss",
+      "beat": 0,
+      "path": "audio/voices/gus/mountain_goat_miss_0.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "beach_cavern_finn",
+      "beat": 3,
+      "path": "audio/voices/james/beach_cavern_finn_3.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "beach_cove_approach",
+      "beat": 1,
+      "path": "audio/voices/james/beach_cove_approach_1.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "beach_cove_wade",
+      "beat": 1,
+      "path": "audio/voices/james/beach_cove_wade_1.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "beach_drifter_reveal",
+      "beat": 1,
+      "path": "audio/voices/james/beach_drifter_reveal_1.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "beach_drifter_reveal",
+      "beat": 10,
+      "path": "audio/voices/james/beach_drifter_reveal_10.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "beach_drifter_reveal",
+      "beat": 12,
+      "path": "audio/voices/james/beach_drifter_reveal_12.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "beach_drifter_reveal",
+      "beat": 15,
+      "path": "audio/voices/james/beach_drifter_reveal_15.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "beach_drifter_reveal",
+      "beat": 3,
+      "path": "audio/voices/james/beach_drifter_reveal_3.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "beach_drifter_reveal",
+      "beat": 7,
+      "path": "audio/voices/james/beach_drifter_reveal_7.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "beach_finn_freed",
+      "beat": 2,
+      "path": "audio/voices/james/beach_finn_freed_2.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "beach_intro",
+      "beat": 2,
+      "path": "audio/voices/james/beach_intro_2.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "beach_intro",
+      "beat": 4,
+      "path": "audio/voices/james/beach_intro_4.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "beach_outro_mornox",
+      "beat": 1,
+      "path": "audio/voices/james/beach_outro_mornox_1.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "beach_reward",
+      "beat": 5,
+      "path": "audio/voices/james/beach_reward_5.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "beach_ruins_read",
+      "beat": 4,
+      "path": "audio/voices/james/beach_ruins_read_4.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "beach_serpent_approach",
+      "beat": 1,
+      "path": "audio/voices/james/beach_serpent_approach_1.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "beach_serpent_listen",
+      "beat": 2,
+      "path": "audio/voices/james/beach_serpent_listen_2.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "beach_serpent_listen",
+      "beat": 4,
+      "path": "audio/voices/james/beach_serpent_listen_4.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "beach_wreck_finn",
+      "beat": 3,
+      "path": "audio/voices/james/beach_wreck_finn_3.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "forest_foxy_feed",
+      "beat": 1,
+      "path": "audio/voices/james/forest_foxy_feed_1.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "forest_foxy_untangle",
+      "beat": 0,
+      "path": "audio/voices/james/forest_foxy_untangle_0.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "forest_foxy_untangle",
+      "beat": 1,
+      "path": "audio/voices/james/forest_foxy_untangle_1.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "forest_goblins_bribe",
+      "beat": 0,
+      "path": "audio/voices/james/forest_goblins_bribe_0.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "forest_goblins_freeze",
+      "beat": 0,
+      "path": "audio/voices/james/forest_goblins_freeze_0.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "forest_goblins_sneak_safe",
+      "beat": 1,
+      "path": "audio/voices/james/forest_goblins_sneak_safe_1.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "forest_intro",
+      "beat": 2,
+      "path": "audio/voices/james/forest_intro_2.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "forest_outro_mornox",
+      "beat": 3,
+      "path": "audio/voices/james/forest_outro_mornox_3.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "forest_pond_lift",
+      "beat": 1,
+      "path": "audio/voices/james/forest_pond_lift_1.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "forest_reward",
+      "beat": 2,
+      "path": "audio/voices/james/forest_reward_2.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "forest_reward",
+      "beat": 5,
+      "path": "audio/voices/james/forest_reward_5.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "forest_skip_pond",
+      "beat": 0,
+      "path": "audio/voices/james/forest_skip_pond_0.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "forest_troll_grab",
+      "beat": 0,
+      "path": "audio/voices/james/forest_troll_grab_0.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "forest_troll_study",
+      "beat": 0,
+      "path": "audio/voices/james/forest_troll_study_0.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "forest_wolf_climb",
+      "beat": 0,
+      "path": "audio/voices/james/forest_wolf_climb_0.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "forest_wolf_lure",
+      "beat": 0,
+      "path": "audio/voices/james/forest_wolf_lure_0.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "intro_crown_wake",
+      "beat": 2,
+      "path": "audio/voices/james/intro_crown_wake_2.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "intro_crown_wake",
+      "beat": 4,
+      "path": "audio/voices/james/intro_crown_wake_4.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "intro_crown_wake",
+      "beat": 6,
+      "path": "audio/voices/james/intro_crown_wake_6.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "intro_mud",
+      "beat": 2,
+      "path": "audio/voices/james/intro_mud_2.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "intro_story",
+      "beat": 5,
+      "path": "audio/voices/james/intro_story_5.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "intro_story",
+      "beat": 8,
+      "path": "audio/voices/james/intro_story_8.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "mountain_bridge_inch",
+      "beat": 0,
+      "path": "audio/voices/james/mountain_bridge_inch_0.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "mountain_bridge_ribbit",
+      "beat": 1,
+      "path": "audio/voices/james/mountain_bridge_ribbit_1.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "mountain_bridge_run",
+      "beat": 0,
+      "path": "audio/voices/james/mountain_bridge_run_0.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "mountain_goat_apple",
+      "beat": 1,
+      "path": "audio/voices/james/mountain_goat_apple_1.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "mountain_goat_butt",
+      "beat": 0,
+      "path": "audio/voices/james/mountain_goat_butt_0.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "mountain_intro",
+      "beat": 2,
+      "path": "audio/voices/james/mountain_intro_2.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "mountain_outro_mornox",
+      "beat": 1,
+      "path": "audio/voices/james/mountain_outro_mornox_1.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "mountain_reward",
+      "beat": 4,
+      "path": "audio/voices/james/mountain_reward_4.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "mountain_summit",
+      "beat": 1,
+      "path": "audio/voices/james/mountain_summit_1.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "mountain_summit",
+      "beat": 3,
+      "path": "audio/voices/james/mountain_summit_3.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "mountain_wraith_reveal",
+      "beat": 1,
+      "path": "audio/voices/james/mountain_wraith_reveal_1.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "mountain_wraith_reveal",
+      "beat": 11,
+      "path": "audio/voices/james/mountain_wraith_reveal_11.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "mountain_wraith_reveal",
+      "beat": 5,
+      "path": "audio/voices/james/mountain_wraith_reveal_5.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "mountain_wraith_reveal",
+      "beat": 8,
+      "path": "audio/voices/james/mountain_wraith_reveal_8.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "mountain_yeti_attack",
+      "beat": 0,
+      "path": "audio/voices/james/mountain_yeti_attack_0.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "mountain_yeti_attack",
+      "beat": 5,
+      "path": "audio/voices/james/mountain_yeti_attack_5.mp3"
+    },
+    {
+      "speaker": "james",
+      "scene": "mountain_yeti_listen",
+      "beat": 3,
+      "path": "audio/voices/james/mountain_yeti_listen_3.mp3"
+    },
+    {
+      "speaker": "mornox",
+      "scene": "beach_outro_mornox",
+      "beat": 3,
+      "path": "audio/voices/mornox/beach_outro_mornox_3.mp3"
+    },
+    {
+      "speaker": "mornox",
+      "scene": "beach_outro_mornox",
+      "beat": 4,
+      "path": "audio/voices/mornox/beach_outro_mornox_4.mp3"
+    },
+    {
+      "speaker": "mornox",
+      "scene": "beach_outro_mornox",
+      "beat": 5,
+      "path": "audio/voices/mornox/beach_outro_mornox_5.mp3"
+    },
+    {
+      "speaker": "mornox",
+      "scene": "forest_outro_mornox",
+      "beat": 1,
+      "path": "audio/voices/mornox/forest_outro_mornox_1.mp3"
+    },
+    {
+      "speaker": "mornox",
+      "scene": "forest_outro_mornox",
+      "beat": 2,
+      "path": "audio/voices/mornox/forest_outro_mornox_2.mp3"
+    },
+    {
+      "speaker": "mornox",
+      "scene": "forest_outro_mornox",
+      "beat": 4,
+      "path": "audio/voices/mornox/forest_outro_mornox_4.mp3"
+    },
+    {
+      "speaker": "mornox",
+      "scene": "forest_outro_mornox",
+      "beat": 5,
+      "path": "audio/voices/mornox/forest_outro_mornox_5.mp3"
+    },
+    {
+      "speaker": "mornox",
+      "scene": "mountain_outro_mornox",
+      "beat": 3,
+      "path": "audio/voices/mornox/mountain_outro_mornox_3.mp3"
+    },
+    {
+      "speaker": "mornox",
+      "scene": "mountain_outro_mornox",
+      "beat": 4,
+      "path": "audio/voices/mornox/mountain_outro_mornox_4.mp3"
+    },
+    {
+      "speaker": "mornox",
+      "scene": "mountain_outro_mornox",
+      "beat": 5,
+      "path": "audio/voices/mornox/mountain_outro_mornox_5.mp3"
+    },
+    {
+      "speaker": "mornox",
+      "scene": "mountain_outro_mornox",
+      "beat": 6,
+      "path": "audio/voices/mornox/mountain_outro_mornox_6.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "beach_cavern_finn",
+      "beat": 1,
+      "path": "audio/voices/narrator/beach_cavern_finn_1.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "beach_cavern_gold",
+      "beat": 0,
+      "path": "audio/voices/narrator/beach_cavern_gold_0.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "beach_cavern_gold",
+      "beat": 1,
+      "path": "audio/voices/narrator/beach_cavern_gold_1.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "beach_cove_approach",
+      "beat": 0,
+      "path": "audio/voices/narrator/beach_cove_approach_0.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "beach_cove_approach",
+      "beat": 3,
+      "path": "audio/voices/narrator/beach_cove_approach_3.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "beach_cove_wade",
+      "beat": 0,
+      "path": "audio/voices/narrator/beach_cove_wade_0.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "beach_dunes_charge",
+      "beat": 0,
+      "path": "audio/voices/narrator/beach_dunes_charge_0.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "beach_dunes_charge",
+      "beat": 1,
+      "path": "audio/voices/narrator/beach_dunes_charge_1.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "beach_dunes_sneak",
+      "beat": 1,
+      "path": "audio/voices/narrator/beach_dunes_sneak_1.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "beach_finn_freed",
+      "beat": 0,
+      "path": "audio/voices/narrator/beach_finn_freed_0.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "beach_finn_skipped",
+      "beat": 0,
+      "path": "audio/voices/narrator/beach_finn_skipped_0.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "beach_outro_mornox",
+      "beat": 0,
+      "path": "audio/voices/narrator/beach_outro_mornox_0.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "beach_outro_mornox",
+      "beat": 6,
+      "path": "audio/voices/narrator/beach_outro_mornox_6.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "beach_reward",
+      "beat": 0,
+      "path": "audio/voices/narrator/beach_reward_0.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "beach_reward",
+      "beat": 1,
+      "path": "audio/voices/narrator/beach_reward_1.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "beach_reward",
+      "beat": 2,
+      "path": "audio/voices/narrator/beach_reward_2.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "beach_ruins_read",
+      "beat": 0,
+      "path": "audio/voices/narrator/beach_ruins_read_0.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "beach_ruins_read",
+      "beat": 1,
+      "path": "audio/voices/narrator/beach_ruins_read_1.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "beach_ruins_read",
+      "beat": 2,
+      "path": "audio/voices/narrator/beach_ruins_read_2.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "beach_ruins_read",
+      "beat": 3,
+      "path": "audio/voices/narrator/beach_ruins_read_3.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "beach_serpent_approach",
+      "beat": 0,
+      "path": "audio/voices/narrator/beach_serpent_approach_0.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "beach_serpent_listen",
+      "beat": 0,
+      "path": "audio/voices/narrator/beach_serpent_listen_0.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "beach_serpent_listen",
+      "beat": 1,
+      "path": "audio/voices/narrator/beach_serpent_listen_1.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "beach_serpent_listen",
+      "beat": 5,
+      "path": "audio/voices/narrator/beach_serpent_listen_5.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "beach_serpent_toss",
+      "beat": 0,
+      "path": "audio/voices/narrator/beach_serpent_toss_0.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "beach_serpent_toss",
+      "beat": 1,
+      "path": "audio/voices/narrator/beach_serpent_toss_1.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "beach_village_child",
+      "beat": 0,
+      "path": "audio/voices/narrator/beach_village_child_0.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "beach_village_child",
+      "beat": 1,
+      "path": "audio/voices/narrator/beach_village_child_1.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "beach_village_fisher",
+      "beat": 0,
+      "path": "audio/voices/narrator/beach_village_fisher_0.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "beach_village_fisher",
+      "beat": 1,
+      "path": "audio/voices/narrator/beach_village_fisher_1.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "beach_village_market",
+      "beat": 0,
+      "path": "audio/voices/narrator/beach_village_market_0.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "beach_wreck_gold",
+      "beat": 0,
+      "path": "audio/voices/narrator/beach_wreck_gold_0.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "beach_wreck_gold",
+      "beat": 1,
+      "path": "audio/voices/narrator/beach_wreck_gold_1.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "forest_reward",
+      "beat": 3,
+      "path": "audio/voices/narrator/forest_reward_3.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "forest_reward",
+      "beat": 4,
+      "path": "audio/voices/narrator/forest_reward_4.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "intro_castle_arrival",
+      "beat": 0,
+      "path": "audio/voices/narrator/intro_castle_arrival_0.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "intro_crown_wake",
+      "beat": 0,
+      "path": "audio/voices/narrator/intro_crown_wake_0.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "intro_mud",
+      "beat": 0,
+      "path": "audio/voices/narrator/intro_mud_0.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "intro_mud",
+      "beat": 1,
+      "path": "audio/voices/narrator/intro_mud_1.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "mountain_cave_helper",
+      "beat": 0,
+      "path": "audio/voices/narrator/mountain_cave_helper_0.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "mountain_cave_helper",
+      "beat": 1,
+      "path": "audio/voices/narrator/mountain_cave_helper_1.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "mountain_outro_mornox",
+      "beat": 0,
+      "path": "audio/voices/narrator/mountain_outro_mornox_0.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "mountain_outro_mornox",
+      "beat": 7,
+      "path": "audio/voices/narrator/mountain_outro_mornox_7.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "mountain_reward",
+      "beat": 0,
+      "path": "audio/voices/narrator/mountain_reward_0.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "mountain_side_charm",
+      "beat": 0,
+      "path": "audio/voices/narrator/mountain_side_charm_0.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "mountain_side_friend",
+      "beat": 0,
+      "path": "audio/voices/narrator/mountain_side_friend_0.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "mountain_village_girl",
+      "beat": 0,
+      "path": "audio/voices/narrator/mountain_village_girl_0.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "mountain_village_shop",
+      "beat": 0,
+      "path": "audio/voices/narrator/mountain_village_shop_0.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "mountain_village_smith",
+      "beat": 0,
+      "path": "audio/voices/narrator/mountain_village_smith_0.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "mountain_village_smith",
+      "beat": 1,
+      "path": "audio/voices/narrator/mountain_village_smith_1.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "mountain_yeti_attack",
+      "beat": 1,
+      "path": "audio/voices/narrator/mountain_yeti_attack_1.mp3"
+    },
+    {
+      "speaker": "narrator",
+      "scene": "mountain_yeti_attack",
+      "beat": 2,
+      "path": "audio/voices/narrator/mountain_yeti_attack_2.mp3"
+    },
+    {
+      "speaker": "owlette",
+      "scene": "forest_pond_slide",
+      "beat": 0,
+      "path": "audio/voices/owlette/forest_pond_slide_0.mp3"
+    },
+    {
+      "speaker": "owlette",
+      "scene": "mountain_goat_joke",
+      "beat": 0,
+      "path": "audio/voices/owlette/mountain_goat_joke_0.mp3"
+    },
+    {
+      "speaker": "owlette",
+      "scene": "mountain_goat_joke",
+      "beat": 1,
+      "path": "audio/voices/owlette/mountain_goat_joke_1.mp3"
+    },
+    {
+      "speaker": "ribbit",
+      "scene": "forest_pond_bugs",
+      "beat": 0,
+      "path": "audio/voices/ribbit/forest_pond_bugs_0.mp3"
+    },
+    {
+      "speaker": "ribbit",
+      "scene": "forest_pond_bugs",
+      "beat": 1,
+      "path": "audio/voices/ribbit/forest_pond_bugs_1.mp3"
+    },
+    {
+      "speaker": "ribbit",
+      "scene": "forest_pond_leave",
+      "beat": 0,
+      "path": "audio/voices/ribbit/forest_pond_leave_0.mp3"
+    },
+    {
+      "speaker": "ribbit",
+      "scene": "forest_pond_lift",
+      "beat": 0,
+      "path": "audio/voices/ribbit/forest_pond_lift_0.mp3"
+    },
+    {
+      "speaker": "ribbit",
+      "scene": "forest_pond_slide",
+      "beat": 1,
+      "path": "audio/voices/ribbit/forest_pond_slide_1.mp3"
+    },
+    {
+      "speaker": "ribbit",
+      "scene": "mountain_bridge_ribbit",
+      "beat": 0,
+      "path": "audio/voices/ribbit/mountain_bridge_ribbit_0.mp3"
+    },
+    {
+      "speaker": "wraith",
+      "scene": "mountain_wraith_reveal",
+      "beat": 0,
+      "path": "audio/voices/wraith/mountain_wraith_reveal_0.mp3"
+    },
+    {
+      "speaker": "wraith",
+      "scene": "mountain_wraith_reveal",
+      "beat": 10,
+      "path": "audio/voices/wraith/mountain_wraith_reveal_10.mp3"
+    },
+    {
+      "speaker": "wraith",
+      "scene": "mountain_wraith_reveal",
+      "beat": 12,
+      "path": "audio/voices/wraith/mountain_wraith_reveal_12.mp3"
+    },
+    {
+      "speaker": "wraith",
+      "scene": "mountain_wraith_reveal",
+      "beat": 2,
+      "path": "audio/voices/wraith/mountain_wraith_reveal_2.mp3"
+    },
+    {
+      "speaker": "wraith",
+      "scene": "mountain_wraith_reveal",
+      "beat": 3,
+      "path": "audio/voices/wraith/mountain_wraith_reveal_3.mp3"
+    },
+    {
+      "speaker": "wraith",
+      "scene": "mountain_wraith_reveal",
+      "beat": 4,
+      "path": "audio/voices/wraith/mountain_wraith_reveal_4.mp3"
+    },
+    {
+      "speaker": "wraith",
+      "scene": "mountain_wraith_reveal",
+      "beat": 7,
+      "path": "audio/voices/wraith/mountain_wraith_reveal_7.mp3"
+    },
+    {
+      "speaker": "yeti",
+      "scene": "mountain_reward",
+      "beat": 1,
+      "path": "audio/voices/yeti/mountain_reward_1.mp3"
+    },
+    {
+      "speaker": "yeti",
+      "scene": "mountain_reward",
+      "beat": 2,
+      "path": "audio/voices/yeti/mountain_reward_2.mp3"
+    },
+    {
+      "speaker": "yeti",
+      "scene": "mountain_yeti_listen",
+      "beat": 0,
+      "path": "audio/voices/yeti/mountain_yeti_listen_0.mp3"
+    },
+    {
+      "speaker": "yeti",
+      "scene": "mountain_yeti_listen",
+      "beat": 1,
+      "path": "audio/voices/yeti/mountain_yeti_listen_1.mp3"
+    },
+    {
+      "speaker": "yeti",
+      "scene": "mountain_yeti_listen",
+      "beat": 2,
+      "path": "audio/voices/yeti/mountain_yeti_listen_2.mp3"
+    },
+    {
+      "speaker": "yeti",
+      "scene": "mountain_yeti_listen",
+      "beat": 4,
+      "path": "audio/voices/yeti/mountain_yeti_listen_4.mp3"
+    },
+    {
+      "speaker": "yeti",
+      "scene": "mountain_yeti_listen",
+      "beat": 6,
+      "path": "audio/voices/yeti/mountain_yeti_listen_6.mp3"
+    },
+    {
+      "speaker": "yeti",
+      "scene": "mountain_yeti_toss",
+      "beat": 0,
+      "path": "audio/voices/yeti/mountain_yeti_toss_0.mp3"
+    },
+    {
+      "speaker": "yeti",
+      "scene": "mountain_yeti_toss",
+      "beat": 1,
+      "path": "audio/voices/yeti/mountain_yeti_toss_1.mp3"
+    },
+    {
+      "speaker": "yeti",
+      "scene": "mountain_yeti_toss",
+      "beat": 2,
+      "path": "audio/voices/yeti/mountain_yeti_toss_2.mp3"
+    }
+  ]
+}
