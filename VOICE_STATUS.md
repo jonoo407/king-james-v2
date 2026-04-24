@@ -1,6 +1,6 @@
 # Voice System — Status & Handoff
 
-**Last updated:** April 22, 2026 — FULL CAST LOCKED ✅
+**Last updated:** April 24, 2026 — Desert arc written (Zephyra casting pending, ~109 new lines awaiting generation)
 **ElevenLabs API Key:** sk_111111822a9879bd2a381eb8271a551f7a54e62a058945f0
 **Model:** eleven_turbo_v2_5
 
@@ -30,6 +30,7 @@
 | 🐉 Sea Serpent | Elderbark - Rooted and Deep | 2HmIg4yvRgcH2ZDgiwGz | Ancient, minimal speech. |
 | 🦀 Tide Crab | Poe - Angry and Irritable Villain | KLZOWyG48RjZkAAjuM89 | Territorial, agitated. |
 | 🧚 Forest Sprite | Lumi - Tiny & Sweet | AVYJxaX5Uon5HKPfdVo9 | Mischievous fairy. |
+| 🧙‍♀️ **Zephyra** | **PENDING** — run `scripts/audition_zephyra.js`, pick, add to VOICES map | — | British/Continental mature female, weary + dry. Suggested settings stab 0.55 / sim 0.85. |
 
 ## Dialogue Line Counts (exact, from parsed quest files)
 
@@ -48,9 +49,21 @@
 | Gus | `gus` | 4 | mountain |
 | Owlette | `owlette` | 3 | mountain |
 | Frostbeard | `frostbeard` | 2 | mountain |
-| **TOTAL** | | **283** | |
+| **Zephyra** | `zephyra` | **29** (new, unvoiced) | desert |
+| **TOTAL (existing + desert)** | | **283 existing + 109 new desert = 392** | |
 
-*Note: Sirena, Joon, Pompadour, Dame cast but have no dialogue in current quest files (desert/volcano arcs not yet written).*
+### Desert arc line counts (new — generate after casting Zephyra)
+
+| Speaker | Desert lines |
+|---|---|
+| zephyra | 29 |
+| narrator | 28 |
+| crown | 25 |
+| james | 24 |
+| mornox | 3 |
+| **Desert total** | **109** |
+
+*Note: Sirena, Joon, Pompadour cast but have no dialogue in current quest files (Volcano arc not yet written).*
 
 ## Implementation Plan
 
