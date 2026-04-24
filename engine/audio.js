@@ -1,35 +1,36 @@
-// King James 2 — Audio (Web Audio, procedural)
-// Zero audio files. All sounds synthesized on the fly.
-// Starter library provided; new sounds register via KJ.Audio.register(id, fn).
+// King James 2 — Audio Engine
+// Synthesized UI sounds (Web Audio) + MP3 voice clips.
+// Voice clips: audio/voices/{speaker}/{sceneId}_{beatIndex}.mp3
+// Manifest:    audio/manifest.json  — keys are clip paths, used to skip missing clips.
 
 window.KJ = window.KJ || {};
 
 KJ.Audio = (function () {
+
+  // ── Web Audio (synthesized SFX) ──────────────────────────────────────────────
   const AudioCtx = window.AudioContext || window.webkitAudioContext;
   let ctx = null;
   let unlocked = false;
   const sounds = new Map();
 
-  function ensure() {
+  function _ensure() {
     if (!ctx) ctx = new AudioCtx();
     if (ctx.state === 'suspended') ctx.resume();
   }
 
   function unlock() {
     if (unlocked) return;
-    ensure();
+    _ensure();
     const b = ctx.createBuffer(1, 1, 22050);
     const s = ctx.createBufferSource();
     s.buffer = b; s.connect(ctx.destination); s.start(0);
     unlocked = true;
   }
-  // Unlock on first user interaction (mobile browsers require this).
   document.addEventListener('touchstart', unlock, { once: true });
   document.addEventListener('click',      unlock, { once: true });
 
-  // Primitive builders passed to registered sound functions
-  function tone(freq, dur, wave, vol) {
-    ensure();
+  function _tone(freq, dur, wave, vol) {
+    _ensure();
     const now = ctx.currentTime;
     const o = ctx.createOscillator(); const g = ctx.createGain();
     o.connect(g); g.connect(ctx.destination);
@@ -39,8 +40,8 @@ KJ.Audio = (function () {
     g.gain.exponentialRampToValueAtTime(0.01, now + dur);
     o.start(now); o.stop(now + dur);
   }
-  function slide(from, to, dur, wave, vol) {
-    ensure();
+  function _slide(from, to, dur, wave, vol) {
+    _ensure();
     const now = ctx.currentTime;
     const o = ctx.createOscillator(); const g = ctx.createGain();
     o.connect(g); g.connect(ctx.destination);
@@ -51,8 +52,8 @@ KJ.Audio = (function () {
     g.gain.exponentialRampToValueAtTime(0.01, now + dur);
     o.start(now); o.stop(now + dur);
   }
-  function notes(freqs, gap, dur, wave, vol) {
-    ensure();
+  function _notes(freqs, gap, dur, wave, vol) {
+    _ensure();
     const now = ctx.currentTime;
     freqs.forEach((f, i) => {
       const o = ctx.createOscillator(); const g = ctx.createGain();
@@ -65,70 +66,143 @@ KJ.Audio = (function () {
     });
   }
 
+  const _p = { tone: _tone, slide: _slide, notes: _notes };
+
   function register(id, fn) { sounds.set(id, fn); }
 
-  function play(id) {
-    const settings = (KJ.State && KJ.State.get()) ? KJ.State.get().settings : { soundOn: true };
-    if (!settings.soundOn) return;
-    const fn = sounds.get(id);
-    if (fn) fn({ tone, slide, notes });
-    else console.warn('[Audio] unknown sound:', id);
+  // Starter SFX library
+  register('click',   () => _tone(500, 0.1, 'sine', 0.2));
+  register('boing',   () => _slide(300, 700, 0.15, 'sine', 0.25));
+  register('bonk',    () => _slide(800, 100, 0.15, 'square', 0.25));
+  register('splash',  () => _slide(600, 100, 0.3, 'sawtooth', 0.2));
+  register('burp',    () => _slide(150, 60, 0.45, 'sawtooth', 0.2));
+  register('magic',   () => { _slide(400, 1200, 0.3, 'sine', 0.2); setTimeout(() => _slide(1200, 600, 0.3, 'sine', 0.15), 300); });
+  register('roar',    () => _slide(200, 80, 0.5, 'sawtooth', 0.3));
+  register('chomp',   () => { _tone(200, 0.08, 'square', 0.2); setTimeout(() => _tone(150, 0.08, 'square', 0.15), 100); });
+  register('star',    () => _notes([660, 880, 1100], 0.12, 0.25));
+  register('fanfare', () => _notes([523, 659, 784, 1047], 0.18, 0.35, 'triangle', 0.3));
+  register('party',   () => _notes([440, 554, 659, 880, 1047], 0.12, 0.3));
+  register('sad',     () => _slide(400, 200, 0.4, 'triangle', 0.2));
+  register('fart',    () => _slide(120, 50, 0.5, 'sawtooth', 0.15));
+  register('kind',    () => _notes([523, 784, 1047], 0.1, 0.25, 'sine', 0.22));
+  register('quack',   () => { _tone(220, 0.12, 'sawtooth', 0.3); setTimeout(() => _tone(180, 0.12, 'sawtooth', 0.25), 130); });
+  register('crit',    () => _notes([880, 1100, 1320], 0.05, 0.1, 'sawtooth', 0.3));
+  register('levelup', () => _notes([523, 659, 784, 1047, 1319], 0.09, 0.25, 'triangle', 0.3));
+  register('super',   () => _notes([1047, 1319, 1568], 0.06, 0.12, 'sawtooth', 0.28));
+  register('weak',    () => _tone(200, 0.12, 'triangle', 0.18));
+  register('equip',   () => _notes([440, 660], 0.06, 0.08, 'sine', 0.22));
+  register('gold',    () => _notes([880, 1100, 1320, 1100], 0.04, 0.08, 'sine', 0.2));
+
+  // ── Voice / MP3 ──────────────────────────────────────────────────────────────
+  let _voiceOn   = true;
+  let _muted     = false;
+  let _volume    = 0.9;
+  let _current   = null;  // active HTMLAudioElement
+  let _manifest  = null;  // Set of known clip paths (null = not loaded yet)
+  let _ready     = false;
+  const _prefetched = new Set();
+
+  function _loadManifest() {
+    fetch('audio/manifest.json')
+      .then(r => r.json())
+      .then(data => {
+        _manifest = new Set(Object.keys(data));
+        _ready = true;
+      })
+      .catch(() => {
+        _manifest = new Set();
+        _ready = true;
+      });
   }
 
-  // Starter library — can be overridden by theme data later.
-  register('click',    ({tone})  => tone(500, 0.1, 'sine', 0.2));
-  register('boing',    ({slide}) => slide(300, 700, 0.15, 'sine', 0.25));
-  register('bonk',     ({slide}) => slide(800, 100, 0.15, 'square', 0.25));
-  register('splash',   ({slide}) => slide(600, 100, 0.3, 'sawtooth', 0.2));
-  register('burp',     ({slide}) => slide(150, 60, 0.45, 'sawtooth', 0.2));
-  register('magic',    ({slide}) => { slide(400, 1200, 0.3, 'sine', 0.2); setTimeout(() => slide(1200, 600, 0.3, 'sine', 0.15), 300); });
-  register('roar',     ({slide}) => slide(200, 80, 0.5, 'sawtooth', 0.3));
-  register('chomp',    ({tone})  => { tone(200, 0.08, 'square', 0.2); setTimeout(() => tone(150, 0.08, 'square', 0.15), 100); });
-  register('star',     ({notes}) => notes([660, 880, 1100], 0.12, 0.25));
-  register('fanfare',  ({notes}) => notes([523, 659, 784, 1047], 0.18, 0.35, 'triangle', 0.3));
-  register('party',    ({notes}) => notes([440, 554, 659, 880, 1047], 0.12, 0.3));
-  register('sad',      ({slide}) => slide(400, 200, 0.4, 'triangle', 0.2));
-  register('fart',     ({slide}) => slide(120, 50, 0.5, 'sawtooth', 0.15));
-  register('kind',     ({notes}) => notes([523, 784, 1047], 0.1, 0.25, 'sine', 0.22));
-  register('quack',    ({tone})  => { tone(220, 0.12, 'sawtooth', 0.3); setTimeout(()=>tone(180, 0.12, 'sawtooth', 0.25), 130); });
-  register('crit',     ({notes}) => notes([880, 1100, 1320], 0.05, 0.1, 'sawtooth', 0.3));
-  register('levelup',  ({notes}) => notes([523, 659, 784, 1047, 1319], 0.09, 0.25, 'triangle', 0.3));
-  register('super',    ({notes}) => notes([1047, 1319, 1568], 0.06, 0.12, 'sawtooth', 0.28));
-  register('weak',     ({tone})  => tone(200, 0.12, 'triangle', 0.18));
-  register('equip',    ({notes}) => notes([440, 660], 0.06, 0.08, 'sine', 0.22));
-  register('gold',     ({notes}) => notes([880, 1100, 1320, 1100], 0.04, 0.08, 'sine', 0.2));
+  function _hasClip(path) {
+    if (!_manifest) return true; // manifest not loaded yet — optimistically try
+    return _manifest.has(path);
+  }
 
-  // ── Voice (MP3 dialogue clips) ─────────────────────────────────────────────
-  let voiceOn = true;
-  let currentVoice = null;
+  function _prefetchClip(path) {
+    if (!_hasClip(path)) return;
+    if (_prefetched.has(path)) return;
+    _prefetched.add(path);
+    const link = document.createElement('link');
+    link.rel = 'prefetch';
+    link.as = 'audio';
+    link.href = path;
+    document.head.appendChild(link);
+  }
 
+  // voice(speaker, sceneId, beatIndex) — called by dialogue.js
   function voice(speaker, sceneId, beatIndex) {
-    if (!voiceOn) return;
-    if (currentVoice) { currentVoice.pause(); currentVoice = null; }
-    const url = `audio/voices/${speaker}/${sceneId}_${beatIndex}.mp3`;
-    const a = new Audio(url);
-    a.volume = 0.9;
-    currentVoice = a;
-    a.play().catch(() => {}); // silent fail if file missing
+    if (!_voiceOn || _muted) return;
+    const path = `audio/voices/${speaker}/${sceneId}_${beatIndex}.mp3`;
+    if (!_hasClip(path)) return;
+    if (_current) { _current.pause(); _current = null; }
+    try {
+      const a = new Audio(path);
+      a.volume = _volume;
+      _current = a;
+      a.play().catch(() => {});
+    } catch (e) {}
+    _prefetchClip(`audio/voices/${speaker}/${sceneId}_${beatIndex + 1}.mp3`);
   }
 
-  // Play voice by direct relative path (used for crown pool lines, etc.)
+  // voicePath(relPath) — direct path (crown pool lines etc.)
   function voicePath(relPath) {
-    if (!voiceOn) return;
-    if (currentVoice) { currentVoice.pause(); currentVoice = null; }
-    const a = new Audio(relPath);
-    a.volume = 0.9;
-    currentVoice = a;
-    a.play().catch(() => {}); // silent fail if file missing
+    if (!_voiceOn || _muted) return;
+    if (_current) { _current.pause(); _current = null; }
+    try {
+      const a = new Audio(relPath);
+      a.volume = _volume;
+      _current = a;
+      a.play().catch(() => {});
+    } catch (e) {}
+  }
+
+  // play(id)                     — synthesized SFX
+  // play(speaker, source, idx)   — voice clip (same as voice())
+  function play(idOrSpeaker, source, lineIndex) {
+    if (source !== undefined) {
+      voice(idOrSpeaker, source, lineIndex);
+      return;
+    }
+    if (_muted) return;
+    const settings = (KJ.State && KJ.State.get) ? KJ.State.get().settings : null;
+    if (settings && settings.soundOn === false) return;
+    const fn = sounds.get(idOrSpeaker);
+    if (fn) fn(_p);
+  }
+
+  function stop() {
+    if (_current) { _current.pause(); _current.currentTime = 0; _current = null; }
   }
 
   function toggleVoice() {
-    voiceOn = !voiceOn;
-    if (!voiceOn && currentVoice) { currentVoice.pause(); currentVoice = null; }
-    return voiceOn;
+    _voiceOn = !_voiceOn;
+    if (!_voiceOn) stop();
+    return _voiceOn;
   }
 
-  function isVoiceOn() { return voiceOn; }
+  function toggleMute() {
+    _muted = !_muted;
+    if (_muted) stop();
+    return !_muted; // true = audio on
+  }
 
-  return { register, play, unlock, voice, voicePath, toggleVoice, isVoiceOn };
+  function setVolume(v) {
+    _volume = Math.max(0, Math.min(1, v));
+    if (_current) _current.volume = _volume;
+  }
+
+  function isMuted()   { return _muted; }
+  function isVoiceOn() { return _voiceOn; }
+  function isReady()   { return _ready; }
+
+  _loadManifest();
+
+  return {
+    register, play, unlock,
+    voice, voicePath,
+    stop, toggleVoice, toggleMute, setVolume,
+    isMuted, isVoiceOn, isReady,
+  };
 })();
