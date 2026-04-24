@@ -46,6 +46,20 @@
       description: 'Collect 2 Crown Treasures.',
       predicate: (s) => (s.progress.treasures || []).length >= 2,
       hidden: false, goldReward: 80 },
+
+    // Desert badges
+    { id: 'first_alliance', name: 'First Alliance', emoji: '🤲',
+      description: 'Help Zephyra fix the sun-shield — partner, don\'t dismiss.',
+      predicate: (s) => s.progress.flags['first_alliance'] === true,
+      hidden: false, goldReward: 50 },
+    { id: 'dragon_slayer', name: 'Dragon Slayer', emoji: '🐲',
+      description: 'Defeat the Corrupted Sand Dragon.',
+      predicate: (s) => (s.progress.trophies || []).includes('sand_dragon'),
+      hidden: false, goldReward: 60 },
+    { id: 'hope_in_dust', name: 'Hope in the Dust', emoji: '🌅',
+      description: 'See Mornox in person and keep walking.',
+      predicate: (s) => s.progress.flags['saw_mornox'] === true,
+      hidden: false, goldReward: 40 },
   ];
   B.forEach(b => KJ.Registry.badges.add(b));
 })();

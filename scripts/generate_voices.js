@@ -36,7 +36,7 @@ const VOICES = {
 const questScenes = {};
 global.KJ = { Registry: { quests: { add: (q) => { questScenes[q.id] = q.scenes; } } } };
 
-for (const arc of ['intro', 'forest', 'mountain', 'beach']) {
+for (const arc of ['intro', 'forest', 'mountain', 'beach', 'desert']) {
   const p = path.join(__dirname, '..', 'data', 'quests', arc + '.js');
   if (fs.existsSync(p)) eval(fs.readFileSync(p, 'utf8'));
 }

@@ -33,9 +33,26 @@
       'I\'m starting to feel like myself again. Ish.',
       'Don\'t forget to bring allies — you\'ll need them.',
     ]},
+    // Post-Desert — kid has seen Mornox in person. Tone shifts heavier.
+    { id: 'castle_general_4', context: 'castle_general', coherenceRequired: 4, lines: [
+      'Four. One more, kid. One more.',
+      'You saw him. I saw him through you. Neither of us is sleeping tonight.',
+      'Zephyra\'s letters are keeping me company. Hers say "be kind to him."',
+      'The Forge is lit. When you\'re ready, the volcano isn\'t going anywhere.',
+      'I keep thinking about his face. Don\'t tell him I said that.',
+    ]},
     { id: 'castle_general_5', context: 'castle_general', coherenceRequired: 5, lines: [
       'All five! Now — the wizard.',
       'Ready when you are, Your Majesty.',
+    ]},
+
+    // Seen-Mornox pool — plays after desert_mornox_appears sets `saw_mornox` flag.
+    // Castle/battle/choice scenes can pull from here when coherence >= 4.
+    { id: 'saw_mornox_4', context: 'saw_mornox', coherenceRequired: 4, lines: [
+      'He looked so tired, kid.',
+      'He\'s real. That\'s the hard part.',
+      'Four hundred years. Can you imagine.',
+      'We still have to stop him. We just... know who he is now.',
     ]},
 
     // Battle opener (optional; used by battle scenes)

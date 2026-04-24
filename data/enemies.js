@@ -217,6 +217,72 @@
         'I didn\'t want any of this...',
       ],
     },
+
+    // --- Desert arc enemies ---
+    {
+      // Earth trash — Ember Burst SE home. Scorpion = obvious desert trash.
+      id: 'dune_scorpion', name: 'Dune Scorpion', emoji: '🦂', type: 'earth',
+      level: 6,
+      stats: { hp: 32, atk: 7, def: 4, spd: 6 },
+      moves: ['bite', 'thorn_whip'],
+      behavior: { pattern: 'cycle', sequence: [0, 1, 0, 1] },
+      rewards: { xp: 22, gold: [14, 22], drops: [] },
+      quipLines: ['Clack clack!', 'Snip!', 'Scuttle scuttle.', 'My dune!'],
+    },
+    {
+      // Water trash — gives Brave Strike, Think Fast, Sun Burst, Lucky Throw a SE home.
+      // "Mirage" = desert water-illusion.
+      id: 'mirage_wisp', name: 'Mirage Wisp', emoji: '💧', type: 'water',
+      level: 5,
+      stats: { hp: 22, atk: 5, def: 3, spd: 9 },
+      moves: ['mirage_splash', 'splash'],
+      behavior: { pattern: 'cycle', sequence: [0, 1, 0] },
+      rewards: { xp: 18, gold: [10, 16], drops: [] },
+      quipLines: ['*shimmer*', 'Not... really... here...', 'Drink me! (don\'t.)', '*ripple*'],
+    },
+    {
+      // Fire trash — Frost Fang Sword / Ice Cut SE home.
+      id: 'sun_wisp', name: 'Sun Wisp', emoji: '☀️', type: 'fire',
+      level: 6,
+      stats: { hp: 26, atk: 7, def: 3, spd: 8 },
+      moves: ['spark', 'ember_burst'],
+      behavior: { pattern: 'cycle', sequence: [0, 0, 1, 0] }, // telegraph ember_burst every 3rd
+      rewards: { xp: 22, gold: [12, 20], drops: [] },
+      quipLines: ['*crackle*', 'Too... hot...', 'Burn! Burn!', 'Ssssss!'],
+    },
+    {
+      // Wind mid-boss — Iron Slash / Sand Storm (earth) SE home.
+      id: 'sand_dervish', name: 'Sand Dervish', emoji: '🌪️', type: 'wind',
+      level: 7,
+      stats: { hp: 56, atk: 10, def: 5, spd: 11 },
+      moves: ['dust_devil', 'wind_gust', 'sand_blast'],
+      behavior: { pattern: 'cycle', sequence: [1, 0, 2, 0, 1] }, // telegraph big dust_devil
+      rewards: { xp: 75, gold: [55, 85], drops: [{ gear: 'dune_runners', chance: 0.5 }, { gear: 'desert_plate', chance: 0.5 }] },
+      quipLines: [
+        'WHHHHRL!',
+        'Sand — in — everything!',
+        'You are NOT welcome here!',
+        'Blow away, tiny king!',
+        '...fine. *collapses into sand pile*',
+      ],
+    },
+    {
+      // Fire boss — Ice Cut / Frost Fang SE home. Mixed-type add (Sun Wisp) in the encounter.
+      // Corrupted = Mornox's influence, per spec §1.
+      id: 'sand_dragon', name: 'Corrupted Sand Dragon', emoji: '🐉', type: 'fire',
+      level: 8,
+      stats: { hp: 92, atk: 12, def: 7, spd: 6 },
+      moves: ['inferno_lash', 'club_smash', 'ember_burst'],
+      behavior: { pattern: 'cycle', sequence: [0, 1, 2, 0, 1] },
+      rewards: { xp: 150, gold: [160, 220], drops: [{ gear: 'flame_scimitar', chance: 1.0 }] },
+      quipLines: [
+        'RRRAAAAAWR!',
+        'The wizard\'s chain... BURNS!',
+        'LEAVE the fire! It is HIS!',
+        'Old... and tired... and ANGRY.',
+        'I... was... not always like this...',
+      ],
+    },
   ];
 
   E.forEach(e => KJ.Registry.enemies.add(e));

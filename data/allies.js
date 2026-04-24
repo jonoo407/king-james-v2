@@ -117,6 +117,26 @@
         'Three tides. I waited three tides.',
       ],
     },
+
+    // Desert arc
+    {
+      id: 'zephyra', name: 'Zephyra the Sun-Witch', emoji: '🧙‍♀️', type: 'magic',
+      baseStats: { hp: 32, atk: 9, def: 5, spd: 6 },
+      learnset: [
+        { level: 1, move: 'moon_beam' },
+        { level: 3, move: 'sun_lance' },
+      ],
+      sceneAbility: 'wisdom',
+      hirePrice: 240,
+      bio: 'Three hundred years in a tent. Mornox\'s old apprentice. Tired eyes, clever hands, still trying to fix what he broke.',
+      quipLines: [
+        'Oh, FINE. I\'ll help.',
+        'Stand behind me, tiny king.',
+        'This is what the old magic looks like when it remembers itself.',
+        'I\'ve seen worse. Once. Long ago.',
+        'Mornox taught me this one. Ironic, isn\'t it.',
+      ],
+    },
   ];
 
   A.forEach(a => KJ.Registry.allies.add(a));

@@ -70,6 +70,7 @@ KJ.UI.DialogueScene = (function () {
       finn:    '🦦 Finn',
       joon:    '👦 Joon',
       drifter: '🧙‍♀️ Drifter',
+      zephyra: '🧙‍♀️ Zephyra',
     })[s] || (s || '');
   }
 

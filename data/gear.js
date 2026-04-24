@@ -49,6 +49,16 @@
       type: 'magic', stats: { hp: 4, spd: 2 }, move: 'pearl_beam', tier: 4, goldValue: 130 },
     { id: 'tidal_boots',    name: 'Tidal Boots',      slot: 'boots',  emoji: '🌊',
       type: 'wind',  stats: { spd: 5, def: 2 }, move: 'drift_step', tier: 4, goldValue: 120 },
+
+    // --- DESERT DROPS (Tier 5) ---
+    { id: 'flame_scimitar', name: 'Flame Scimitar',  slot: 'weapon', emoji: '🔥',
+      type: 'fire',  stats: { atk: 7 }, move: 'flame_cut', tier: 5, goldValue: 200 },
+    { id: 'desert_plate',   name: 'Desert Plate',    slot: 'armor',  emoji: '🐫',
+      type: 'earth', stats: { def: 6, hp: 5 }, move: 'sand_storm', tier: 5, goldValue: 185 },
+    { id: 'sun_gem',        name: 'Sun Gem',         slot: 'trinket',emoji: '☀️',
+      type: 'magic', stats: { hp: 4, spd: 3 }, move: 'sun_burst', tier: 5, goldValue: 175 },
+    { id: 'dune_runners',   name: 'Dune Runners',    slot: 'boots',  emoji: '🏜️',
+      type: 'wind',  stats: { spd: 6 }, move: 'mirage_dash', tier: 5, goldValue: 160 },
   ];
 
   G.forEach(g => KJ.Registry.gear.add(g));

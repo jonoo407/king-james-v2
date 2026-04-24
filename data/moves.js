@@ -56,6 +56,23 @@
     { id: 'sand_blast',  name: 'Sand Blast',  type: 'wind',  power: 6,  accuracy: 0.90, target: 'enemy' },
     { id: 'coil',        name: 'Coil',        type: 'water', power: 7,  accuracy: 0.90, target: 'enemy' },
     { id: 'sea_hex',     name: 'Sea Hex',     type: 'magic', power: 9,  accuracy: 0.85, target: 'enemy' },
+
+    // --- Desert arc (Tier 5) — James gear moves ---
+    { id: 'flame_cut',    name: 'Flame Cut',    type: 'fire',  power: 12, accuracy: 0.95, target: 'enemy', flavor: 'Flame-wreathed edge.' },
+    { id: 'sand_storm',   name: 'Sand Storm',   type: 'earth', power: 9,  accuracy: 0.90, target: 'enemy', flavor: 'Buried in a held breath.' },
+    { id: 'sun_burst',    name: 'Sun Burst',    type: 'magic', power: 9,  accuracy: 0.95, target: 'enemy', flavor: 'A pinpoint of trapped sunlight.' },
+    { id: 'mirage_dash',  name: 'Mirage Dash',  type: 'wind',  power: 9,  accuracy: 0.95, target: 'enemy', flavor: 'Gone before the sand settles.' },
+
+    // --- Desert treasure move ---
+    { id: 'courage_burst',name: 'Courage Burst',type: 'fire',  power: 13, accuracy: 0.95, target: 'enemy', flavor: 'Burns when you\'d rather run.' },
+
+    // --- Desert arc — ally move (Zephyra) ---
+    { id: 'sun_lance',    name: 'Sun Lance',    type: 'magic', power: 10, accuracy: 0.95, target: 'enemy', flavor: 'Old magic, still sharp.' },
+
+    // --- Desert arc — enemy moves ---
+    { id: 'mirage_splash',name: 'Mirage Splash',type: 'water', power: 5,  accuracy: 1.0,  target: 'enemy', flavor: 'Water that isn\'t there. Still wet somehow.' },
+    { id: 'dust_devil',   name: 'Dust Devil',   type: 'wind',  power: 9,  accuracy: 0.90, target: 'enemy', flavor: 'A tiny spinning tower of sand.' },
+    { id: 'inferno_lash', name: 'Inferno Lash', type: 'fire',  power: 12, accuracy: 0.90, target: 'enemy', flavor: 'Dragon-tongue fire, whip-quick.' },
   ];
 
   M.forEach(m => KJ.Registry.moves.add(m));
