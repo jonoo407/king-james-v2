@@ -219,4 +219,73 @@ Every kid move has a home (Rule 1.2 — verified against `data/moves.js` types):
 □ Boss tri-archetype balanced
 □ **Mornox in-arc hint (spellbook reveal) + ghost projection + outro intervention all present** (Rule 6.5)
 □ gear-progression.md Tier 5 marked shipped
+□ **Voice pipeline complete — §11 ticked (Zephyra cast, all new MP3s generated, `VOICE_STATUS.md` updated)**
 ```
+
+---
+
+## 11. Voice pipeline
+
+Every shipped arc ships with audio. Desert adds one new voiced character (Zephyra) plus new lines for 4 existing speakers. Skipping this step means ~80+ lines render silent — unacceptable for parity with Forest/Mountain/Beach.
+
+### Speakers involved
+
+| Speaker | Status | Action |
+|---|---|---|
+| 👑 Crown | Cast (George — `JBFqnCBsd6RMkjVDRZzb`) | Generate new MP3s |
+| 🧒 James | Cast (Gregory — `PzuBz8h2SxBvQ7lnUC44`) | Generate new MP3s |
+| 📜 Narrator | Cast (Clara — `8LVfoRdkh4zgjr8v5ObE`) | Generate new MP3s |
+| 🧙‍♂️ Mornox | Cast (Dante — `wXvR48IpOq9HACltTmt7`) | Generate new MP3s (first Desert lines) |
+| 🧙‍♀️ **Zephyra** | **NOT CAST** | Audition + lock + generate |
+| 🐉 Sand Dragon | Not cast — only needed if boss has spoken beats | See below |
+| 🦂 Dune Scorpion / ☀️ Sun Wisp / 💧 Mirage Wisp | No dialogue planned | None — trash enemies don't speak |
+
+### Zephyra casting brief
+
+Voice profile target:
+- **Age:** ~60–70. Tired. Weary.
+- **Energy:** clever, dry, measured. Slight weariness under the wit.
+- **Accent:** European (British or Continental) — contrasts with Narrator's warm American.
+- **Reference tone:** Judi Dench doing a cranky witch; Professor McGonagall after a hard week.
+- **Voice settings:** stability 0.55, similarity 0.85 (slightly more controlled than Crown — she's deliberate, not warm).
+
+Run 2–3 ElevenLabs auditions on lines from `desert_zephyra_meet` and `desert_zephyra_flashback`. Lock the pick in `VOICE_STATUS.md` table before generating.
+
+### Sand Dragon (conditional)
+
+Check quest file on completion: does `desert_dragon_fight` or its intro/outro scenes include `speaker: 'dragon'` beats? (Beach's Sea Serpent had none; Mountain's Papa Yeti had several.)
+- **If yes:** audition an ancient-beast voice (similar profile to the already-cast Sea Serpent — Elderbark `2HmIg4yvRgcH2ZDgiwGz` — or lock a new one).
+- **If no:** skip. Dragon communicates via battle SFX only.
+
+### Generation + verification
+
+1. After `data/quests/desert.js` is authored + committed, run:
+   ```bash
+   node scripts/generate_voices.js
+   ```
+   The script is resume-safe (skips existing files) and writes to `audio/voices/{speaker_id}/{scene_id}_{beat_index}.mp3`.
+2. Verify file count matches beat count:
+   ```bash
+   find audio/voices -name "desert_*.mp3" | wc -l
+   ```
+   Expected: one file per dialogue beat in the quest. Mismatch means a speaker is missing from the script's speaker map or `dialogue.js` `speakerDisplay()`.
+3. Update `VOICE_STATUS.md`:
+   - Add Zephyra row to the Locked Picks table with voice ID + settings
+   - Update the Dialogue Line Counts table (add desert counts per speaker)
+   - Bump the **TOTAL** line count
+4. Smoke test: load the game, teleport to `desert_zephyra_meet`, `desert_mornox_appears`, and `desert_mornox_aftermath`. Confirm each beat plays audio within ~0.5s of tapping Next. Mute button stops playback immediately.
+
+### Expected scope
+
+Rough estimate based on ~19 scenes at ~4–6 beats each, weighted by speaker distribution:
+- Zephyra: ~35–45 lines
+- Crown: ~25–30 lines
+- James: ~15–20 lines
+- Narrator: ~5–10 lines
+- Mornox: ~7 lines (5 in appears + 2 in outro)
+
+**Target: ~80–110 new MP3s.** At current ElevenLabs Turbo v2.5 throughput, generation is ~1–2 minutes for the full batch.
+
+### Failure mode
+
+Missing speaker in `speakerDisplay()` → dialogue box shows blank name, and voice plays (file is by speaker ID, not display name). Missing audio file → silent beat, no crash (`a.play().catch(() => {})` handles it in `engine/audio.js`). Missing `zephyra` mapping in `scripts/generate_voices.js` speaker list → her lines skipped during generation entirely. All three must be checked before calling the arc shipped.
