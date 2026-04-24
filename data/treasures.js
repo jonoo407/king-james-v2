@@ -19,7 +19,7 @@
       flavor: 'Protects not just you.' },
 
     { id: 'fire_of_courage',  name: 'Fire of Courage',    emoji: '🔥',
-      element: 'fire', jamesBonus: { atk: 2, spd: 2 },
+      element: 'fire', jamesBonus: { atk: 3, spd: 2 },
       unlocksRoom: 'forge',
       flavor: 'Burns when you\'re about to give up.' },
 

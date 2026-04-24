@@ -55,23 +55,26 @@ He vanishes. Zephyra is shaken. This is the first time the kid SEES Mornox (not 
 | **Corrupted Sand Dragon** 🐉 | Actual boss | 🔥 fire | Mornox's minion, not Zephyra's. Big dramatic fight. |
 | **Sun Wisps** ☀️ | Trash enemies | 🔥 fire | Weak to 💧 Water (Frost Fang Sword MVP) |
 | **Dune Scorpions** 🦂 | Trash enemies | 🌿 earth | Weak to 🔥 Fire (your Spark still works) — provides variety |
+| **Mirage Wisps** 💧 | Trash enemies | 💧 water (illusions of water — desert mirages) | Weak to ✨ magic — gives Brave Strike, Think Fast, AND Lucky Throw a SE home (Rule 1.2) |
 | **Sand Dervish** 🌪️ | Mid-boss | 💨 wind | Weak to 🌿 Earth (Iron Sword moment) — third elemental type in the arc |
 
 ---
 
 ## 4. Enemy variety (Rule 1.1 compliance)
 
-Desert must cover ≥ 3 element types. Primary is fire, but:
+Desert covers 4 element types. Primary is fire, but:
 - 🔥 Fire (Sun Wisps, Sand Dragon) — primary
 - 🌿 Earth (Dune Scorpions) — kid uses fire moves
+- 💧 Water (Mirage Wisps — desert "water" illusions) — kid uses magic moves
 - 💨 Wind (Sand Dervish mid-boss) — kid uses earth moves
 
-Every kid move has a scenario:
-- 💧 Frost Fang Sword / Ice Cut → Sun Wisps + Sand Dragon (SUPER)
-- 🔥 Spark / Ember Burst → Dune Scorpions (SUPER)
-- 🌿 Iron Sword / Swing → Sand Dervish (SUPER)
-- 💨 Brave Strike (Mountain treasure) → neutral here, save for next arc
-- ✨ Think Fast, Lucky Throw → neutral here, mostly support
+Every kid move has a home (Rule 1.2 — verified against `data/moves.js` types):
+- 💧 Frost Fang Sword / Ice Cut (water) → Sun Wisps + Sand Dragon (SUPER)
+- 🔥 Spark / Ember Burst (fire) → Dune Scorpions (SUPER)
+- 🌿 Iron Sword / Swing (earth) → Sand Dervish (SUPER)
+- ✨ Brave Strike (magic — Mountain treasure) → Mirage Wisps (SUPER)
+- ✨ Think Fast (magic — Forest treasure) → Mirage Wisps (SUPER)
+- ✨ Lucky Throw (magic — Foxy ally) → Mirage Wisps (SUPER)
 
 ---
 
@@ -84,7 +87,7 @@ Every kid move has a scenario:
    - Fill canteen at spring (free) → flag: canteen_ready, partial heal later
    - Give a stranger bread (-10g) → flag: oasis_friend, late payoff
    - Push on (skip)
-3. **desert_scorpions** (battle) — 2 Dune Scorpions (earth). Ember Burst still super. Re-grounds kid in familiar combat.
+3. **desert_scorpions** (battle) — 1 Dune Scorpion (earth) + 1 Mirage Wisp (water). **Mixed-type, target picker required** (Rule 1.3). Ember Burst on the scorpion, Think Fast / Brave Strike on the mirage. Teaches "pick your shot in the desert."
 
 ### Act 2 — Meet Zephyra (5 scenes)
 4. **desert_tent** (choice) — approach Zephyra's tent. 4 paths:
@@ -93,10 +96,10 @@ Every kid move has a scenario:
    - Call out her name → she steps out, impressed at manners
    - Burst in → she zaps you (-5 HP) but respects the audacity
 5. **desert_zephyra_meet** (dialogue) — she studies James. Says something cryptic about "a certain wizard."
-6. **desert_zephyra_task** (choice) — she asks for help. 3 paths:
-   - Help her fix the sun-shield (takes time, -1 HP from heat)
-   - Barter (offer gold -20g for the Fire directly) → she laughs
-   - Refuse → she boots you out (loop scene)
+6. **desert_zephyra_task** (choice) — she asks for help. 3 paths (no looping option — Rule 2.1):
+   - Help her fix the sun-shield (-1 HP from heat) → flag: `first_alliance` (also unlocks Zephyra-buff at Dervish prep AND Zephyra-joins at Dragon prep)
+   - Barter (offer -20g for the Fire directly) → she laughs and refuses; you keep the gold lesson but no flag
+   - Press on without her → she shrugs, you head out solo; flag: `mark_met_ally: zephyra` so Pompadour can recruit her post-arc (per §10 missable-content rule)
 7. **desert_dervish_pre** (choice) — pre-fight prep vs Sand Dervish:
    - Charge in
    - Zephyra buffs you (needs helped her) → +10 heal before fight
@@ -106,16 +109,31 @@ Every kid move has a scenario:
 ### Act 3 — Shrine and Dragon (5–6 scenes)
 9. **desert_shrine_reveal** (dialogue) — James finds Mornox's old spellbook. Reads a page. Looks at Zephyra. She sees the look and sits down.
 10. **desert_zephyra_flashback** (dialogue, flashback scene type) — SPECIAL. Dream sequence showing young Mornox + Zephyra training. Key reveal: she tried to help him. She still cares.
-11. **desert_mornox_appears** (dialogue) — Mornox's ghost projection. Watches. Says one line. Vanishes. Both James and Zephyra shaken.
+11. **desert_mornox_appears** (dialogue) — Mornox's first on-screen moment. **Stage as a 5-beat scene** so the moment lands:
+    1. *(Narrator)* "The torch goes out. The wind stops. The sand holds its breath."
+    2. *(Mornox arrives — silent. Just stands there. Beat is just an image.)*
+    3. *(Zephyra, voice cracking)* "...you."
+    4. *(Mornox, looking only at Zephyra, not James)* "You're almost done. Good boy. My apprentice sends her regards, I'm sure."
+    5. *(Mornox vanishes. Crown, quietly)* "Kid... that was him."
+
+    This is the first time the kid SEES Mornox in 4 arcs of buildup. Make it stop time.
 12. **desert_dragon_pre** (choice) — prep for boss:
     - Zephyra joins battle (3-party member swap — needs arc alliance)
     - Fire scroll prep (-1 fire scroll)
     - Charge in
 13. **desert_dragon_fight** (battle) — Corrupted Sand Dragon (fire boss) + 1 Sun Wisp. Hard. Water moves needed.
 
-### Act 4 — Reward + intervention (2 scenes)
+### Act 4 — Reward + reflection + intervention (3 scenes)
 14. **desert_reward** (dialogue) — Fire of Courage granted. Forge room unlocks. Zephyra offers to come help at the castle. James accepts.
-15. **desert_outro_mornox** (Mornox intervention) — torch-dim scene at castle. Mornox's tiredness showing.
+15. **desert_mornox_aftermath** (dialogue) — back at the shrine entrance, sand still settling. Crown and James process what they saw. Suggested beats:
+    1. *(James)* "He looked... tired."
+    2. *(Crown)* "He IS tired. That's the part that's getting harder, kid. He's not a monster in a tower. He's just an old man who's been awake too long."
+    3. *(James)* "...is he gonna be at the next one?"
+    4. *(Crown)* "Yeah. He will. And we still have to stop him."
+    5. *(Zephyra, joining)* "But you don't have to do it the way he expects."
+
+    *Why this scene exists: gives the kid a breath to process the first on-screen Mornox moment. Without it, Act 4 jumps straight from "you got the treasure" to "creepy castle outro," skipping the emotional weight (Rule 4.x — pacing).*
+16. **desert_outro_mornox** (Mornox intervention) — torch-dim scene at castle. Mornox's tiredness showing.
 
 ---
 
@@ -137,7 +155,7 @@ Every kid move has a scenario:
 
 | Battle | Enemies | Mash win | Smart win | Perfect |
 |---|---|---|---|---|
-| Dune Scorpions | 2× earth | 95% | 100% | 100% (Ember Burst) |
+| Scorpion + Mirage | 1 earth + 1 water | 80% | 95% | 100% (Ember Burst on scorpion, Brave Strike on mirage) |
 | Sand Dervish | 1 wind mid-boss | 60% | 85% | 95% |
 | Sand Dragon + Wisp | 2 mixed fire | 45% | 75% | 90% (needs water moves + prep) |
 
@@ -155,24 +173,36 @@ Every kid move has a scenario:
 
 ## 9. Content to author
 
-- `data/quests/desert.js` — scene list (~18 scenes), replace stub
+- `data/quests/desert.js` — scene list (~19 scenes — 18 plus the new `desert_mornox_aftermath`), replace stub
 - `data/allies.js` — add **Zephyra** (magic, high-level support; maybe not bringable to Volcano for narrative reasons — she stays at castle aiding)
-- `data/enemies.js` — add Sun Wisp, Dune Scorpion, Sand Dervish (wind mid-boss), Corrupted Sand Dragon (fire boss)
+- `data/enemies.js` — add Sun Wisp, Dune Scorpion, **Mirage Wisp (water)**, Sand Dervish (wind mid-boss), Corrupted Sand Dragon (fire boss)
 - `data/gear.js` — Tier 5 per §6
-- `data/moves.js` — Flame Cut, Sand Storm, Sun Burst, Mirage Dash, Courage Burst, dragon's signature move
+- `data/moves.js` — Flame Cut, Sand Storm, Sun Burst, Mirage Dash, Courage Burst, dragon's signature move, **Mirage Wisp signature (water-type, e.g. `mirage_splash` pwr 6)**
 - `data/badges.js` — "First Alliance" (recruit Zephyra), "Dragon Slayer", "Hope in the Dust"
 - `data/crown-dialogue.js` — Mornox intervention tagged `arc: 4`
-- `engine/ui/dialogue.js` — add 'zephyra' to speakerDisplay
+- `engine/ui/dialogue.js` — **add `zephyra: '🧙‍♀️ Zephyra'` to `speakerDisplay()` (line ~73)** — without this, every Zephyra beat renders blank.
 - **OPTIONAL engine work:** flashback scene type (dialogue with sepia-tone bg); can be simulated by reusing dialogue type + custom `bg: 'flashback'` CSS class
+
+### Flag wiring contract (cross-arc)
+
+| Flag | Set by | Read by | Purpose |
+|---|---|---|---|
+| `oasis_friend` | `desert_oasis` "give bread" choice | later desert scenes (oasis stranger payoff) | Local arc reward |
+| `canteen_ready` | `desert_oasis` "fill canteen" choice | dervish/dragon prep scenes | Mid-arc heal availability |
+| `rude_start` | `desert_tent` "peek" choice | `desert_zephyra_meet` flavor branching | Tone variation only |
+| **`first_alliance`** | `desert_zephyra_task` "Help her fix the sun-shield" choice | (1) `desert_dervish_pre` (Zephyra-buff option), (2) `desert_dragon_pre` (Zephyra-joins option), **(3) Volcano `volcano_mornox_meet` (Listen-path unlock per PLOT_BIBLE.md §2)** | Cross-arc kindness flag |
+| `mark_met_ally: zephyra` | `desert_zephyra_task` "press on without her" choice | Pompadour ally room | Recoverability per §10 missable rule |
+
+**Heat-damage note:** §1 prose mentions sun heat as a threat. The mechanic is implemented as a single -1 HP cost on the "Help fix the sun-shield" choice in `desert_zephyra_task`. There is no recurring tick damage — the engine has no scene-tick effect type, and adding one is out of scope for this arc.
 
 ---
 
 ## 10. Shipping checklist
 
 ```
-□ Arc covers ≥3 elemental types (fire + earth + wind)
-□ At least one mixed-type battle (Dragon + Wisp, or add a Scorpion companion)
-□ Every kid-accessible move has a super-effective target in this arc
+□ Arc covers ≥3 elemental types (fire + earth + water + wind = 4 here)
+□ At least one mixed-type battle (Scorpion + Mirage in Act 1, Dragon + Wisp in Act 3)
+□ Every kid-accessible move has a super-effective target in this arc (verified §4 — Mirage Wisps give all 3 magic moves a SE home)
 □ Each choice scene has ≥2 non-dominated options
 □ Every boss has a pre-fight prep scene (Dervish + Dragon)
 □ Fire of Courage grants +3 ATK +2 SPD + Courage Burst (fire pwr 13) — verified vs Volcano earth enemies
