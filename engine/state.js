@@ -15,6 +15,7 @@ KJ.State = (function () {
         xp: 0,
         baseStats: { hp: 20, atk: 5, def: 3, spd: 4 },
         hp: 20,
+        sparks: 3, // ✨ — elemental/magic fuel; capped at KJ.maxSparksForLevel()
         equipped: {
           weapon: 'wooden_sword',
           armor: 'cloth_vest',
@@ -51,7 +52,8 @@ KJ.State = (function () {
       settings: {
         soundOn: true,
         textSpeed: 'normal',
-        debug: true,     // master debug toggle — shows 🐞 HUD button + unlocks cheat menu
+        debug: true,             // master debug toggle — shows 🐞 HUD button + unlocks cheat menu
+        showExactDmg: false,     // false = fuzzy tiers (KAPOW/bonk/tap/tickle); true = ~N dmg
       },
       meta: {
         firstPlayedAt: Date.now(),
@@ -120,6 +122,11 @@ KJ.State = (function () {
       // Self-heal: older saves might not have enhancedGear
       if (!Array.isArray(current.inventory.enhancedGear)) {
         current.inventory.enhancedGear = [];
+      }
+      // Self-heal: sparks field
+      if (typeof current.player.sparks !== 'number') {
+        const max = KJ.maxSparksForLevel ? KJ.maxSparksForLevel(current.player.level) : 3;
+        current.player.sparks = max;
       }
       return { loaded: true };
     } catch (e) {

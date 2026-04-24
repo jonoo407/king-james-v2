@@ -31,6 +31,12 @@ KJ.ROYAL_RANKS = [
   { level: 19, id: 'castle_shaker',    label: '💥 Castle-Shaker' },
   { level: 21, id: 'high_king',        label: '👑 HIGH KING' },
 ];
+// ✨ Sparks — elemental/magic fuel. Physical moves cost 0. Max scales with level.
+// Regens +1 per James's turn, +2 on victory (persists between battles).
+KJ.maxSparksForLevel = function (lvl) {
+  return Math.min(10, 3 + Math.floor(lvl / 3));
+};
+
 KJ.rankForLevel = function (lvl) {
   let pick = KJ.ROYAL_RANKS[0];
   for (const r of KJ.ROYAL_RANKS) {

@@ -40,7 +40,7 @@ KJ.Types = (function () {
     return (chart[attackType] && chart[attackType][defenderType]) ? chart[attackType][defenderType] : 1.0;
   }
 
-  const ICONS = { fire:'🔥', water:'💧', earth:'🌿', wind:'💨', magic:'✨' };
+  const ICONS = { fire:'🔥', water:'💧', earth:'🌿', wind:'💨', magic:'🪄' };
   const LABELS = { fire:'Fire', water:'Water', earth:'Earth', wind:'Wind', magic:'Magic' };
 
   // What type is super-effective attacking this defender? Returns list.

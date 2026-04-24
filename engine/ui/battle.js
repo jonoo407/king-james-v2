@@ -67,7 +67,7 @@ KJ.UI.BattleScene = (function () {
 
     function teamCardHTML(c) {
       const pct = Math.max(0, Math.round(100 * c.stats.hp / c.maxHP));
-      const icons = { fire:'🔥', water:'💧', earth:'🌿', wind:'💨', magic:'✨' };
+      const icons = { fire:'🔥', water:'💧', earth:'🌿', wind:'💨', magic:'🪄' };
       const typeIcon = icons[c.type] || '·';
       const ko = c.stats.hp <= 0 ? 'ko' : '';
 
@@ -88,12 +88,23 @@ KJ.UI.BattleScene = (function () {
 
       const statusLine = (KJ.Statuses && c.stats.hp > 0)
         ? `<div class="kj-cb-statuses">${KJ.Statuses.iconSummary(c)}</div>` : '';
+      // James-only: spark pips
+      let sparkLine = '';
+      if (c.id === 'james' && c.stats.hp > 0 && KJ.maxSparksForLevel) {
+        const s = KJ.State.get();
+        const cur = s.player.sparks || 0;
+        const max = KJ.maxSparksForLevel(s.player.level);
+        let pips = '';
+        for (let i = 0; i < max; i++) pips += i < cur ? '✨' : '·';
+        sparkLine = `<div class="kj-cb-sparks" title="Sparks ${cur}/${max}">${pips}</div>`;
+      }
       return `
         <div class="kj-cb-card ${ko}" data-id="${c.id}">
           <div class="kj-cb-emoji">${c.emoji}</div>
           <div class="kj-cb-name">${c.name} ${typeIcon}</div>
           <div class="kj-cb-hpbar"><div class="kj-cb-hpfill" style="width:${pct}%"></div></div>
           <div class="kj-cb-hpnum">${c.stats.hp}/${c.maxHP}</div>
+          ${sparkLine}
           ${statusLine}
           ${weakLine}
           ${strongLine}
@@ -165,6 +176,12 @@ KJ.UI.BattleScene = (function () {
       if (actor) {
         // Status hooks at turn_start (e.g. freeze thaw roll)
         if (KJ.Statuses) (KJ.Statuses.tick(battle, actor, 'turn_start') || []).forEach(e => battle.log.push(e));
+        // James-only: regen +1 spark on each of his turns (capped at max-for-level)
+        if (actor.id === 'james' && KJ.maxSparksForLevel) {
+          const s = KJ.State.get();
+          const max = KJ.maxSparksForLevel(s.player.level);
+          if (s.player.sparks < max) s.player.sparks++;
+        }
         // Tough Stuff trait — +1 HP regen on each player action
         if (actor.id === 'james' && KJ.Traits && KJ.Traits.regenPerTurn() > 0 && actor.stats.hp < actor.maxHP) {
           actor.stats.hp = Math.min(actor.maxHP, actor.stats.hp + KJ.Traits.regenPerTurn());
@@ -252,7 +269,7 @@ KJ.UI.BattleScene = (function () {
 
     function showTargetPicker(actor, mid, aliveEnemies) {
       const move = KJ.Registry.moves.get(mid);
-      const icons = { fire:'🔥', water:'💧', earth:'🌿', wind:'💨', magic:'✨' };
+      const icons = { fire:'🔥', water:'💧', earth:'🌿', wind:'💨', magic:'🪄' };
       const actions = document.getElementById('kj-battle-actions');
       actions.innerHTML = `
         <div class="kj-battle-prompt">Pick a target for <strong>${icons[move.type]||''} ${move.name}</strong>:</div>
@@ -286,6 +303,15 @@ KJ.UI.BattleScene = (function () {
 
     function commitAction(actor, mid, targetId) {
       if (!targetId) return;
+      // James spends sparks for elemental/heal moves (physical costs 0)
+      if (actor.id === 'james') {
+        const m = KJ.Registry.moves.get(mid);
+        const cost = (m && m.spark) || 0;
+        if (cost > 0) {
+          const s = KJ.State.get();
+          s.player.sparks = Math.max(0, s.player.sparks - cost);
+        }
+      }
       KJ.Combat.applyAction(battle, { actorId: actor.id, moveId: mid, targetId });
       actor._actedThisRound = true;
       const last = battle.log[battle.log.length - 1];
@@ -324,28 +350,47 @@ KJ.UI.BattleScene = (function () {
     function moveBtn(mid, actor) {
       const m = KJ.Registry.moves.get(mid);
       if (!m) return `<button class="kj-move-btn" disabled>??? (${mid})</button>`;
-      const icons = { fire:'🔥', water:'💧', earth:'🌿', wind:'💨', magic:'✨' };
+      const icons = { fire:'🔥', water:'💧', earth:'🌿', wind:'💨', magic:'🪄' };
       const typeIcon = icons[m.type] || '·';
+      // Spark cost (only James pays)
+      const cost = (actor.id === 'james') ? ((m.spark) || 0) : 0;
+      const sparks = (actor.id === 'james') ? (KJ.State.get().player.sparks || 0) : 999;
+      const canAfford = sparks >= cost;
+      const costTag = cost > 0 ? `<span class="kj-move-cost">✨×${cost}</span>` : '';
+      const disabledAttr = canAfford ? '' : 'disabled';
 
       // Heal moves: show heal amount
       if (m.heal) {
-        return `<button class="kj-move-btn kj-move-heal" data-move="${mid}" title="${m.flavor || ''}">
-          💚 ${m.name}<br><small>heal +${m.heal}</small>
+        return `<button class="kj-move-btn kj-move-heal" data-move="${mid}" title="${m.flavor || ''}" ${disabledAttr}>
+          💚 ${m.name} ${costTag}<br><small>heal +${m.heal}</small>
         </button>`;
       }
 
       // Damage moves: preview vs first alive enemy
       const target = battle.enemyTeam.find(c => c.stats.hp > 0);
+      const showExact = !!(KJ.State.get().settings && KJ.State.get().settings.showExactDmg);
       let previewTxt = `pwr ${m.power}`;
       let cls = 'kj-move-btn';
       if (target) {
         const p = KJ.Combat.previewDamage(actor, m, target);
-        previewTxt = `~${p.amount} dmg`;
-        if (p.super) { previewTxt += ' ⚡'; cls += ' kj-move-super'; }
-        else if (p.weak) { previewTxt += ' 🛡️'; cls += ' kj-move-weak'; }
+        if (showExact) {
+          previewTxt = `~${p.amount} dmg`;
+          if (p.super) { previewTxt += ' ⚡'; cls += ' kj-move-super'; }
+          else if (p.weak) { previewTxt += ' 🛡️'; cls += ' kj-move-weak'; }
+        } else {
+          // Fuzzy tier based on damage relative to target HP + type effectiveness
+          const pct = p.amount / Math.max(1, target.maxHP);
+          let tier, tierCls;
+          if (p.super || pct >= 0.50) { tier = '💥 KAPOW!';  tierCls = 'kj-move-super'; }
+          else if (pct >= 0.20)       { tier = '👊 bonk';    tierCls = ''; }
+          else if (p.weak || pct < 0.05) { tier = '🪶 tickle'; tierCls = 'kj-move-weak'; }
+          else                        { tier = '✋ tap';     tierCls = ''; }
+          previewTxt = tier;
+          if (tierCls) cls += ' ' + tierCls;
+        }
       }
-      return `<button class="${cls}" data-move="${mid}" title="${m.flavor || ''}">
-        ${typeIcon} ${m.name}<br><small>${previewTxt}</small>
+      return `<button class="${cls}" data-move="${mid}" title="${m.flavor || ''}" ${disabledAttr}>
+        ${typeIcon} ${m.name} ${costTag}<br><small>${previewTxt}</small>
       </button>`;
     }
 
@@ -508,6 +553,11 @@ KJ.UI.BattleScene = (function () {
       const silverBonus = KJ.Traits ? KJ.Traits.bonusGoldPerWin() : 0;
       state.inventory.gold += gold + silverBonus;
       state.player.xp += xp;
+      // Sparks: +2 on victory (capped at max-for-level), persists to next fight
+      if (KJ.maxSparksForLevel) {
+        const max = KJ.maxSparksForLevel(state.player.level);
+        state.player.sparks = Math.min(max, (state.player.sparks || 0) + 2);
+      }
       // Process gear drops (Monster Magnet trait: 1.5× drop chance)
       const drops = Array.isArray(r.drops) ? r.drops : [];
       const dropMult = KJ.Traits ? KJ.Traits.dropRateMult() : 1;

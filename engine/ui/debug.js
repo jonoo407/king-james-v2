@@ -34,6 +34,7 @@ KJ.UI.Debug = (function () {
           <button class="kj-debug-btn" data-act="allies">🧑‍🤝‍🧑 Unlock all allies</button>
           <button class="kj-debug-btn" data-act="winbattle" ${inBattle ? '' : 'disabled'}>🏆 Win current battle</button>
           <button class="kj-debug-btn" data-act="overlay">${_overlayOn ? '✅ ' : ''}🏷️ Scene ID overlay</button>
+          <button class="kj-debug-btn" data-act="exact_dmg">${state.settings.showExactDmg ? '✅ ' : ''}📊 Show exact damage</button>
           <button class="kj-debug-btn kj-debug-danger" data-act="reset">🧹 Reset save & reload</button>
         </div>
         <div class="kj-debug-footer">
@@ -143,6 +144,16 @@ KJ.UI.Debug = (function () {
         _overlayOn = !_overlayOn;
         if (_overlayOn) mountOverlay(); else unmountOverlay();
         KJ.Effects.toast(_overlayOn ? 'Scene overlay ON' : 'Scene overlay OFF', { icon: '🏷️' });
+        break;
+      }
+      case 'exact_dmg': {
+        state.settings.showExactDmg = !state.settings.showExactDmg;
+        KJ.Effects.toast(
+          state.settings.showExactDmg ? 'Exact damage ON' : 'Fuzzy tiers ON (KAPOW/bonk/tap/tickle)',
+          { icon: '📊' }
+        );
+        KJ.State.save();
+        closeOnly();
         break;
       }
       case 'reset': {

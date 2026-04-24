@@ -141,7 +141,7 @@ KJ.UI.AllyRoom = (function () {
   function pickPompadourLine() { return POMP_LINES[Math.floor(Math.random() * POMP_LINES.length)]; }
 
   function typeIcon(t) {
-    return ({ fire: '🔥', water: '💧', earth: '🌿', wind: '💨', magic: '✨' })[t] || '·';
+    return ({ fire: '🔥', water: '💧', earth: '🌿', wind: '💨', magic: '🪄' })[t] || '·';
   }
 
   return { render };

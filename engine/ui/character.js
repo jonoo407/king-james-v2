@@ -105,7 +105,7 @@ KJ.UI.Character = (function () {
   function treasureMovesSection(state) {
     const tMoveIds = KJ.Scene.treasureMoves();
     if (!tMoveIds.length) return '';
-    const icons = { fire:'🔥', water:'💧', earth:'🌿', wind:'💨', magic:'✨' };
+    const icons = { fire:'🔥', water:'💧', earth:'🌿', wind:'💨', magic:'🪄' };
     const rows = tMoveIds.map(mid => {
       const m = KJ.Registry.moves.get(mid);
       if (!m) return '';

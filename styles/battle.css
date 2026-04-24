@@ -116,6 +116,25 @@
   letter-spacing: 0.3px;
 }
 
+/* Sparks (James only, below HP) */
+.kj-cb-sparks {
+  font-size: 12px;
+  letter-spacing: 1px;
+  margin-top: 2px;
+  color: #ffd700;
+}
+.kj-move-cost {
+  font-size: 11px;
+  color: #ffd700;
+  background: rgba(0,0,0,0.35);
+  padding: 0 4px;
+  border-radius: 4px;
+  margin-left: 4px;
+}
+.kj-move-btn:disabled .kj-move-cost {
+  opacity: 0.5;
+}
+
 /* Status effect pips beneath HP bar */
 .kj-cb-statuses {
   display: flex;
