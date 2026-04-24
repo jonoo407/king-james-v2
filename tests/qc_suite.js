@@ -25,11 +25,14 @@ const shim = {
     getElementById: () => ({ innerHTML: '', appendChild(){}, classList:{add(){}, remove(){}}, style:{}, offsetWidth:0, getBoundingClientRect(){return{left:0,top:0,width:0,height:0}} }),
     createElement: () => ({ style: {}, classList: {add(){}, remove(){}}, appendChild(){}, remove(){}, addEventListener(){} }),
     body: { appendChild(){} },
+    head: { appendChild(){} },
     addEventListener(){},
   },
   setTimeout: (fn, ms) => ({ ref(){}, unref(){} }),
   clearTimeout: () => {},
-  Math, JSON, Date,
+  fetch: () => Promise.reject(new Error('fetch not available in test shim')),
+  Audio: function () { return { volume: 0, play: () => Promise.resolve(), pause(){}, currentTime: 0 }; },
+  Math, JSON, Date, Promise,
 };
 shim.window = shim; // self-ref so `window.KJ` works
 shim.global = shim;
