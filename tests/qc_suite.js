@@ -245,7 +245,7 @@ check(A, `treasure addMove ids exist`, badTreasureMoves === 0);
 const speakerDisplayMap = {
   crown:1,james:1,narrator:1,foxy:1,ribbit:1,owlette:1,gus:1,
   frostbeard:1,yeti:1,wraith:1,pompadour:1,mornox:1,
-  finn:1,drifter:1,joon:1,sirena:1,
+  finn:1,drifter:1,joon:1,sirena:1,zephyra:1,
 };
 const unknownSpeakers = new Set();
 for (const s of allScenes.values()) {

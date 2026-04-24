@@ -69,6 +69,8 @@
 .kj-bg-rescue   { background: linear-gradient(180deg, #9d7acc 0%, #412768 100%); }
 .kj-bg-neutral  { background: linear-gradient(180deg, #3a2a73 0%, #1c0e49 100%); }
 .kj-bg-forest_clearing { background: linear-gradient(180deg, #3f6140 0%, #1e3a23 100%); }
+/* Sepia-tone flashback (Desert Zephyra dream sequence) */
+.kj-bg-flashback { background: linear-gradient(180deg, #c9a57a 0%, #6b4a2a 100%); filter: sepia(0.4); }
 
 /* Title screen */
 .kj-title-screen {
