@@ -166,12 +166,14 @@
     // Branch: if oasis_friend, pay off the hint explicitly. Else skip to the task.
     {
       id: 'desert_zephyra_meet_branch', type: 'choice', bg: 'desert',
+      autoAdvance: true,
       caption: '',
       crownLine: '',
       choices: [
         { label: '(continue)', icon: '▶️', next: 'desert_zephyra_recognize',
           condition: { type: 'flag_set', key: 'oasis_friend', value: true } },
-        { label: '(continue)', icon: '▶️', next: 'desert_zephyra_task' },
+        { label: '(continue)', icon: '▶️', next: 'desert_zephyra_task',
+          condition: { type: 'flag_not_set', key: 'oasis_friend' } },
       ],
     },
     {

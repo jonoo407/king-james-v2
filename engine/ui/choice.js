@@ -26,8 +26,15 @@ KJ.UI.ChoiceScene = (function () {
       ), 400);
     }
     const cont = document.getElementById('kj-choices');
-    (scene.choices || []).forEach((c, i) => {
-      if (!KJ.Scene.checkCondition(c.condition)) return;
+    const visible = (scene.choices || []).filter(c => KJ.Scene.checkCondition(c.condition));
+    // Auto-advance pure routing scenes (no caption/crownLine, opted in with autoAdvance)
+    if (scene.autoAdvance && visible.length === 1) {
+      const c = visible[0];
+      if (c.effects) ctx.applyEffects(c.effects);
+      if (c.next) ctx.goto(c.next);
+      return;
+    }
+    visible.forEach((c) => {
       const btn = document.createElement('button');
       btn.className = 'kj-choice-btn';
       btn.innerHTML = `<span class="kj-choice-icon">${c.icon || '▶️'}</span> <span>${c.label}</span>`;

@@ -192,6 +192,7 @@ KJ.Scene = (function () {
     ally_recruited: (p) => !!KJ.State.get().roster.allies[p.id],
     treasure_owned: (p) => KJ.State.get().progress.treasures.includes(p.id),
     flag_set: (p) => KJ.State.get().progress.flags[p.key] === p.value,
+    flag_not_set: (p) => KJ.State.get().progress.flags[p.key] !== true,
     level_at_least: (p) => KJ.State.get().player.level >= p.level,
     gold_at_least: (p) => KJ.State.get().inventory.gold >= p.amount,
     charms_at_least: (p) => KJ.State.get().inventory.charms >= p.amount,

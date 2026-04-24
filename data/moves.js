@@ -64,7 +64,7 @@
     { id: 'mirage_dash',  name: 'Mirage Dash',  type: 'wind',  power: 9,  accuracy: 0.95, target: 'enemy', flavor: 'Gone before the sand settles.' },
 
     // --- Desert treasure move ---
-    { id: 'courage_burst',name: 'Courage Burst',type: 'fire',  power: 13, accuracy: 0.95, target: 'enemy', flavor: 'Burns when you\'d rather run.' },
+    { id: 'courage_burst',name: 'Courage Burst',type: 'fire',  power: 10, accuracy: 0.95, target: 'enemy', flavor: 'Burns when you\'d rather run.' },
 
     // --- Desert arc — ally move (Zephyra) ---
     { id: 'sun_lance',    name: 'Sun Lance',    type: 'magic', power: 10, accuracy: 0.95, target: 'enemy', flavor: 'Old magic, still sharp.' },

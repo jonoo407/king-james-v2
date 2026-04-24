@@ -130,7 +130,7 @@ const KNOWN_EFFECTS = new Set([
 
 const KNOWN_CONDITIONS = new Set([
   'has_gear','ally_in_party','ally_recruited','treasure_owned',
-  'flag_set','level_at_least','gold_at_least','charms_at_least',
+  'flag_set','flag_not_set','level_at_least','gold_at_least','charms_at_least',
 ]);
 
 // Collect all scenes across all quests
