@@ -150,15 +150,17 @@ KJ.Audio = (function () {
   }
 
   // voicePath(relPath) — direct path (crown pool lines etc.)
+  // Returns the HTMLAudioElement so callers can hook 'ended' for chaining.
   function voicePath(relPath) {
-    if (!_voiceOn || _muted) return;
+    if (!_voiceOn || _muted) return null;
     if (_current) { _current.pause(); _current = null; }
     try {
       const a = new Audio(relPath);
       a.volume = _volume;
       _current = a;
       a.play().catch(() => {});
-    } catch (e) {}
+      return a;
+    } catch (e) { return null; }
   }
 
   // play(id)                     — synthesized SFX

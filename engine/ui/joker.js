@@ -247,16 +247,30 @@ KJ.Joker = (function () {
       </div>
     `;
     document.body.appendChild(host);
-    // Play narrator, then crown after a gap
-    KJ.Audio && KJ.Audio.voicePath && KJ.Audio.voicePath(u.voiceNarrator);
-    const crownTimer = setTimeout(() => {
+    // Play narrator; chain crown off the 'ended' event so the narrator actually
+    // finishes before crown starts (lines vary in length; fixed timeout cut off
+    // the end of the narrator clip).
+    const narratorAudio = KJ.Audio && KJ.Audio.voicePath && KJ.Audio.voicePath(u.voiceNarrator);
+    let crownPlayed = false;
+    function playCrown() {
+      if (crownPlayed) return;
+      crownPlayed = true;
       KJ.Audio && KJ.Audio.voicePath && KJ.Audio.voicePath(u.voiceCrown);
-    }, 4200);
+    }
+    let crownTimer = null;
+    if (narratorAudio) {
+      narratorAudio.addEventListener('ended', () => setTimeout(playCrown, 400));
+      // Safety fallback: if 'ended' never fires (error / 404 / browser quirk),
+      // play crown after a generous 12s window.
+      crownTimer = setTimeout(playCrown, 12000);
+    } else {
+      // Muted / voice off — just show the text; no audio chain.
+    }
 
     // Scope the button lookup to THIS overlay, not document — old bug stacked
     // two overlays with duplicate ids and getElementById grabbed the wrong one.
     host.querySelector('.kj-ju-ok-btn').onclick = () => {
-      clearTimeout(crownTimer);
+      if (crownTimer) clearTimeout(crownTimer);
       host.remove();
       KJ.Audio && KJ.Audio.stop && KJ.Audio.stop();
       _active = false;
