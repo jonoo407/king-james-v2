@@ -110,7 +110,9 @@ KJ.UI.Library = (function () {
 
   function scrollCard(s, state) {
     const owned = state.inventory.consumables[s.id] || 0;
-    const canAfford = state.inventory.gold >= s.price;
+    const price = KJ.Traits ? KJ.Traits.priceAfterDiscount(s.price) : s.price;
+    const canAfford = state.inventory.gold >= price;
+    const discountTag = price !== s.price ? ' <em style="color:#6f6">(Fast Talker)</em>' : '';
     return `
       <div class="kj-scroll-card">
         <div class="kj-scroll-top">
@@ -120,7 +122,7 @@ KJ.UI.Library = (function () {
         </div>
         <div class="kj-scroll-desc">${s.desc}</div>
         <div class="kj-scroll-foot">
-          <span class="kj-scroll-price">🪙 ${s.price}</span>
+          <span class="kj-scroll-price">🪙 ${price}${discountTag}</span>
           <button class="kj-scroll-buy kj-btn-secondary" data-scroll="${s.id}" ${canAfford ? '' : 'disabled'}>Craft</button>
         </div>
       </div>
@@ -131,13 +133,14 @@ KJ.UI.Library = (function () {
     const state = KJ.State.get();
     const s = KJ.Registry.scrolls.get(sid);
     if (!s) return;
-    if (state.inventory.gold < s.price) {
+    const price = KJ.Traits ? KJ.Traits.priceAfterDiscount(s.price) : s.price;
+    if (state.inventory.gold < price) {
       KJ.Effects.toast('Not enough gold');
       return;
     }
-    state.inventory.gold -= s.price;
+    state.inventory.gold -= price;
     state.inventory.consumables[sid] = (state.inventory.consumables[sid] || 0) + 1;
-    KJ.Events.emit('gold_changed', { delta: -s.price });
+    KJ.Events.emit('gold_changed', { delta: -price });
     KJ.Audio.play('star');
     KJ.Effects.toast('Crafted: ' + s.name, { icon: s.emoji });
   }

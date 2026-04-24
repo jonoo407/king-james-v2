@@ -103,6 +103,53 @@
   padding: 1px 6px;
   border-radius: 4px;
 }
+/* Joker unlock overlay */
+.kj-joker-unlock-overlay {
+  position: fixed; inset: 0;
+  background: radial-gradient(circle, rgba(80,30,120,0.9), rgba(20,0,40,0.95));
+  z-index: 9998;
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+  animation: kj-ju-fadein 0.5s ease-out;
+}
+@keyframes kj-ju-fadein { from { opacity: 0; } to { opacity: 1; } }
+.kj-joker-unlock-panel {
+  background: #1b1440;
+  border: 3px solid gold;
+  border-radius: 14px;
+  max-width: 420px;
+  padding: 20px;
+  color: #fff;
+  text-align: center;
+  box-shadow: 0 0 40px gold, 0 10px 40px rgba(0,0,0,0.8);
+}
+.kj-joker-unlock-title {
+  font-size: 14px;
+  color: gold;
+  letter-spacing: 2px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+.kj-joker-unlock-tier {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+.kj-joker-unlock-line {
+  background: rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  text-align: left;
+  font-size: 15px;
+  line-height: 1.4;
+}
+.kj-ju-speaker {
+  color: gold;
+  font-weight: bold;
+  font-size: 13px;
+}
+
 .kj-debug-scene-tag {
   position: fixed;
   top: 56px; left: 8px;

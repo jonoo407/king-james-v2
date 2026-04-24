@@ -86,12 +86,15 @@ KJ.UI.BattleScene = (function () {
         }
       }
 
+      const statusLine = (KJ.Statuses && c.stats.hp > 0)
+        ? `<div class="kj-cb-statuses">${KJ.Statuses.iconSummary(c)}</div>` : '';
       return `
         <div class="kj-cb-card ${ko}" data-id="${c.id}">
           <div class="kj-cb-emoji">${c.emoji}</div>
           <div class="kj-cb-name">${c.name} ${typeIcon}</div>
           <div class="kj-cb-hpbar"><div class="kj-cb-hpfill" style="width:${pct}%"></div></div>
           <div class="kj-cb-hpnum">${c.stats.hp}/${c.maxHP}</div>
+          ${statusLine}
           ${weakLine}
           ${strongLine}
         </div>
@@ -125,7 +128,25 @@ KJ.UI.BattleScene = (function () {
       if (entry.kind === 'victory') return '🎉 Victory!';
       if (entry.kind === 'defeat') return '😵 Knocked out!';
       if (entry.kind === 'battle_start') return '⚔️ Battle start!';
+      if (entry.kind === 'status_apply') return `${entry.data.icon} ${entry.data.target.name} is ${nameToAdj(entry.data.name)}! (${entry.data.turns})`;
+      if (entry.kind === 'status_refresh') return `${entry.data.icon} ${entry.data.target.name}: ${entry.data.name} refreshed`;
+      if (entry.kind === 'status_tick') return `${entry.data.icon} ${entry.data.target.name} takes ${entry.data.amount} from ${entry.data.name}`;
+      if (entry.kind === 'status_fade') return `${entry.data.icon} ${entry.data.name} on ${entry.data.target.name} faded`;
+      if (entry.kind === 'status_skip') return `💤 ${entry.data.target.name} can't move!`;
+      if (entry.kind === 'dizzy_misfire') return `🌀 ${entry.data.actor.name} hit themselves!`;
+      if (entry.kind === 'heal_blocked') return `👻 ${entry.data.target.name} is cursed — no healing.`;
+      if (entry.kind === 'trait_proc') return `✨ <strong>${entry.data.name}</strong>`;
+      if (entry.kind === 'joker_prank') return `🃏 <strong>${entry.data.name}</strong> — ${entry.data.subtext}`;
+      if (entry.kind === 'joker_unlock') return `🎉 <strong>${entry.data.tier} unlocked!</strong>`;
       return null;
+    }
+    function nameToAdj(n) {
+      return ({
+        burn: 'burning', poison: 'poisoned', freeze: 'frozen',
+        stun: 'stunned', sleep: 'asleep', dizzy: 'dizzy',
+        shield: 'shielded', pumped: 'pumped', quick: 'quick',
+        cursed: 'cursed', blinded: 'blinded',
+      })[n] || n;
     }
 
     function firstEnemyTelegraph() {
@@ -142,6 +163,41 @@ KJ.UI.BattleScene = (function () {
       if (!actions) return;
       const actor = battle.playerTeam.find(c => c.stats.hp > 0 && !c._actedThisRound);
       if (actor) {
+        // Status hooks at turn_start (e.g. freeze thaw roll)
+        if (KJ.Statuses) (KJ.Statuses.tick(battle, actor, 'turn_start') || []).forEach(e => battle.log.push(e));
+        // Tough Stuff trait — +1 HP regen on each player action
+        if (actor.id === 'james' && KJ.Traits && KJ.Traits.regenPerTurn() > 0 && actor.stats.hp < actor.maxHP) {
+          actor.stats.hp = Math.min(actor.maxHP, actor.stats.hp + KJ.Traits.regenPerTurn());
+        }
+        // Loyal Heart trait — when James is below half HP, allies get +1 ATK, +2 HP (one-shot per battle)
+        const james = battle.playerTeam.find(c => c.id === 'james');
+        if (!battle._loyalHeartFired && actor.id !== 'james' && james && james.stats.hp > 0
+            && james.stats.hp < james.maxHP * 0.5
+            && KJ.Traits && KJ.Traits.has('loyal_heart')) {
+          battle.playerTeam.filter(c => c.id !== 'james' && c.stats.hp > 0).forEach(a => {
+            a.stats.atk += 1;
+            a.stats.hp = Math.min(a.maxHP, a.stats.hp + 2);
+          });
+          battle._loyalHeartFired = true;
+          battle.log.push({ kind: 'trait_proc', data: { name: 'Loyal Heart — allies rally!', actor } });
+        }
+        // Scaredy-Cat Strategy trait — below 25% HP, one-time Quick + Shield
+        if (actor.id === 'james' && actor._scaredyCatUsed === false
+            && KJ.Traits && KJ.Traits.has('scaredy_cat')
+            && actor.stats.hp < actor.maxHP * 0.25 && KJ.Statuses) {
+          KJ.Statuses.apply(actor, 'quick', { turns: 2 });
+          KJ.Statuses.apply(actor, 'shield', { turns: 2 });
+          actor._scaredyCatUsed = true;
+          battle.log.push({ kind: 'trait_proc', data: { name: 'Scaredy-Cat Strategy!', actor } });
+        }
+        if (KJ.Statuses && KJ.Statuses.shouldSkipTurn(actor)) {
+          battle.log.push({ kind: 'status_skip', data: { target: actor } });
+          actor._actedThisRound = true;
+          if (KJ.Statuses) (KJ.Statuses.tick(battle, actor, 'turn_end') || []).forEach(e => battle.log.push(e));
+          draw();
+          setTimeout(nextTurn, 600);
+          return;
+        }
         promptPlayerAction(actor);
       } else {
         // All player acted; now enemies act
@@ -249,6 +305,19 @@ KJ.UI.BattleScene = (function () {
           }
         }
       }
+      // Joker trait proc — James only, fires after his regular action
+      if (actor.id === 'james' && KJ.Joker && battle.state === 'IN_PROGRESS') {
+        KJ.Joker.maybeProc(battle);
+      }
+      // End-of-turn status ticks (burn, poison)
+      if (KJ.Statuses) (KJ.Statuses.tick(battle, actor, 'turn_end') || []).forEach(e => battle.log.push(e));
+      // Also tick the target if still alive
+      if (last && last.kind === 'action' && last.data.target && last.data.target.stats.hp > 0 && KJ.Statuses) {
+        // already ticked in on_hit_taken; nothing more here
+      }
+      // Recompute victory/defeat after status ticks may have killed something
+      if (battle.enemyTeam.every(c => c.stats.hp <= 0)) battle.state = 'VICTORY';
+      else if (battle.playerTeam.every(c => c.stats.hp <= 0)) battle.state = 'DEFEAT';
       setTimeout(run, 350);
     }
 
@@ -346,8 +415,16 @@ KJ.UI.BattleScene = (function () {
       // Scale scroll potency with player level so they stay more powerful than
       // standard moves at every tier and justify their gold cost.
       const lvl = KJ.State.get().player.level;
-      const dmg  = e.amount + lvl * 3;              // damage scrolls
-      const heal = e.amount + Math.floor(lvl * 1.5); // healing scrolls
+      let dmg  = e.amount + lvl * 3;              // damage scrolls
+      let heal = e.amount + Math.floor(lvl * 1.5); // healing scrolls
+      // Deep Pockets trait — first scroll use per battle doubles the effect
+      const james = battle.playerTeam.find(c => c.id === 'james');
+      if (james && james._deepPocketsUsed === false && KJ.Traits && KJ.Traits.has('deep_pockets')) {
+        dmg  *= 2;
+        heal *= 2;
+        james._deepPocketsUsed = true;
+        battle.log.push({ kind: 'trait_proc', data: { name: 'Deep Pockets — double scroll!', actor: james } });
+      }
       switch (e.kind) {
         case 'heal_party':
           battle.playerTeam.filter(c => c.stats.hp > 0).forEach(c => {
@@ -389,6 +466,16 @@ KJ.UI.BattleScene = (function () {
         function step() {
           if (!queue.length || battle.state !== 'IN_PROGRESS') return resolve();
           const e = queue.shift();
+          // Status tick: turn_start (freeze thaw, etc.)
+          if (KJ.Statuses) (KJ.Statuses.tick(battle, e, 'turn_start') || []).forEach(x => battle.log.push(x));
+          if (KJ.Statuses && KJ.Statuses.shouldSkipTurn(e)) {
+            battle.log.push({ kind: 'status_skip', data: { target: e } });
+            // Still tick turn_end (for burn/poison decay)
+            if (KJ.Statuses) (KJ.Statuses.tick(battle, e, 'turn_end') || []).forEach(x => battle.log.push(x));
+            draw();
+            setTimeout(step, 400);
+            return;
+          }
           const action = KJ.Combat.chooseEnemyAction(battle, e);
           if (action) {
             KJ.Combat.applyAction(battle, action);
@@ -399,6 +486,10 @@ KJ.UI.BattleScene = (function () {
                 crit: last.data.result.crit, super: last.data.result.super
               });
             }
+            // Tick turn_end (burn/poison damage to this enemy)
+            if (KJ.Statuses) (KJ.Statuses.tick(battle, e, 'turn_end') || []).forEach(x => battle.log.push(x));
+            if (battle.enemyTeam.every(c => c.stats.hp <= 0)) battle.state = 'VICTORY';
+            else if (battle.playerTeam.every(c => c.stats.hp <= 0)) battle.state = 'DEFEAT';
             draw();
           }
           setTimeout(step, 500);
@@ -413,16 +504,19 @@ KJ.UI.BattleScene = (function () {
       const gold = Array.isArray(r.gold) ? KJ.randInt(r.gold[0], r.gold[1]) : (r.gold || 0);
       const xp = r.xp || 0;
       const state = KJ.State.get();
-      state.inventory.gold += gold;
+      // Silver Tongue trait: +2 gold per win
+      const silverBonus = KJ.Traits ? KJ.Traits.bonusGoldPerWin() : 0;
+      state.inventory.gold += gold + silverBonus;
       state.player.xp += xp;
-      // Process gear drops
+      // Process gear drops (Monster Magnet trait: 1.5× drop chance)
       const drops = Array.isArray(r.drops) ? r.drops : [];
+      const dropMult = KJ.Traits ? KJ.Traits.dropRateMult() : 1;
       let anyDropped = false;
       drops.forEach(d => {
         if (!d || !d.gear) return;
         const gearDef = KJ.Registry.gear.get(d.gear);
         if (!gearDef) return;
-        const chance = (typeof d.chance === 'number') ? d.chance : 1;
+        const chance = Math.min(1, ((typeof d.chance === 'number') ? d.chance : 1) * dropMult);
         if (Math.random() > chance) return;
         if (!state.inventory.gear.includes(d.gear)) {
           state.inventory.gear.push(d.gear);

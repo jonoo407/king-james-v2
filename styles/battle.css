@@ -116,6 +116,29 @@
   letter-spacing: 0.3px;
 }
 
+/* Status effect pips beneath HP bar */
+.kj-cb-statuses {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+  flex-wrap: wrap;
+  margin-top: 3px;
+  min-height: 16px;
+}
+.kj-status-pip {
+  display: inline-block;
+  font-size: 13px;
+  line-height: 1;
+  background: rgba(0,0,0,0.35);
+  border-radius: 4px;
+  padding: 1px 3px;
+}
+.kj-status-pip sub {
+  font-size: 8px;
+  color: #ffe;
+  margin-left: 1px;
+}
+
 /* Target picker (shows when kid picks a move in multi-enemy battle) */
 .kj-target-grid {
   display: flex;

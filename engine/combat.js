@@ -24,17 +24,34 @@ KJ.Combat = (function () {
     const def = defender.stats.def;
     const power = move.power || 0;
     const typeMult = typeMultiplier(move.type, defender.type);
-    const crit = Math.random() < KJ.TUNABLES.critChance;
+    // Eagle Eye trait — +5% crit for player team
+    let critChance = KJ.TUNABLES.critChance;
+    if (attacker.side === 'player' && KJ.Traits && KJ.Traits.has('eagle_eye')) critChance += 0.05;
+    const crit = Math.random() < critChance;
     const critMult = crit ? KJ.TUNABLES.critMult : 1;
-    const base = Math.max(1, Math.round((atk + power - def * 0.5) * typeMult * critMult));
+    let base = Math.max(1, Math.round((atk + power - def * 0.5) * typeMult * critMult));
+    // Pumped status: +50% outgoing
+    if (KJ.Statuses) base = KJ.Statuses.modifyOutgoing(attacker, base);
+    // Shield status: -50% incoming
+    if (KJ.Statuses) base = KJ.Statuses.modifyIncoming(defender, base);
     const dmg = Math.max(KJ.TUNABLES.minDamage, base);
+    // Accuracy: base * blinded multiplier. Lucky Charm (defender=player) adds 5% miss.
+    let accuracy = (move.accuracy == null ? 1 : move.accuracy);
+    if (KJ.Statuses) accuracy *= KJ.Statuses.accuracyMultiplier(attacker);
+    if (defender.side === 'player' && KJ.Traits && KJ.Traits.has('lucky_charm')) accuracy *= 0.95;
+    // Slow & Steady: first player action each battle guaranteed not to miss
+    if (attacker.side === 'player' && attacker._slowSteadyUsed === false
+        && KJ.Traits && KJ.Traits.has('slow_steady')) {
+      accuracy = 1;
+      attacker._slowSteadyUsed = true;
+    }
     return {
       amount: dmg,
       crit,
       typeMult,
       super: typeMult >= 2,
       weak: typeMult > 0 && typeMult < 1,
-      miss: Math.random() > (move.accuracy == null ? 1 : move.accuracy),
+      miss: Math.random() > accuracy,
     };
   }
 
@@ -102,16 +119,59 @@ KJ.Combat = (function () {
     }
     if (!target) return battle;
 
-    // Heal moves: restore HP
+    // Dizzy: 50% chance to hit self instead of intended target
+    if (KJ.Statuses && KJ.Statuses.isDizzy(actor) && target !== actor && Math.random() < 0.5) {
+      target = actor;
+      log(battle, 'dizzy_misfire', { actor });
+    }
+
+    // Heal moves: restore HP (blocked if target is cursed)
     if (move.heal) {
-      const before = target.stats.hp;
-      target.stats.hp = Math.min(target.maxHP, target.stats.hp + move.heal);
-      const delta = target.stats.hp - before;
-      log(battle, 'action', { actor, move, target, result: { heal: delta, amount: 0 } });
+      if (KJ.Statuses && KJ.Statuses.blocksHealing(target)) {
+        log(battle, 'heal_blocked', { target });
+      } else {
+        const before = target.stats.hp;
+        target.stats.hp = Math.min(target.maxHP, target.stats.hp + move.heal);
+        const delta = target.stats.hp - before;
+        log(battle, 'action', { actor, move, target, result: { heal: delta, amount: 0 } });
+      }
+      // Self-apply status on guard moves (shield)
+      if (move.statusOnSelf && KJ.Statuses) {
+        const entry = KJ.Statuses.apply(actor, move.statusOnSelf.id, { turns: move.statusOnSelf.turns, source: actor });
+        if (entry) battle.log.push(entry);
+      }
     } else {
       const result = computeDamage(actor, move, target);
       if (!result.miss) {
         target.stats.hp = Math.max(0, target.stats.hp - result.amount);
+        // Second Wind trait — revive James once per battle
+        if (target.id === 'james' && target.stats.hp <= 0
+            && target._secondWindUsed !== true
+            && KJ.Traits && KJ.Traits.has('second_wind')) {
+          target.stats.hp = 5;
+          target._secondWindUsed = true;
+          battle.log.push({ kind: 'trait_proc', data: { name: 'Second Wind!', actor: target } });
+        }
+        // Wake sleepers when hit
+        if (KJ.Statuses) {
+          (KJ.Statuses.tick(battle, target, 'on_hit_taken') || []).forEach(e => battle.log.push(e));
+        }
+        // Apply status on hit (type-tagged, e.g. burn from fire moves)
+        if (move.statusOnHit && KJ.Statuses) {
+          if (Math.random() < (move.statusOnHit.chance || 1)) {
+            const entry = KJ.Statuses.apply(target, move.statusOnHit.id, {
+              turns: move.statusOnHit.turns, source: actor,
+            });
+            if (entry) battle.log.push(entry);
+          }
+        }
+        // Crit-only status (e.g. earth moves stun on crit)
+        if (result.crit && move.statusOnCrit && KJ.Statuses) {
+          const entry = KJ.Statuses.apply(target, move.statusOnCrit.id, {
+            turns: move.statusOnCrit.turns, source: actor,
+          });
+          if (entry) battle.log.push(entry);
+        }
       }
       log(battle, 'action', { actor, move, target, result });
     }
@@ -169,6 +229,9 @@ KJ.Combat = (function () {
   function buildPlayerTeam(state) {
     const eq = KJ.Scene.equippedGear();
     const tMoves = KJ.Scene.treasureMoves();
+    // Trait-adjusted defensive stat (Thick Skin +10% DEF)
+    const thickSkinMult = (KJ.Traits && KJ.Traits.has('thick_skin')) ? 1.10 : 1;
+    const rascalSpd     = (KJ.Traits && KJ.Traits.has('rascal')) ? 1 : 0;
     const james = {
       side: 'player',
       id: 'james',
@@ -176,13 +239,17 @@ KJ.Combat = (function () {
       emoji: '🧒',
       type: 'earth', // James has no innate type; default earth
       stats: {
-        hp: state.player.baseStats.hp + (eq.stats.hp || 0),
+        hp:  state.player.baseStats.hp  + (eq.stats.hp || 0),
         atk: state.player.baseStats.atk + (eq.stats.atk || 0),
-        def: state.player.baseStats.def + (eq.stats.def || 0),
-        spd: state.player.baseStats.spd + (eq.stats.spd || 0),
+        def: Math.round((state.player.baseStats.def + (eq.stats.def || 0)) * thickSkinMult),
+        spd: state.player.baseStats.spd + (eq.stats.spd || 0) + rascalSpd,
       },
       maxHP: state.player.baseStats.hp + (eq.stats.hp || 0),
       moves: [...eq.moves.filter(Boolean), ...tMoves],
+      statuses: [],
+      _slowSteadyUsed: false,   // Slow & Steady — first action can't miss
+      _deepPocketsUsed: false,  // Deep Pockets — first scroll doubles
+      _scaredyCatUsed: false,   // Scaredy-Cat — one-shot proc per battle
     };
     const allies = (state.roster.party || []).map(id => allyToCombatant(id, state));
     return [james, ...allies].filter(Boolean);

@@ -96,7 +96,8 @@ KJ.UI.AllyRoom = (function () {
     return state.roster.missed.filter(id => !state.roster.allies[id]).map(id => {
       const a = KJ.Registry.allies.get(id);
       if (!a) return '';
-      const price = a.hirePrice || 100;
+      const basePrice = a.hirePrice || 100;
+      const price = KJ.Traits ? KJ.Traits.priceAfterDiscount(basePrice) : basePrice;
       return `
         <div class="kj-pomp-candidate">
           ${a.emoji} <strong>${a.name}</strong> — ${price} 🪙
@@ -109,7 +110,8 @@ KJ.UI.AllyRoom = (function () {
     const state = KJ.State.get();
     const a = KJ.Registry.allies.get(id);
     if (!a) return;
-    const price = a.hirePrice || 100;
+    const basePrice = a.hirePrice || 100;
+    const price = KJ.Traits ? KJ.Traits.priceAfterDiscount(basePrice) : basePrice;
     if (state.inventory.gold < price) {
       KJ.Effects.toast('Not enough gold, darling!');
       return;
