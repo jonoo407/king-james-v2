@@ -368,8 +368,8 @@ KJ.UI.BattleScene = (function () {
       const lvl = KJ.State.get().player.level;
       function livePreview(s) {
         const e = s.effect || {};
-        const dmg  = e.amount + lvl * 3;
-        const heal = e.amount + Math.floor(lvl * 1.5);
+        const dmg  = e.amount + Math.floor(lvl * 1.5);
+        const heal = e.amount + Math.floor(lvl * 0.7);
         if (e.kind === 'heal_party')         return `Heal party +${heal} HP`;
         if (e.kind === 'damage_enemy')       return `${dmg} damage to one enemy`;
         if (e.kind === 'damage_all_enemies') return `${dmg} damage to ALL enemies`;
@@ -415,15 +415,15 @@ KJ.UI.BattleScene = (function () {
       // Scale scroll potency with player level so they stay more powerful than
       // standard moves at every tier and justify their gold cost.
       const lvl = KJ.State.get().player.level;
-      let dmg  = e.amount + lvl * 3;              // damage scrolls
-      let heal = e.amount + Math.floor(lvl * 1.5); // healing scrolls
-      // Deep Pockets trait — first scroll use per battle doubles the effect
+      let dmg  = e.amount + Math.floor(lvl * 1.5); // damage scrolls (was lvl*3 — too strong)
+      let heal = e.amount + Math.floor(lvl * 0.7); // healing scrolls (was lvl*1.5)
+      // Deep Pockets trait — first scroll use per battle hits 1.5× (was 2× — one-shot bosses)
       const james = battle.playerTeam.find(c => c.id === 'james');
       if (james && james._deepPocketsUsed === false && KJ.Traits && KJ.Traits.has('deep_pockets')) {
-        dmg  *= 2;
-        heal *= 2;
+        dmg  = Math.round(dmg * 1.5);
+        heal = Math.round(heal * 1.5);
         james._deepPocketsUsed = true;
-        battle.log.push({ kind: 'trait_proc', data: { name: 'Deep Pockets — double scroll!', actor: james } });
+        battle.log.push({ kind: 'trait_proc', data: { name: 'Deep Pockets — extra-strong scroll!', actor: james } });
       }
       switch (e.kind) {
         case 'heal_party':

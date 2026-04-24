@@ -38,7 +38,7 @@ KJ.Combat = (function () {
     // Accuracy: base * blinded multiplier. Lucky Charm (defender=player) adds 5% miss.
     let accuracy = (move.accuracy == null ? 1 : move.accuracy);
     if (KJ.Statuses) accuracy *= KJ.Statuses.accuracyMultiplier(attacker);
-    if (defender.side === 'player' && KJ.Traits && KJ.Traits.has('lucky_charm')) accuracy *= 0.95;
+    if (defender.side === 'player' && KJ.Traits && KJ.Traits.has('lucky_charm')) accuracy *= 0.92;
     // Slow & Steady: first player action each battle guaranteed not to miss
     if (attacker.side === 'player' && attacker._slowSteadyUsed === false
         && KJ.Traits && KJ.Traits.has('slow_steady')) {
@@ -145,10 +145,12 @@ KJ.Combat = (function () {
       if (!result.miss) {
         target.stats.hp = Math.max(0, target.stats.hp - result.amount);
         // Second Wind trait — revive James once per battle
+        // 20% of max HP (min 10) so one revival gives a real turn, not a pity-tap.
+        // Stays above 25% so it doesn't auto-cascade into Scaredy-Cat.
         if (target.id === 'james' && target.stats.hp <= 0
             && target._secondWindUsed !== true
             && KJ.Traits && KJ.Traits.has('second_wind')) {
-          target.stats.hp = 5;
+          target.stats.hp = Math.max(10, Math.floor(target.maxHP * 0.20));
           target._secondWindUsed = true;
           battle.log.push({ kind: 'trait_proc', data: { name: 'Second Wind!', actor: target } });
         }

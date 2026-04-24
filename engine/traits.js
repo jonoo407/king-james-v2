@@ -16,9 +16,9 @@ KJ.Traits = (function () {
     return basePrice;
   }
 
-  // Gold-per-win bonus (Silver Tongue): +2 gold after battle_won.
+  // Gold-per-win bonus (Silver Tongue): +5 gold after battle_won.
   function bonusGoldPerWin() {
-    return has('silver_tongue') ? 2 : 0;
+    return has('silver_tongue') ? 5 : 0;
   }
 
   // Regen per turn (Tough Stuff): +1 HP on the player's turn_start.

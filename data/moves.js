@@ -92,7 +92,7 @@
       statusOnHit: { id: 'dizzy', turns: 2, chance: 0.20 } },
 
     // --- Desert treasure move ---
-    { id: 'courage_burst',name: 'Courage Burst',type: 'fire',  power: 10, accuracy: 0.95, target: 'enemy', flavor: 'Burns when you\'d rather run.',
+    { id: 'courage_burst',name: 'Courage Burst',type: 'fire',  power: 12, accuracy: 0.95, target: 'enemy', flavor: 'Burns when you\'d rather run.',
       statusOnHit: { id: 'burn', turns: 3, chance: 0.30 } },
 
     // --- Desert arc — ally move (Zephyra) ---

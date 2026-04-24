@@ -205,7 +205,7 @@
     {
       id: 'drifter', name: 'Drifter', emoji: '🧙‍♀️', type: 'magic',
       level: 6,
-      stats: { hp: 72, atk: 10, def: 6, spd: 5 },
+      stats: { hp: 105, atk: 10, def: 9, spd: 5 },
       moves: ['sea_hex', 'freeze', 'bubble'],
       behavior: { pattern: 'cycle', sequence: [0, 1, 2, 0, 1] },
       rewards: { xp: 105, gold: [120, 165], drops: [{ gear: 'sea_kings_plate', chance: 1.0 }] },
@@ -271,7 +271,7 @@
       // Corrupted = Mornox's influence, per spec §1.
       id: 'sand_dragon', name: 'Corrupted Sand Dragon', emoji: '🐉', type: 'fire',
       level: 8,
-      stats: { hp: 92, atk: 12, def: 7, spd: 6 },
+      stats: { hp: 140, atk: 12, def: 10, spd: 6 },
       moves: ['inferno_lash', 'club_smash', 'ember_burst'],
       behavior: { pattern: 'cycle', sequence: [0, 1, 2, 0, 1] },
       rewards: { xp: 150, gold: [160, 220], drops: [{ gear: 'flame_scimitar', chance: 1.0 }] },

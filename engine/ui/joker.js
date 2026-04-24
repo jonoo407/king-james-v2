@@ -12,7 +12,7 @@ KJ.Joker = (function () {
   function currentTier() {
     const s = KJ.State && KJ.State.get && KJ.State.get();
     const lvl = s ? s.player.level : 1;
-    if (lvl >= 17) return { tier: 3, name: '👑 Supreme Jester', proc: 0.60, pool: ALL };
+    if (lvl >= 17) return { tier: 3, name: '👑 Supreme Jester', proc: 0.40, pool: ALL };
     if (lvl >= 10) return { tier: 2, name: '🎩 Prank Master',   proc: 0.40, pool: [...TIER1, ...TIER2] };
     if (lvl >= 3)  return { tier: 1, name: '🃏 Class Clown',    proc: 0.20, pool: TIER1 };
     return null;
@@ -38,7 +38,7 @@ KJ.Joker = (function () {
       effect: (battle) => {
         battle.enemyTeam.filter(c => c.stats.hp > 0).forEach(e => { e.stats.hp = Math.max(0, e.stats.hp - 2); });
         battle.playerTeam.filter(c => c.stats.hp > 0).forEach(p => {
-          p.stats.hp = Math.min(p.maxHP, p.stats.hp + 3);
+          p.stats.hp = Math.min(p.maxHP, p.stats.hp + 2);
         });
       },
     },
@@ -101,7 +101,7 @@ KJ.Joker = (function () {
       voiceIdx: 7,
       subtext: "QUACK QUACK QUACK QUACK…",
       effect: (battle) => {
-        battle.enemyTeam.filter(c => c.stats.hp > 0).forEach(e => { e.stats.hp = Math.max(0, e.stats.hp - 8); });
+        battle.enemyTeam.filter(c => c.stats.hp > 0).forEach(e => { e.stats.hp = Math.max(0, e.stats.hp - 5); });
         const james = battle.playerTeam.find(c => c.id === 'james');
         if (james && KJ.Statuses) KJ.Statuses.apply(james, 'pumped', { turns: 2 });
       },
@@ -116,13 +116,11 @@ KJ.Joker = (function () {
       effect: (battle) => {
         battle.enemyTeam.filter(c => c.stats.hp > 0).forEach(e => {
           KJ.Statuses && KJ.Statuses.apply(e, 'dizzy', { turns: 2 });
-          KJ.Statuses && KJ.Statuses.apply(e, 'stun',  { turns: 1 });
           e.stats.hp = Math.max(0, e.stats.hp - 10);
         });
         const james = battle.playerTeam.find(c => c.id === 'james');
         if (james && KJ.Statuses) {
           KJ.Statuses.apply(james, 'pumped', { turns: 2 });
-          KJ.Statuses.apply(james, 'quick',  { turns: 2 });
         }
       },
     },
@@ -220,9 +218,23 @@ KJ.Joker = (function () {
     },
   };
 
+  // Queue so two+ unlocks (e.g. bulk debug level-up) show sequentially, not stacked.
+  const _queue = [];
+  let _active = false;
+
   function showUnlockOverlay(level) {
+    _queue.push(level);
+    _pump();
+  }
+
+  function _pump() {
+    if (_active) return;
+    const level = _queue.shift();
+    if (level == null) return;
     const u = UNLOCKS[level];
-    if (!u) return;
+    if (!u) { _pump(); return; }
+    _active = true;
+
     const host = document.createElement('div');
     host.className = 'kj-joker-unlock-overlay';
     host.innerHTML = `
@@ -231,18 +243,28 @@ KJ.Joker = (function () {
         <div class="kj-joker-unlock-tier">${u.tierName}</div>
         <div class="kj-joker-unlock-line"><span class="kj-ju-speaker">📜 Narrator</span><br>${u.narrator}</div>
         <div class="kj-joker-unlock-line"><span class="kj-ju-speaker">👑 Crown</span><br>${u.crown}</div>
-        <button class="kj-big-btn" id="kj-ju-ok">▶️ Let's go</button>
+        <button class="kj-big-btn kj-ju-ok-btn">▶️ Let's go</button>
       </div>
     `;
     document.body.appendChild(host);
-    // Play narrator line first, then crown line after a short gap
+    // Play narrator, then crown after a gap
     KJ.Audio && KJ.Audio.voicePath && KJ.Audio.voicePath(u.voiceNarrator);
-    setTimeout(() => {
+    const crownTimer = setTimeout(() => {
       KJ.Audio && KJ.Audio.voicePath && KJ.Audio.voicePath(u.voiceCrown);
     }, 4200);
-    document.getElementById('kj-ju-ok').onclick = () => {
+
+    // Scope the button lookup to THIS overlay, not document — old bug stacked
+    // two overlays with duplicate ids and getElementById grabbed the wrong one.
+    host.querySelector('.kj-ju-ok-btn').onclick = () => {
+      clearTimeout(crownTimer);
       host.remove();
       KJ.Audio && KJ.Audio.stop && KJ.Audio.stop();
+      _active = false;
+      _pump();
+    };
+    // Also dismiss on overlay background click as a fallback
+    host.onclick = (e) => {
+      if (e.target === host) host.querySelector('.kj-ju-ok-btn').click();
     };
   }
 
