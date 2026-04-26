@@ -112,6 +112,14 @@ KJ.State = (function () {
       const raw = localStorage.getItem(KJ.SAVE_KEY);
       if (!raw) return { loaded: false, reason: 'no_save' };
       let data = JSON.parse(raw);
+      if (data.version > KJ.SAVE_VERSION) {
+        // Save is from a NEWER build — schema may be incompatible. Don't
+        // wipe the user's save silently; bail and let them know via console
+        // so they can choose to upgrade or hard-reset.
+        console.warn('[state] save version', data.version, '> current', KJ.SAVE_VERSION,
+                     '— possible newer build. Starting fresh in memory but NOT overwriting save.');
+        return { loaded: false, reason: 'future_version', saved_version: data.version };
+      }
       if (data.version !== KJ.SAVE_VERSION) data = migrate(data);
       current = data;
       // Self-heal royalRank against the current level (handles old saves

@@ -21,10 +21,11 @@ KJ.UI.BattleScene = (function () {
     function injectTutorialQuips() {
       const pool = KJ.Registry.crownDialogue.all().find(p => p.context === 'battle_tutorial');
       if (!pool || !pool.lines.length) return;
-      // 2 tutorial lines pushed as log entries labelled "crown"
+      // Use line 0 so the on-screen text matches the voiced line. Adding a
+      // second beat from a different index here would mismatch the voice clip
+      // we have for that pool — keep it simple: one tutorial line, one clip.
       battle.log.push({ kind: 'crown_tutorial', data: { text: pool.lines[0] } });
-      battle.log.push({ kind: 'crown_tutorial', data: { text: pool.lines[3] || pool.lines[0] } });
-      // Voice the first quip once the battle UI has rendered
+      // Voice the quip once the battle UI has rendered
       setTimeout(() => KJ.Audio.voicePath(
         `audio/voices/crown/cd_${pool.id}_0.mp3`
       ), 600);

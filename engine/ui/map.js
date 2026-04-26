@@ -36,11 +36,24 @@ KJ.UI.Map = (function () {
     const locked = isLocked(region, state);
     const completed = state.progress.questsCompleted.includes(region.questId);
     const badge = completed ? '✅' : locked ? '🔒' : '⚔️';
+    // Persistent type hint: shows "Mostly 🌿 · Bring 🔥" on every card so kids
+    // who missed the one-time toast still know what to pack. Hidden on locked
+    // regions to avoid spoiling future content.
+    let hintLine = '';
+    if (!locked && region.primaryEnemyTypes && region.primaryEnemyTypes.length && KJ.Types) {
+      const icons = KJ.Types.ICONS;
+      const mainType = region.primaryEnemyTypes[0];
+      const beats = KJ.Types.list.find(a => KJ.Types.effectiveness(a, mainType) >= KJ.TUNABLES.superEffectiveMult);
+      if (icons && beats) {
+        hintLine = `<div class="kj-region-hint">Mostly ${icons[mainType]} · Bring ${icons[beats]}</div>`;
+      }
+    }
     return `
       <button class="kj-region-card ${locked ? 'locked' : ''}" data-region="${region.id}">
         <div class="kj-region-emoji">${region.emoji}</div>
         <div class="kj-region-name">${region.name}</div>
         <div class="kj-region-badge">${badge}</div>
+        ${hintLine}
       </button>
     `;
   }

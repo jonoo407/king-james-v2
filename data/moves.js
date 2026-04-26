@@ -5,7 +5,7 @@
 (function () {
   const M = [
     // --- Gear-based moves (James gets these via equipping) ---
-    { id: 'swing',       name: 'Swing',       type: 'earth', power: 3, accuracy: 0.95, target: 'enemy', spark: 0, flavor: 'A plain wooden swing.',
+    { id: 'swing',       name: 'Swing',       type: 'earth', power: 4, accuracy: 0.95, target: 'enemy', spark: 0, flavor: 'A plain wooden swing.',
       statusOnCrit: { id: 'stun', turns: 1 } },
     { id: 'brace',       name: 'Guard Stance', type: 'earth', power: 0, accuracy: 1.0, target: 'self', heal: 4, spark: 1, flavor: 'Tuck in. Recover a bit.',
       statusOnSelf: { id: 'shield', turns: 2 } },

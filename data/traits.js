@@ -30,7 +30,7 @@
       description: 'When your HP drops below half, allies get +2 HP & +1 ATK.' },
     { id: 'rascal',        name: 'Rascal',        emoji: '🐇',
       description: '+1 SPD always; you always go first on turn 1.' },
-    { id: 'lucky_charm',   name: 'Lucky Charm',   emoji: '🍀',
+    { id: 'lucky_streak',  name: 'Lucky Streak',  emoji: '🍀',
       description: "8% chance any enemy attack just... misses." },
     { id: 'scaredy_cat',   name: 'Scaredy-Cat Strategy', emoji: '🐔',
       description: 'First time below 25% HP each battle, get Quick + Shield.' },

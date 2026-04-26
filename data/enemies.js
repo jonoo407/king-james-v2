@@ -161,7 +161,7 @@
     {
       id: 'glimmer_wraith', name: 'Glimmer the Wraith', emoji: '👻', type: 'water',
       level: 5,
-      stats: { hp: 62, atk: 9, def: 5, spd: 5 },
+      stats: { hp: 62, atk: 9, def: 6, spd: 5 },
       moves: ['freeze', 'icicle', 'bubble'],
       behavior: { pattern: 'cycle', sequence: [1, 0, 2, 0, 1] },
       rewards: { xp: 80, gold: [90, 130], drops: [{ gear: 'wraiths_cloak', chance: 1.0 }] },

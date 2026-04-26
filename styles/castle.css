@@ -147,3 +147,4 @@
 .kj-region-emoji { font-size: 40px; }
 .kj-region-name  { font-size: 15px; font-weight: bold; margin-top: 4px; }
 .kj-region-badge { position: absolute; top: 6px; right: 8px; font-size: 18px; }
+.kj-region-hint  { font-size: 12px; margin-top: 6px; color: #ffe; opacity: 0.85; line-height: 1.3; }

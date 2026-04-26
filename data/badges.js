@@ -47,6 +47,20 @@
       predicate: (s) => (s.progress.treasures || []).length >= 2,
       hidden: false, goldReward: 80 },
 
+    // Beach badges
+    { id: 'serpent_friend', name: 'Serpent\'s Friend', emoji: '🐍',
+      description: 'Befriend Sirena instead of fighting her.',
+      predicate: (s) => s.progress.flags['serpent_friend'] === true,
+      hidden: false, goldReward: 40 },
+    { id: 'village_heart', name: 'Kind Coin', emoji: '🪙',
+      description: 'Sit with the widow on the sea wall.',
+      predicate: (s) => s.progress.flags['village_heart'] === true,
+      hidden: false, goldReward: 30 },
+    { id: 'drifter_listener', name: 'Listened to the Drifter', emoji: '🕯️',
+      description: 'Hear the Drifter\'s real story before the fight.',
+      predicate: (s) => s.progress.flags['knows_drifter_past'] === true,
+      hidden: false, goldReward: 30 },
+
     // Desert badges
     { id: 'first_alliance', name: 'First Alliance', emoji: '🤲',
       description: 'Help Zephyra fix the sun-shield — partner, don\'t dismiss.',

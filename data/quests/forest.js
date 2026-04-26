@@ -224,8 +224,8 @@
         riddles: [
           { prompt: '"I\'m cold. I\'m white. I fall from the sky. What am I?"',
             options: ['🔥', '❄️', '🍂'], correct: 1 },
-          { prompt: '"I have legs but cannot walk. I have a back but no spine."',
-            options: ['🐶', '🪑', '🐟'], correct: 1 },
+          { prompt: '"I have one eye but cannot see. Thread me through, and I make things whole."',
+            options: ['🐱', '🪡', '🐠'], correct: 1 },
           { prompt: '"The more you take, the more you leave behind."',
             options: ['🐾', '💰', '🍰'], correct: 0 },
         ],

@@ -38,7 +38,7 @@ KJ.Combat = (function () {
     // Accuracy: base * blinded multiplier. Lucky Charm (defender=player) adds 5% miss.
     let accuracy = (move.accuracy == null ? 1 : move.accuracy);
     if (KJ.Statuses) accuracy *= KJ.Statuses.accuracyMultiplier(attacker);
-    if (defender.side === 'player' && KJ.Traits && KJ.Traits.has('lucky_charm')) accuracy *= 0.92;
+    if (defender.side === 'player' && KJ.Traits && KJ.Traits.has('lucky_streak')) accuracy *= 0.92;
     // Slow & Steady: first player action each battle guaranteed not to miss
     if (attacker.side === 'player' && attacker._slowSteadyUsed === false
         && KJ.Traits && KJ.Traits.has('slow_steady')) {
@@ -116,6 +116,12 @@ KJ.Combat = (function () {
       target = actor;
     } else {
       target = allCombatants(battle).find(c => c.id === action.targetId);
+      // If chosen target is already KO'd, retarget to first alive on the
+      // same side so we don't log "James hit a corpse for 8".
+      if (target && target.stats.hp <= 0) {
+        const sameSide = allCombatants(battle).filter(c => c.side === target.side && c.stats.hp > 0);
+        target = sameSide[0] || null;
+      }
     }
     if (!target) return battle;
 

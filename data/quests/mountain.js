@@ -217,7 +217,7 @@
           condition: { type: 'charms_at_least', amount: 1 },
           effects: [
             { type: 'consume_charm', amount: 1 },
-            { type: 'mark_met_ally', id: 'ice_rabbit' },
+            { type: 'recruit_ally', id: 'ice_rabbit' },
           ] },
         { label: 'Skip side path', icon: '👋', next: 'mountain_knight' },
       ],
@@ -233,8 +233,8 @@
     {
       id: 'mountain_side_charm', type: 'dialogue', bg: 'mountain',
       beats: [
-        { speaker: 'narrator', text: 'The charm pulses with soft light. The rabbit blinks slow. She\'s pleased.' },
-        { speaker: 'crown',    text: 'Met, not hired. Pompadour closes the deal back home. She drives a bargain.' },
+        { speaker: 'narrator', text: 'The charm pulses with soft light. The rabbit blinks slow. She hops once, then again — straight onto your shoulder.' },
+        { speaker: 'crown',    text: 'A genuine friend. The charm worked. Snip the Ice Rabbit is on your side now.' },
       ],
       next: 'mountain_knight',
     },

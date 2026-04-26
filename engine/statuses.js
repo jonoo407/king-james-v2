@@ -41,9 +41,10 @@ KJ.Statuses = (function () {
       defaultTurns: 2,
       skipsTurn: true,
       onTurnStart: (c, inst) => {
-        // 50% chance to thaw each turn (consume instance early)
+        // 50% chance to thaw each turn. Remove instance NOW so shouldSkipTurn
+        // returns false this turn (the kid sees "thawed" and gets to act).
         if (Math.random() < 0.5) {
-          inst._thaw = true;
+          c.statuses = (c.statuses || []).filter(s => s !== inst);
           return { kind: 'status_fade', data: { target: c, icon: '🧊', name: 'freeze' } };
         }
         return null;
