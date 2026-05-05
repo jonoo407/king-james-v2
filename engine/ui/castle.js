@@ -52,13 +52,14 @@ KJ.UI.Castle = (function () {
     const resetBtn = document.getElementById('kj-btn-reset');
     if (resetBtn) resetBtn.onclick = () => {
       // Two-step gate: a kid can hit one confirm by accident, two means intent.
-      // First prompt: vague — lots of kids tap through. Second prompt asks them
-      // to type "RESET" so it's an actual decision, not a tantrum-tap.
-      if (!confirm('Start over? All progress will be erased.')) return;
-      const typed = prompt('Type RESET (in capitals) to confirm. Cancel to keep your save.');
+      const active = KJ.Profiles && KJ.Profiles.getActive();
+      const display = (KJ.State.get().meta && KJ.State.get().meta.profileDisplayName) || 'this player';
+      if (!confirm(`Start over? ${display} loses everything.`)) return;
+      const typed = prompt('Type RESET to start over. Cancel to keep playing.');
       if (typed !== 'RESET') return;
-      KJ.State.reset();
-      KJ.Scene.goto('intro_mud');
+      if (active) KJ.Profiles.delete(active);
+      else KJ.State.reset();
+      KJ.Boot.showTitle();
     };
   }
 

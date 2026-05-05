@@ -98,10 +98,23 @@ KJ.State = (function () {
     saveTimer = setTimeout(save, 250);
   }
 
+  // Resolve the live save key from the active profile (or fall back to the
+  // legacy single-slot key during boot, before a profile is selected).
+  function currentSaveKey() {
+    if (KJ.Profiles && KJ.Profiles.getActive()) {
+      return KJ.Profiles.PREFIX + KJ.Profiles.getActive();
+    }
+    return KJ.SAVE_KEY;
+  }
+
   function save() {
+    // Don't auto-write before a profile is picked — would either clobber a
+    // legacy single-slot save with freshState or pollute the legacy key
+    // during the title-screen pre-pick window.
+    if (KJ.Profiles && !KJ.Profiles.getActive()) return;
     try {
       current.meta.lastSavedAt = Date.now();
-      localStorage.setItem(KJ.SAVE_KEY, JSON.stringify(current));
+      localStorage.setItem(currentSaveKey(), JSON.stringify(current));
     } catch (e) {
       console.error('[state] save failed', e);
     }
@@ -109,7 +122,7 @@ KJ.State = (function () {
 
   function load() {
     try {
-      const raw = localStorage.getItem(KJ.SAVE_KEY);
+      const raw = localStorage.getItem(currentSaveKey());
       if (!raw) return { loaded: false, reason: 'no_save' };
       let data = JSON.parse(raw);
       if (data.version > KJ.SAVE_VERSION) {
@@ -145,7 +158,7 @@ KJ.State = (function () {
   }
 
   function wipe() {
-    try { localStorage.removeItem(KJ.SAVE_KEY); } catch (e) {}
+    try { localStorage.removeItem(currentSaveKey()); } catch (e) {}
     current = freshState();
   }
 

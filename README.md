@@ -32,6 +32,32 @@ Both devices must be on the same Wi-Fi.
 
 ---
 
+## Testing — TDD workflow
+
+Two test layers, both run from the repo root.
+
+**Unit tests** (`tests/unit/`) — fast inner loop for engine/combat work. Red→green TDD discipline: write a failing test first, then write the code to pass it.
+
+```bash
+node tests/unit/spark-mana.test.js   # run one file (the TDD inner loop)
+node tests/run-unit.js               # run all unit tests
+```
+
+**QC suite** (`tests/qc_suite.js`) — 58-test regression gate covering registry integrity, balance sims, and edge-case bugs. Must stay green before any commit.
+
+```bash
+node tests/qc_suite.js
+```
+
+**Discipline**:
+- Any new engine, combat, or state-shape behavior gets a failing unit test first.
+- Quest scenes / dialogue authoring is covered structurally by the QC suite (orphan refs, missing speakers, broken transitions) — no per-beat unit tests needed.
+- Both suites must pass before commit.
+
+To add a new unit test: drop a `*.test.js` file into `tests/unit/`, require `../lib/runner` and `../lib/bootstrap`. See `spark-mana.test.js` for the pattern.
+
+---
+
 ## Deploy (GitHub Pages)
 
 One-time:

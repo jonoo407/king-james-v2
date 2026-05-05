@@ -1,18 +1,14 @@
 // King James 2 — Boot
 // Runs last after all engine + data files have loaded.
-// Wires up save, auto-save, the first render, and optionally shows a
-// "Continue or New Game" splash if a save exists.
+// Wires up auto-save and shows the title screen with the profile picker.
 
 window.KJ = window.KJ || {};
 
 KJ.Boot = (function () {
 
   function start() {
-    // Validate required globals
-    const need = ['Constants','Events','Registry','State','Audio','Effects','Scene','Combat','UI'];
-    // Constants is just KJ top-level, not a sub-namespace — skip it
-    const missing = ['Events','Registry','State','Audio','Effects','Scene','Combat','UI']
-      .filter(k => !KJ[k]);
+    const need = ['Events','Registry','State','Profiles','Audio','Effects','Scene','Combat','UI'];
+    const missing = need.filter(k => !KJ[k]);
     if (missing.length) {
       document.getElementById('app').innerHTML =
         `<div class="kj-error"><h2>⚠️ Boot failed</h2><p>Missing: ${missing.join(', ')}</p></div>`;
@@ -20,68 +16,140 @@ KJ.Boot = (function () {
       return;
     }
 
-    // Load save
-    const loaded = KJ.State.load();
     KJ.State.installAutoSave();
-
-    // Wire generic listeners (badges watch, toasts, etc.)
     wireBadgeWatchers();
     wireCrownCoherence();
 
-    // First screen: title (if no save) OR continue/new prompt (if save)
-    if (loaded.loaded) {
-      showContinueOrNew();
-    } else {
-      showTitle();
-    }
+    showTitle();
   }
+
+  // ---- Title screen ---------------------------------------------------------
 
   function showTitle() {
     const app = document.getElementById('app');
-    app.innerHTML = `
-      <div class="kj-title-screen kj-title-has-image">
-        <img src="images/title-bg.jpg" class="kj-title-poster" alt="King James">
-        <div class="kj-title-overlay">
-          <button class="kj-big-btn" id="btn-new">▶️ NEW GAME</button>
-        </div>
-      </div>
-    `;
-    document.getElementById('btn-new').onclick = () => {
-      KJ.Audio.play('click');
-      KJ.State.reset();
-      KJ.Scene.goto('intro_mud');
-    };
+    const profiles = KJ.Profiles.list();
+    const hasLegacy = KJ.Profiles.hasLegacySave();
+
+    if (profiles.length === 0 && hasLegacy) {
+      renderMigration(app);
+      return;
+    }
+    renderPicker(app, profiles);
   }
 
-  function showContinueOrNew() {
-    const app = document.getElementById('app');
-    const state = KJ.State.get();
-    const lvl = state.player.level;
-    const treasures = state.progress.treasures.length;
-    app.innerHTML = `
-      <div class="kj-title-screen kj-title-has-image">
-        <img src="images/title-bg.jpg" class="kj-title-poster" alt="King James">
-        <div class="kj-title-overlay">
-          <p class="kj-subtitle">Lv ${lvl} · ${treasures}/5 treasures</p>
-          <button class="kj-big-btn" id="btn-continue">▶️ CONTINUE</button>
-          <button class="kj-btn-secondary" id="btn-new">🆕 NEW GAME (erase save)</button>
-        </div>
-      </div>
-    `;
-    document.getElementById('btn-continue').onclick = () => {
+  function renderMigration(app) {
+    app.innerHTML = titleShell(`
+      <p class="kj-subtitle">We found a saved game.<br>What's your name?</p>
+      <input type="text" class="kj-name-input" id="kj-migrate-name" maxlength="12"
+             autocomplete="off" placeholder="Type your name" />
+      <p class="kj-name-error" id="kj-migrate-err"></p>
+      <button class="kj-big-btn" id="btn-migrate">▶️ START</button>
+    `);
+
+    const input = document.getElementById('kj-migrate-name');
+    const err   = document.getElementById('kj-migrate-err');
+    const btn   = document.getElementById('btn-migrate');
+
+    const submit = () => {
+      const name = input.value;
+      const result = KJ.Profiles.migrateLegacy(name);
+      if (!result.migrated) { err.textContent = result.error || 'Oops! Try again.'; return; }
       KJ.Audio.play('click');
+      KJ.Profiles.load(result.name);
       KJ.UI.Castle.render();
     };
-    document.getElementById('btn-new').onclick = () => {
-      if (!confirm('Start over? Your save will be erased.')) return;
-      KJ.Audio.play('click');
-      KJ.State.reset();
-      KJ.Scene.goto('intro_mud');
-    };
+    btn.onclick = submit;
+    input.addEventListener('keydown', e => { if (e.key === 'Enter') submit(); });
+    input.focus();
   }
 
+  function renderPicker(app, profiles) {
+    const showList = profiles.length > 0;
+
+    app.innerHTML = titleShell(`
+      <p class="kj-subtitle">${showList ? 'Pick Player' : 'Welcome!'}</p>
+
+      <div class="kj-new-player-card">
+        <div class="kj-new-player-label">➕ New Player</div>
+        <input type="text" class="kj-name-input" id="kj-new-name" maxlength="12"
+               autocomplete="off" placeholder="Type your name" />
+        <button class="kj-big-btn" id="btn-new">▶️ START</button>
+        <p class="kj-name-error" id="kj-new-err"></p>
+      </div>
+
+      ${showList ? `
+        <div class="kj-profile-list">
+          ${profiles.map(p => `
+            <button class="kj-profile-btn" data-name="${escapeAttr(p.name)}">
+              <span class="kj-profile-name">${escapeHtml(p.displayName)}</span>
+              <span class="kj-profile-meta">Lv ${p.level} · ${p.treasures}/5 treasures</span>
+              <span class="kj-profile-delete" data-delete="${escapeAttr(p.name)}" title="Delete this player">✕</span>
+            </button>
+          `).join('')}
+        </div>
+      ` : ''}
+    `);
+
+    // Existing-profile clicks
+    Array.from(document.querySelectorAll('.kj-profile-btn')).forEach(btn => {
+      btn.onclick = (e) => {
+        // Delete-X has its own handler via stopPropagation below
+        if (e.target.classList.contains('kj-profile-delete')) return;
+        const name = btn.dataset.name;
+        KJ.Audio.play('click');
+        const r = KJ.Profiles.load(name);
+        if (!r.loaded) { alert("Oops — couldn't load that."); return; }
+        KJ.UI.Castle.render();
+      };
+    });
+
+    // Per-profile delete (✕)
+    Array.from(document.querySelectorAll('.kj-profile-delete')).forEach(x => {
+      x.onclick = (e) => {
+        e.stopPropagation();
+        const name = x.dataset.delete;
+        const p = profiles.find(p => p.name === name);
+        const display = p ? p.displayName : name;
+        if (!confirm(`Delete ${display}? Can't undo.`)) return;
+        KJ.Profiles.delete(name);
+        showTitle();
+      };
+    });
+
+    // New-player submit
+    const input = document.getElementById('kj-new-name');
+    const err   = document.getElementById('kj-new-err');
+    const btn   = document.getElementById('btn-new');
+    const submit = () => {
+      const name = input.value;
+      const r = KJ.Profiles.create(name);
+      if (!r.created) { err.textContent = r.error || 'Oops! Try again.'; return; }
+      KJ.Audio.play('click');
+      KJ.Scene.goto('intro_mud');
+    };
+    btn.onclick = submit;
+    input.addEventListener('keydown', e => { if (e.key === 'Enter') submit(); });
+  }
+
+  function titleShell(innerHtml) {
+    return `
+      <div class="kj-title-screen kj-title-has-image">
+        <img src="images/title-bg.jpg" class="kj-title-poster" alt="King James">
+        <div class="kj-title-overlay">${innerHtml}</div>
+      </div>
+    `;
+  }
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, c => ({
+      '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+    }[c]));
+  }
+  function escapeAttr(s) { return escapeHtml(s); }
+
+  // ---- Generic listeners (unchanged) ---------------------------------------
+
   function wireBadgeWatchers() {
-    // On any of these events, re-evaluate all badge predicates.
     const events = [
       'ally_recruited','battle_won','quest_completed','treasure_found',
       'level_up','trait_picked','gear_equipped',
@@ -114,12 +182,11 @@ KJ.Boot = (function () {
     });
   }
 
-  // Wait for DOM + all script tags to have executed
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', start);
   } else {
     start();
   }
 
-  return { start };
+  return { start, showTitle };
 })();

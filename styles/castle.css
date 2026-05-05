@@ -123,6 +123,98 @@
   text-shadow: 1px 1px 4px rgba(0,0,0,0.9);
 }
 
+/* Title screen — profile picker */
+.kj-profile-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  margin-bottom: 8px;
+}
+.kj-profile-btn {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  width: 100%;
+  padding: 14px 44px 14px 18px;
+  background: #2d1b69;
+  color: #fff;
+  border: 2px solid #5a3aa8;
+  border-radius: 12px;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.05s, background 0.1s;
+}
+.kj-profile-btn:active { transform: scale(0.98); background: #3d2a85; }
+.kj-profile-name { font-size: 22px; font-weight: bold; color: gold; }
+.kj-profile-meta { font-size: 14px; color: #ccc; }
+.kj-profile-delete {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #aaa;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.3);
+}
+.kj-profile-delete:hover { color: #ff7a7a; background: rgba(0,0,0,0.5); }
+
+.kj-new-player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: 8px;
+}
+.kj-new-player-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 16px;
+  background: #1c0e49;
+  border: 2px dashed #ffd34d;
+  border-radius: 14px;
+  margin-bottom: 12px;
+}
+.kj-new-player-label {
+  font-size: 18px;
+  color: #ffd34d;
+  font-weight: bold;
+}
+.kj-name-input {
+  width: 100%;
+  max-width: 320px;
+  padding: 12px 16px;
+  font-size: 20px;
+  font-family: inherit;
+  text-align: center;
+  border: 2px solid #5a3aa8;
+  border-radius: 10px;
+  background: #1c0e49;
+  color: gold;
+  outline: none;
+}
+.kj-name-input:focus { border-color: gold; }
+.kj-name-error {
+  color: #ff8a8a;
+  font-size: 14px;
+  margin: 0;
+  min-height: 1em;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+}
+
 /* Map screen */
 .kj-map-bg { background: linear-gradient(180deg, #3a2a73 0%, #1c0e49 100%); }
 .kj-map-grid {
