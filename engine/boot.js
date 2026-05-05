@@ -27,40 +27,16 @@ KJ.Boot = (function () {
 
   function showTitle() {
     const app = document.getElementById('app');
-    const profiles = KJ.Profiles.list();
-    const hasLegacy = KJ.Profiles.hasLegacySave();
 
-    if (profiles.length === 0 && hasLegacy) {
-      renderMigration(app);
-      return;
+    // If there's an old single-slot save, silently adopt it as "James" so
+    // the kid sees it as a normal saved-player entry in the picker. No
+    // migration prompt, no asking for a name — there's only one and we know
+    // who it is.
+    if (KJ.Profiles.hasLegacySave() && KJ.Profiles.list().length === 0) {
+      KJ.Profiles.migrateLegacy('James');
     }
-    renderPicker(app, profiles);
-  }
 
-  function renderMigration(app) {
-    app.innerHTML = titleShell(`
-      <p class="kj-subtitle">We found a saved game.<br>What's your name?</p>
-      <input type="text" class="kj-name-input" id="kj-migrate-name" maxlength="12"
-             autocomplete="off" placeholder="Type your name" />
-      <p class="kj-name-error" id="kj-migrate-err"></p>
-      <button class="kj-big-btn" id="btn-migrate">▶️ START</button>
-    `);
-
-    const input = document.getElementById('kj-migrate-name');
-    const err   = document.getElementById('kj-migrate-err');
-    const btn   = document.getElementById('btn-migrate');
-
-    const submit = () => {
-      const name = input.value;
-      const result = KJ.Profiles.migrateLegacy(name);
-      if (!result.migrated) { err.textContent = result.error || 'Oops! Try again.'; return; }
-      KJ.Audio.play('click');
-      KJ.Profiles.load(result.name);
-      KJ.UI.Castle.render();
-    };
-    btn.onclick = submit;
-    input.addEventListener('keydown', e => { if (e.key === 'Enter') submit(); });
-    input.focus();
+    renderPicker(app, KJ.Profiles.list());
   }
 
   function renderPicker(app, profiles) {
