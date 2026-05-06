@@ -2,6 +2,8 @@
 
 > Every arc should feel like a chapter in ONE story, not a standalone adventure. This doc is that story: who Mornox is, why the Treasures matter, and how Mornox's shadow grows across every arc until James meets him face-to-face.
 
+> **DOCS NOTE (May 2026):** the Beach section originally planned a Forgotten Mermaid (Sirena) villain. That version was never built — shipped beach uses **Drifter the Healer**, an isolated woman driven into a sea cove by Mornox's lies. §4 Arc 3 below has been updated to reflect what shipped. The original Sirena spec is preserved in [`arcs/beach.md`](arcs/beach.md) for historical reference but is not canonical.
+
 ---
 
 ## 1. The elevator pitch (kid-accessible, 30 seconds)
@@ -102,14 +104,11 @@ Every arc has a **local villain** AND a **Mornox thread**. The local villain giv
   - After the arc, Mornox breaks the crown voice again: *"The Wraith was a friend of mine, once. I didn\'t kill him. I just TOLD him nobody cared. He did the rest."*
 - **Stakes rise** — back at the castle, **a vine has withered overnight**. Crown: *"That shouldn\'t be possible now — the Gem is BACK. Unless... Mornox is already pulling power from somewhere else."*
 
-### Arc 3 — Beach (🔜 planned)
-- **Local villain:** "The Forgotten Mermaid" — a mermaid queen whose kingdom was swallowed by a sea-storm decades ago. She blames humans, hoards the Shield to keep humans out of the sea.
-- **Local lesson:** Kindness means looking at things from the other side. (Hint of theme: she isn\'t wrong to be bitter.)
-- **Mornox thread:**
-  - The sea-storm that swallowed her kingdom was summoned BY MORNOX when she refused to sell him her knowledge decades ago. She doesn\'t know — she blamed humans.
-  - Revealed at arc end by a mer-child: "It wasn\'t humans. A wizard came first..."
-  - Mermaid queen shattered when she realizes she\'s been fighting the wrong enemy for 50 years.
-- **Mornox intervention at castle:** he delivers a GIFT — a glass jar with a still-living royal bee. *"Proof I can still reach inside your castle walls, little king."* Crown furious, tries to apologize.
+### Arc 3 — Beach (✅ shipped — uses Drifter, not Sirena)
+- **Local villain:** **Drifter** — once a healer who tended sailors for thirty years. Mornox came through, told the village she was cursing the sea and poisoning the fish. They believed him. She's been alone in a sea cove for 40+ years, bitter and dangerous.
+- **Local lesson:** Kindness means looking at things from the other side. The "monster" is a person Mornox lied about; the cure is bringing her back into the village.
+- **Mornox thread:** This is **the same trick he played on the Wraith** — plant one small lie about someone, let the world do the rest. Kid sees the pattern: Mornox doesn't kill people, he isolates them. The shipped lore tablet (`knows_drifter_past` flag) reveals it explicitly. The redemption beat: Drifter realizes she could come back, and the village widow needs a healer.
+- **Kindness flags** (used by Volcano's Listen-path predicate): `serpent_friend` (cut the net, freed baby sea serpents) OR `knows_drifter_past` (read the ruins tablet that exposes Mornox's role).
 
 ### Arc 4 — Desert (🔜 planned)
 - **Local villain:** A twin — Mornox\'s **former apprentice**, now a sun-witch who went rogue. She ALSO wants to un-curse the sun (she\'s trying to fix the damage Mornox did). Unclear if friend or foe.
@@ -165,7 +164,7 @@ That twist doesn\'t need to land early. Plant seeds in arc 3 (crown slips on a n
 | 0 (start) | Everything normal, crown is broken and foggy | "Swords! Yay!" | Silent |
 | 1 (Forest) | Forest slightly brighter | "I did a thing." | Dismissive |
 | 2 (Mountain) | A vine withered at the castle overnight | "That\'s... weird." | Amused menace |
-| 3 (Beach) | Storms at sea calming. But a beloved villager child goes missing briefly (returns safe). | "Wait, is this getting worse?" | Directly threatening |
+| 3 (Beach) | Storms at sea calming. The cove is opening. Drifter is reconciling with the village. | "Wait, is this getting worse?" | Directly threatening |
 | 4 (Desert) | Villagers look at James differently — half hopeful, half terrified. Sun is gentler. | "It\'s on me. Okay. Okay." | Tired, vulnerable (first glimpse under the mask) |
 | 5 (Volcano) | Kingdom is quiet. Everyone waits. | Resolute. | All of the above. |
 
@@ -220,10 +219,10 @@ Both endings are valid. Both end with the kid becoming the true king.
 
 ### Plan for future arcs (bake in the Mornox thread from day 1)
 
-**Beach arc (planning):**
-- Mermaid queen's backstory connects to Mornox (storm he caused decades ago)
-- Arc ending: mermaid realizes the truth; Mornox intervenes with the bee-in-a-jar
-- Add mermaid queen redemption beat
+**Beach arc (✅ shipped — Drifter version, not the original Sirena plan):**
+- Drifter the Healer's backstory connects to Mornox (the lying-to-isolate trick — same MO as the Wraith)
+- Arc ending: Drifter accepts she could come back and tend the widow; lore tablet exposes Mornox's role
+- The original Sirena/Mermaid plan is preserved in arcs/beach.md as historical reference but is **not** canonical
 
 **Desert arc (planning):**
 - Sun-witch is Mornox's former apprentice (his only student, now trying to repair his damage)

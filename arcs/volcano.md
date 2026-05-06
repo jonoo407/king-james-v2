@@ -49,10 +49,12 @@ Either way: **James is now the true king. The crown is whole. The kingdom is saf
 Track these flags across arcs — kid must have ≥ 3 to unlock Listen:
 - Forest: `riddle_tree_no_hints` (Owlette recruited through thinking)
 - Mountain: `yeti_friend` (listened to Papa Yeti instead of attacking)
-- Beach: `peacemaker` (showed Sirena the evidence, didn't fight her)
+- Beach: `serpent_friend` **OR** `knows_drifter_past` (befriended baby serpents OR read the ruins tablet — both shipped beach kindness paths)
 - Desert: `first_alliance` (partnered with Zephyra, didn't dismiss her)
 
 If < 3 "kind" flags: Fight path only. (Fair — the kid who rushed through every arc gets the fight-it-out ending.)
+
+> **Note**: original spec referenced `peacemaker` (a Sirena-arc flag from the un-shipped beach plan). Shipped beach uses Drifter the Healer instead — see [`beach.js`](../data/quests/beach.js). The two flags above are the actual beach kindness flags.
 
 ---
 
@@ -108,28 +110,34 @@ Every kid weapon earned across the game finds a use in at least one phase.
 13. **volcano_crown_reveal** (dialogue) — Crown finally breaks: *"Listen, kid, before we go up. There's something I haven't told you. I was... I was his teacher. This crown is what's left of me. He did this to me. But he was the best student I ever had."* Emotional beat.
 14. **volcano_door** (dialogue) — the top. Two chairs. Kettle. Mornox.
 
-### Act 4 — Mornox confrontation (5–7 scenes based on path)
-15. **volcano_mornox_meet** (choice) — the key branch:
-    - **⚔️ Fight** → volcano_mornox_fight_p1 (all paths)
-    - **👂 Sit down (LISTEN)** → volcano_mornox_listen (locked by ≥3 kindness flags)
-    - **🗨️ Ask a question** — middle path, reveals more, then forces fight/listen choice
+### Act 4 — Mornox confrontation (6–8 scenes based on path)
 
-### Fight path (3 phases)
-16. **volcano_mornox_p1** (battle) — Mornox uses fire form (magic+fire enemies summoned). Kid uses water/wind.
-17. **volcano_mornox_p2** (battle) — Mornox uses water form. Kid uses magic/wind.
-18. **volcano_mornox_p3** (battle) — Mornox uses earth/magic combo. Kid uses fire + everything stacked.
-19. **volcano_mornox_defeat** (dialogue, bittersweet) — Mornox crumbles. Last line: *"Thank... you. Finally."* Crown cries. Curse breaks. Kingdom saved.
+15. **volcano_pre_mornox** (choice) — finale prep at the kettle (Rule 2.3 — every boss gets prep). 3 paths, all thematic to the tea-and-chairs moment:
+    - 🍵 **Drink the tea** (+15 HP, sets `tea_accepted` flag — Mornox notes it in dialogue)
+    - 🙏 **Pray to the Crown** (+2 sparks, allies +5 HP)
+    - 🚪 **Skip — go straight in** (+1 ATK from focus, no resource gain)
+
+16. **volcano_mornox_meet** (choice) — the key branch (buttons ≤3 words):
+    - **⚔️ Fight** → volcano_mornox_p1 (all paths)
+    - **👂 Sit down** → volcano_mornox_listen (locked by ≥3 kindness flags)
+    - **🗨️ Ask first** — middle path, reveals more, then forces fight/listen choice
+
+### Fight path (3 phases — multi-phase battle)
+17. **volcano_mornox_p1** (battle) — Mornox uses fire form (magic + fire summons). Kid uses water/wind.
+18. **volcano_mornox_p2** (battle) — Mornox uses water form. Kid uses **magic** (water is SE-vulnerable to magic only — wind is NOT SE vs water, the original spec line was wrong).
+19. **volcano_mornox_p3** (battle) — Mornox uses earth/magic combo. Kid uses fire + wind stacked.
+20. **volcano_mornox_defeat** (dialogue, bittersweet) — Mornox crumbles. Last line: *"Thank... you. Finally."* Crown cries. Curse breaks. Kingdom saved. **No "you should have listened" line — Crown grieves, doesn't judge.**
 
 ### Listen path
-16. **volcano_mornox_listen** (dialogue) — long scene, Mornox tells his whole story. Flashback beats woven in.
-17. **volcano_mornox_choice** (choice) — James offers: un-curse together, OR still take Treasures and go.
-18. **volcano_redemption_ritual** (dialogue) — the two wizards + James unite the Treasures + crown, curse breaks, Mornox de-ages 50 years.
-19. **volcano_mornox_goodbye** (dialogue) — Mornox walks down the mountain for the first time in 400 years. Gives James the kettle as a gift.
+17. **volcano_mornox_listen** (dialogue) — long scene, Mornox tells his whole story. Flashback beats woven in.
+18. **volcano_mornox_choice** (choice) — James offers: un-curse together, OR still take Treasures and go.
+19. **volcano_redemption_ritual** (dialogue) — the two wizards + James unite the Treasures + crown, curse breaks, Mornox de-ages 50 years. **Critical beat**: Mornox must say *out loud* he can't forgive himself — that's the inner half of the arc's "Forgiveness — of others AND of yourself" theme. Otherwise the Mirror-to-James lands incomplete.
+20. **volcano_mornox_goodbye** (dialogue) — Mornox walks down the mountain for the first time in 400 years. Gives James the kettle as a gift. Also gifts the Mage Saber.
 
 ### Both paths
-20. **volcano_epilogue** (dialogue) — James returns to castle. Allies waiting. Villagers from every arc gathered. Zephyra there. Papa Yeti + Baby. Foxy. Ribbit. Owlette. Gus. Sirena. Even Glimmer the Wraith is there, bowing awkwardly.
-21. **volcano_crown_restored** (dialogue) — Crown is whole. Crown's voice is clearer than ever. Crown gives James one final speech.
-22. **volcano_end** (dialogue) — credits-like ending screen. Badges earned total. Trophies lined up. One final Crown line: *"You did it, kid. You're the real king now."* *"Now go eat something. I'll make tea. It'll be terrible. I'm a crown. But I'll make tea."*
+21. **volcano_epilogue** (dialogue) — James returns to castle. Every shipped named character gathered: Zephyra, Papa Yeti + Baby, Foxy, Ribbit, Owlette, Gus, **Drifter** (the redeemed beach healer), **the Widow** (from beach village), Glimmer the Wraith (bowing awkwardly), Finn, Pompadour, Sir Frostbeard. Group-photo energy. *Sirena and Joon are NOT included — they were planned for an unbuilt version of beach and never shipped.*
+22. **volcano_crown_restored** (dialogue) — Crown is whole. Crown's voice is clearer than ever. Crown gives James one final speech.
+23. **volcano_end** (ending scene type) — credits-like ending screen. Badges earned total. Trophies lined up. Final Crown sign-off (split into 5 short beats — see §8).
 
 ---
 
@@ -158,39 +166,94 @@ Every kid weapon earned across the game finds a use in at least one phase.
 - HP ~55, ATK ~18, DEF ~12, SPD ~12
 - 4 gear moves + 5 Treasure bonus moves = 9 moves in battle
 - Full type coverage
+- Sparks max 6 (`KJ.maxSparksForLevel(9) = min(10, 3 + floor(9/3)) = 6`)
+
+> **Important:** these HPs are the **post-multiplier** numbers — they already incorporate `KJ.TUNABLES.enemyHpMult` (= 1.3). Catalog the enemies in `data/enemies.js` at HP / 1.3, OR catalog at these numbers and exempt bosses from the multiplier. The balance-tester confirmed the original spec numbers (×1.0) collapsed the round-count targets — these (×1.3) match the runtime fights.
+
+Trash mob targets:
+| Enemy | HP (post-mult) | Catalog HP (÷1.3) | Expected rounds | Notes |
+|---|---|---|---|---|
+| Lava Spirit (fire) | ~34 | ~26 | 1 with water SE, 2–3 neutral | Mirror Sun Wisp |
+| Obsidian Golem (earth) | ~49 | ~38 | 1–2 with fire SE, 3 neutral | +Lv4 from Stone Ogre |
 
 Boss phase targets:
-| Phase | Enemy HP | Expected rounds | Notes |
-|---|---|---|---|
-| Dragon p1 (fire) | 80 | 4–6 | Water moves required |
-| Dragon p2 (magic) | 70 | 3–5 | Wind moves shine |
-| Mornox p1 | 90 | 4–6 | First taste of endgame difficulty |
-| Mornox p2 | 90 | 4–6 | Type switch forces loadout thinking |
-| Mornox p3 | 100 | 5–7 | Climax |
+| Phase | HP (post-mult) | Catalog HP (÷1.3) | Expected rounds | Vulnerability |
+|---|---|---|---|---|
+| Dragon p1 (fire+earth) | 104 | 80 | 4–6 | Water on fire half, fire on earth half |
+| Dragon p2 (magic) | 91 | 70 | 3–5 | **Wind shines** (wind→magic SE per types.js) |
+| Mornox p1 (magic + fire summons) | 117 | 90 | 4–6 | Wind on magic, water on fire summons |
+| Mornox p2 (water form) | 117 | 90 | 4–6 | **Magic only** — wind is NOT SE vs water |
+| Mornox p3 (earth + magic combo) | 130 | 100 | 5–7 | Fire on earth, wind on magic |
 
 Kid should finish each fight with 30–50% HP if playing smart. Scrolls and allies are essential.
+
+Spark economy note: kid burns ~3 sparks/turn on magic moves (Arcane Slash + Friend's Beacon = ~2 each); regen +1/turn means ~5-round phases dip near 0 by phase end. The +2-per-victory and pre-Mornox prayer option keep things sustainable, but **plant a spark scroll at `volcano_dragon_rest`** (mid-fight breather scene) so the kid isn't starved entering Mornox.
+
+Move-home check (Rule 1.2 — every kid move type needs a vulnerable enemy in the arc):
+- Fire (Flame Cut, Phoenix Dash, Courage Burst) → Obsidian Golems + Mornox p3 ✓
+- Water (Ice Cut, Ice Shard) → Lava Spirits + Dragon p1 fire half + Mornox p1 fire summons ✓
+- Earth (Iron Slash, Sure Step, Sand Storm) → Dragon p1 wind ... wait, no wind enemies. **Earth's home is wind, but no wind enemies in arc.** Earth moves play neutral here. Acceptable for finale (kid has so many options) but flag.
+- Wind (Brave Strike, Sand Dash, Drift Step) → Dragon p2 + Mornox p1 magic + Mornox p3 magic ✓
+- Magic (Mage Saber/Arcane Slash, Star Dust, Friend's Beacon, Lucky Throw) → Mornox p2 (water form) ✓
 
 ---
 
 ## 8. Humor + emotional beats
 
-**Crown** (at the tower summit, voice breaking): *"Listen, kid, before we go up... I was his teacher. This crown... is what's left of me."*
+> **Caption rule (DESIGN_LESSONS)**: every dialogue beat ≤8 words, buttons ≤3 words. Even in emotional scenes. Lines below have been split into beats.
 
-**Mornox** (meeting James, pouring tea): *"Four hundred years of waiting. You\'ll forgive the tea being a bit stewed."*
+### Volcano intro (volcano_intro · scene 1) — Crown
+Splits the original "We've done it. We've got all four..." line. Stays snarky-warm-not-somber:
+1. "Four down. One to go."
+2. "Top of the world, kid."
+3. "Lava up there. Don't lick it."
 
-**James** (Listen path): *"You were his teacher?" (to crown) "...that makes him your kid, kind of."* **Crown:** *"...yeah. It really does."*
+### The big reveal (volcano_crown_reveal · scene 13) — Crown
+Voice-acted with **stability bumped 0.5 → 0.75** for slower, lower-energy delivery. Add ~1-second silence between beats. This is the single biggest emotional beat in the game — let it land.
+1. "Wait. Before we go up."
+2. "I was his teacher, kid."
+3. "This crown? It's what's left of me."
+4. "He did this. To me."
 
-**Mornox** (Fight phase 3, throwing everything): *"I'M TIRED! I'M SO TIRED! LET ME REST!"*
+### Mornox first meeting (volcano_mornox_meet · scene 16) — Mornox pouring tea
+1. "Four hundred years I waited."
+2. "Tea's a bit old. Sorry."
 
-**Mornox** (Listen-path goodbye, first line in sunlight): *"Huh. Sun. I\'d forgotten."*
+### Heart-punch (volcano_mornox_listen) — keep as-is
+- **James:** *"You were his teacher?"* (then to crown) *"...that makes him your kid, kind of."*
+- **Crown:** *"...yeah. It really does."*
 
-**Ending Crown line:** *"You did it, kid. You\'re the real king now. Now go eat something. I\'ll make tea. It\'ll be terrible. I\'m a crown. But I\'ll make tea."*
+### Mornox phase 3 meltdown (volcano_mornox_p3) — keep, optionally add middle beat
+1. *"I'M TIRED!"*
+2. *"FOUR HUNDRED YEARS!"* ← optional — a number a 7yo latches onto
+3. *"LET ME REST!"*
+
+### Listen-path goodbye (volcano_mornox_goodbye) — keep
+- **Mornox** (first sun in 400 years): *"Huh. Sun. I'd forgotten."* — best line in the script. Don't touch.
+
+### Ending sign-off (volcano_end · scene 23) — Crown
+Splits the original "You did it, kid..." wall:
+1. "You did it, kid."
+2. "You're the real king now."
+3. "Go eat something."
+4. "I'll make tea. It'll be awful." *("awful" beats "terrible" for kid vocab)*
+5. "I'm a crown. But I'll try."
+
+### Comedy relief in heavy stretch (scenes 9–14)
+
+The 5 consecutive heavy dialogue scenes will tire a 7yo emotionally. Plant micro-laughs:
+
+- **volcano_base** (scene 2): Crown ribs James about packing. *"Did you bring a sword? Good. Pants? Also good."*
+- **volcano_dragon_rest** (scene 9): James/Crown beat. *James: "Are you crying?"* *Crown: "Crowns don't cry. We leak."*
+- **volcano_empty_floor** (scene 11): James misreads Zephyra's name. *James: "Zeph-eye-ra?"* *Crown: "Zephyra."* *James: "I was close."*
+- **volcano_old_mornox** (scene 12): James to the portrait. *James: "He looks like a substitute teacher."* (Beats the kid breathing room before the big reveal in #13.)
+- **volcano_door** (scene 14): kettle whistles offstage. *James: "Is that... tea?"* *Crown: "Oh no."*
 
 ---
 
 ## 9. Content to author
 
-- `data/quests/volcano.js` — 22-scene finale
+- `data/quests/volcano.js` — **23-scene finale** (was 22 — the new pre-Mornox prep scene per §5 brings it to 23)
 - `data/enemies.js` — Lava Spirit, Obsidian Golem, Tempered Dragon (3-phase), **Mornox** (boss with 3 phases OR as a single scaling entity with changing type)
 - `data/allies.js` — no new allies (final arc uses existing roster)
 - `data/gear.js` — Tier 6 per §6
@@ -213,7 +276,12 @@ Kid should finish each fight with 30–50% HP if playing smart. Scrolls and alli
 □ Mixed-type battles throughout — target picker mandatory
 □ Every kid-accessible move has a super-effective target SOMEWHERE in the arc
 □ Each choice scene has real trade-offs (ash field, tower climb, etc.)
-□ Every boss has pre-fight prep (dragon prep + Mornox doesn't prep, he's the finale)
+□ Every boss has pre-fight prep (dragon prep + **Mornox prep at the kettle** — Rule 2.3 holds for the finale too)
+□ Caption rule honored: every dialogue beat ≤8 words, buttons ≤3 words (see §8 — emotional scenes split into beats, not big walls)
+□ Comedy relief planted in scenes 9–14 to keep a 7yo from emotionally tapping out (see §8)
+□ Mornox says *out loud* he can't forgive himself in volcano_redemption_ritual (Listen path) — the inner half of the Forgiveness theme
+□ Fight ending has NO "you should have listened" line; Crown grieves, doesn't judge
+□ Crown reveal scene (volcano_crown_reveal) voice-acted with stability 0.75 + 1-sec inter-beat pad
 □ Star of Friendship bonus applied (+4 HP + Friend's Beacon move)
 □ Tier 6 gear shipped + Tier 7 Royal post-game unlock framework
 □ Listen path unlocked only with ≥3 kindness flags (Rule 2.1 — choices MUST matter)

@@ -1,3 +1,7 @@
+> ⚠️ **HISTORICAL SPEC — NOT CANONICAL.** This document plans a Sirena (Forgotten Mermaid) version of beach that was never built. The shipped beach arc instead features **Drifter the Healer** (see [`../data/quests/beach.js`](../data/quests/beach.js)). Same theme (kindness, Mornox's lying-to-isolate MO), different character. Refer to beach.js for the actual beach lore; refer to [`../PLOT_BIBLE.md`](../PLOT_BIBLE.md) §4 Arc 3 for the canonical summary. This file is preserved for historical context.
+
+---
+
 # Beach Arc — "The Silver Shore"
 
 > Authoring this arc? First read [`../DESIGN_LESSONS.md`](../DESIGN_LESSONS.md), [`../PLOT_BIBLE.md`](../PLOT_BIBLE.md), and [`./gear-progression.md`](./gear-progression.md). Tick the "Quick checklist for shipping a new arc" at the bottom of DESIGN_LESSONS before declaring done.
