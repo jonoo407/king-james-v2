@@ -256,6 +256,8 @@ This plants the crown-was-Mornox's-teacher twist for the curious kid who reads l
 - The final confrontation is earned by 5 arcs of thematic setup.
 - The mirror theme (James and Mornox) gives the game emotional weight without being heavy.
 
+> **🎉 Status (May 6, 2026): GAME COMPLETE.** All 5 arcs shipped, voiced (547/548 beats), and post-ship vibe-checked twice. Both Volcano endings (Fight + Listen) are playable end-to-end. Future work — Tier 7 Royal endgame gear and Trophy Hall post-game challenges — is documented in [`arcs/gear-progression.md`](arcs/gear-progression.md) §Tier 7 but not yet implemented.
+
 ### Design rule (add to DESIGN_LESSONS.md)
 **Rule 6.5 · Main villain must appear in EVERY arc, not just endgame.**
 - Rule: even if Mornox isn't a boss in an arc, he must be *felt* — via a scroll, a message, a hijacked crown voice, a physical gift at the castle. Every arc ending needs a Mornox beat.

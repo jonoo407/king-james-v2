@@ -2,12 +2,14 @@
 
 A kids' RPG. Collect magical Crown Treasures, befriend creatures, level up, save the kingdom.
 
+**🎉 Status: All 5 arcs shipped + voiced + post-ship vibe-checked. The game is playable end-to-end.** Live at https://jonoo407.github.io/king-james-v2/.
+
 - **Design concept:** see [`CONCEPT.md`](CONCEPT.md)
 - **📖 Plot bible (main villain + treasure weave across all 5 arcs):** see [`PLOT_BIBLE.md`](PLOT_BIBLE.md)
 - **Build architecture:** see [`BUILD_ARCHITECTURE.md`](BUILD_ARCHITECTURE.md)
 - **⚠️ Design lessons (READ BEFORE AUTHORING NEW CONTENT):** see [`DESIGN_LESSONS.md`](DESIGN_LESSONS.md) — captures every mistake we've made and the rules that prevent repeating them
-- **Arc specs:** see [`arcs/`](arcs/) folder — one file per adventure:
-  - [Mountain](arcs/mountain.md) (shipped) · [Beach](arcs/beach.md) · [Desert](arcs/desert.md) · [Volcano](arcs/volcano.md) *(finale)*
+- **Arc specs:** see [`arcs/`](arcs/) folder — one file per adventure (all shipped):
+  - [Mountain](arcs/mountain.md) · [Beach](arcs/beach.md) · [Desert](arcs/desert.md) · [Volcano](arcs/volcano.md) *(finale — 25 scenes, two endings)*
 - **Gear ladder:** see [`arcs/gear-progression.md`](arcs/gear-progression.md)
 - **Target audience:** smart 7-year-old (reads Dog Man / Captain Underpants level)
 

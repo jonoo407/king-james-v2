@@ -1,7 +1,7 @@
 # Voice System — Status & Handoff
 
-**Last updated:** April 24, 2026 — All 4 shipped arcs (intro + forest + mountain + beach + desert) fully voiced. 392/393 dialogue beats covered (only volcano_stub line uncovered, by design). Zephyra cast as Beatrice. Manifest rebuilt. Orphaned flat-numbered clips purged.
-**ElevenLabs API Key:** sk_111111822a9879bd2a381eb8271a551f7a54e62a058945f0
+**Last updated:** May 6, 2026 — **🎉 GAME COMPLETE.** All 5 arcs shipped (intro + forest + mountain + beach + desert + volcano) with 547 of 548 dialogue beats voiced. Only the Widow's single epilogue line is unvoiced (no casting — see line counts table below).
+**ElevenLabs API Key:** sk_111111822a9879bd2a381eb8271a551f7a54e62a058945f0 *(repo private; rotate before any public release)*
 **Model:** eleven_turbo_v2_5
 
 ## Voice Casting — Locked Picks (Complete)
@@ -32,49 +32,43 @@
 | 🧚 Forest Sprite | Lumi - Tiny & Sweet | AVYJxaX5Uon5HKPfdVo9 | Mischievous fairy. |
 | 🧙‍♀️ Zephyra | Beatrice - Mature Female Storyteller | kkPJzQOWz2Oz9cUaEaQd | British / old / female. Dry, weary. Cast 2026-04-24 via library search (no audition needed — perfect spec match). stability 0.55 / similarity 0.85. |
 
-## Dialogue Line Counts (exact, from parsed quest files)
+## Dialogue Line Counts (exact, from parsed quest files — all 5 arcs)
 
-| Character | Speaker ID | Lines | Arc(s) |
-|-----------|-----------|-------|--------|
-| Crown | `crown` | 97 | all |
-| James | `james` | 58 | all |
-| Narrator | `narrator` | 52 | all |
-| Foxy | `foxy` | 16 | forest, mountain, beach |
-| Drifter | `drifter` | 10 | beach |
-| Yeti | `yeti` | 10 | mountain |
-| Mornox | `mornox` | 11 | forest, mountain, beach |
-| Finn | `finn` | 7 | beach |
-| Wraith (Glimmer) | `wraith` | 7 | mountain |
-| Ribbit | `ribbit` | 6 | forest, mountain |
-| Gus | `gus` | 4 | mountain |
-| Owlette | `owlette` | 3 | mountain |
-| Frostbeard | `frostbeard` | 2 | mountain |
-| **Zephyra** | `zephyra` | **29** (new, unvoiced) | desert |
-| **TOTAL (existing + desert)** | | **283 existing + 109 new desert = 392** | |
+| Character | Speaker ID | Total | intro | forest | mountain | beach | desert | volcano |
+|---|---|---|---|---|---|---|---|---|
+| Crown | `crown` | 168 | 14 | 23 | 31 | 29 | 25 | 46 |
+| Narrator | `narrator` | 115 | 4 | 2 | 13 | 33 | 28 | 35 |
+| James | `james` | 111 | 6 | 16 | 17 | 19 | 24 | 29 |
+| Mornox | `mornox` | 47 | — | 4 | 4 | 3 | 3 | 33 |
+| Zephyra | `zephyra` | 30 | — | — | — | — | 29 | 1 |
+| Foxy | `foxy` | 18 | — | 13 | 1 | 2 | — | 2 |
+| Yeti (Papa) | `yeti` | 11 | — | — | 10 | — | — | 1 |
+| Drifter | `drifter` | 11 | — | — | — | 10 | — | 1 |
+| Wraith (Glimmer) | `wraith` | 8 | — | — | 7 | — | — | 1 |
+| Finn | `finn` | 8 | — | — | — | 7 | — | 1 |
+| Ribbit | `ribbit` | 7 | — | 5 | 1 | — | — | 1 |
+| Gus | `gus` | 5 | — | — | 4 | — | — | 1 |
+| Owlette | `owlette` | 4 | — | 1 | 2 | — | — | 1 |
+| Frostbeard | `frostbeard` | 3 | — | — | 2 | — | — | 1 |
+| Pompadour | `pompadour` | 1 | — | — | — | — | — | 1 |
+| Widow | `widow` | 1 | — | — | — | — | — | 1 (unvoiced) |
+| **TOTAL** | | **548** | **24** | **64** | **92** | **103** | **109** | **155** |
 
-### Desert arc line counts (new — generate after casting Zephyra)
+**Voiced**: 547 / 548 beats. The single unvoiced beat is the Widow's epilogue line (`volcano_epilogue` beat 10) — kid sees text without audio.
 
-| Speaker | Desert lines |
-|---|---|
-| zephyra | 29 |
-| narrator | 28 |
-| crown | 25 |
-| james | 24 |
-| mornox | 3 |
-| **Desert total** | **109** |
-
-*Note: Sirena, Joon, Pompadour cast but have no dialogue in current quest files (Volcano arc not yet written).*
+**Cast but unused**: Sirena (replaced by Drifter in shipped beach), Joon, Hoarder Troll, Briar Wolf, Goblin Scout, Sea Serpent, Tide Crab, Forest Sprite — these are enemy quipLine voices that fire as battle barks, not dialogue beats. Counted in the cast table above but not in dialogue line counts.
 
 ## Implementation Plan
 
 ### ✅ Phase 0 — Voice casting COMPLETE
 All 22 characters cast. See Locked Picks table above.
 
-### ✅ Phase 1 — Generate all audio files (COMPLETE)
+### ✅ Phase 1 — Generate all audio files (COMPLETE — all 5 arcs)
 - Script: `scripts/generate_voices.js`
 - Output: `audio/voices/{speaker_id}/{scene_id}_{beat_index}.mp3`
 - Example: `audio/voices/crown/forest_intro_0.mp3`
-- Arcs covered: intro, forest, mountain, beach (283 lines)
+- Arcs covered: intro, forest, mountain, beach, desert, **volcano** (547 voiced lines)
+- Per-scene stability override: `volcano_crown_reveal` Crown beats use stability 0.75 for slower, lower-energy delivery (the biggest emotional beat in the game)
 - Resume-safe: skips files that already exist
 - Run: `node scripts/generate_voices.js`
 
