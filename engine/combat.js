@@ -77,19 +77,36 @@ KJ.Combat = (function () {
   }
 
   // ---------- BATTLE CREATION ----------
-  function makeBattle({ playerTeam, enemyTeam, rewards, onComplete }) {
+  // Optional `phases`: an array of enemy-team arrays. When phase N's enemies
+  // are all defeated AND there's a phase N+1, the battle stays IN_PROGRESS
+  // and enemyTeam is replaced with the next phase. Battle ends VICTORY only
+  // when the last phase is cleared. If `phases` isn't passed, behavior is
+  // identical to the original single-clear semantics.
+  function makeBattle({ playerTeam, enemyTeam, phases, rewards, onComplete }) {
     const battle = {
       state: 'IN_PROGRESS',
       turn: 0,
       log: [],
       playerTeam: playerTeam.map(c => ({ ...c })),
       enemyTeam: enemyTeam.map(c => ({ ...c })),
+      phases: Array.isArray(phases) ? phases.map(p => p.map(e => ({ ...e }))) : null,
+      currentPhase: 0,
       rewards: rewards || { gold: [0,0], xp: 0, drops: [] },
       pendingTelegraph: null, // string the UI should show before enemy turn
       onComplete,
     };
     log(battle, 'battle_start');
     return battle;
+  }
+
+  // Promote the next phase into enemyTeam. Returns true if advanced, false if
+  // there's no next phase (caller should set VICTORY).
+  function advancePhase(battle) {
+    if (!battle.phases || battle.currentPhase >= battle.phases.length - 1) return false;
+    battle.currentPhase++;
+    battle.enemyTeam = battle.phases[battle.currentPhase].map(e => ({ ...e }));
+    log(battle, 'phase_advance', { phase: battle.currentPhase });
+    return true;
   }
 
   function log(battle, kind, data) {
@@ -186,8 +203,13 @@ KJ.Combat = (function () {
 
     // Check end conditions
     if (allDown(battle.enemyTeam)) {
-      battle.state = 'VICTORY';
-      log(battle, 'victory');
+      // Multi-phase: advance to next phase instead of ending if more remain.
+      if (advancePhase(battle)) {
+        // Stay IN_PROGRESS; enemyTeam now holds the next phase's enemies.
+      } else {
+        battle.state = 'VICTORY';
+        log(battle, 'victory');
+      }
     } else if (allDown(battle.playerTeam)) {
       battle.state = 'DEFEAT';
       log(battle, 'defeat');
@@ -313,7 +335,7 @@ KJ.Combat = (function () {
 
   return {
     typeMultiplier, computeDamage, previewDamage, findWeakness,
-    makeBattle, applyAction,
+    makeBattle, applyAction, advancePhase,
     turnOrder, chooseEnemyAction, enemyTelegraph,
     buildPlayerTeam, allyToCombatant, enemyToCombatant,
   };

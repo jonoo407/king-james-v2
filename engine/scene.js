@@ -174,6 +174,16 @@ KJ.Scene = (function () {
       delete state.progress.questsInProgress[params.id];
       KJ.Events.emit('quest_completed', { questId: params.id });
     },
+    // Volcano: out-of-battle spark recovery (used at volcano_dragon_rest so
+    // the kid isn't spark-starved entering the Mornox sequence).
+    // params.amount = number to add (capped at level max). Omit = full refill.
+    grant_sparks(params) {
+      const state = KJ.State.get();
+      const cap = (KJ.maxSparksForLevel ? KJ.maxSparksForLevel(state.player.level) : 6);
+      const cur = (typeof state.player.sparks === 'number') ? state.player.sparks : 0;
+      const add = (params && typeof params.amount === 'number') ? params.amount : cap;
+      state.player.sparks = Math.min(cap, cur + add);
+    },
   };
 
   function applyEffects(effects) {
@@ -193,6 +203,7 @@ KJ.Scene = (function () {
     treasure_owned: (p) => KJ.State.get().progress.treasures.includes(p.id),
     flag_set: (p) => KJ.State.get().progress.flags[p.key] === p.value,
     flag_not_set: (p) => KJ.State.get().progress.flags[p.key] !== true,
+    volcano_can_listen: () => !!(KJ.Volcano && KJ.Volcano.canListen(KJ.State.get())),
     level_at_least: (p) => KJ.State.get().player.level >= p.level,
     gold_at_least: (p) => KJ.State.get().inventory.gold >= p.amount,
     charms_at_least: (p) => KJ.State.get().inventory.charms >= p.amount,

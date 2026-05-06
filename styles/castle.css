@@ -71,6 +71,37 @@
 .kj-bg-forest_clearing { background: linear-gradient(180deg, #3f6140 0%, #1e3a23 100%); }
 /* Sepia-tone flashback (Desert Zephyra dream sequence) */
 .kj-bg-flashback { background: linear-gradient(180deg, #c9a57a 0%, #6b4a2a 100%); filter: sepia(0.4); }
+.kj-bg-volcano   { background: linear-gradient(180deg, #5a1a1a 0%, #1a0808 100%); }
+
+/* Mornox dialogue frame — gold/purple flame border. Apply by adding the
+   class to the scene wrap in any scene that should signal Mornox's presence. */
+.kj-frame-mornox {
+  box-shadow: inset 0 0 32px 4px rgba(212, 122, 255, 0.35),
+              inset 0 0 80px 8px rgba(255, 200, 64, 0.20);
+  border: 2px solid #d47aff;
+  position: relative;
+}
+.kj-frame-mornox::before {
+  content: '';
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(45deg,
+    rgba(212, 122, 255, 0.06) 0 8px, transparent 8px 16px);
+}
+
+/* Ending scene */
+.kj-ending-wrap { padding: 40px 24px; min-height: 100dvh; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.kj-ending-stage { width: 100%; max-width: 600px; text-align: center; }
+.kj-ending-crown { font-size: 80px; animation: kj-wobble 2s ease-in-out infinite; margin-bottom: 12px; }
+.kj-ending-speaker { font-size: 16px; color: #ffd34d; min-height: 1em; }
+.kj-ending-text { font-size: 22px; color: #fff; min-height: 2em; padding: 14px; line-height: 1.5; text-shadow: 1px 1px 4px rgba(0,0,0,0.8); }
+.kj-ending-summary { margin-top: 24px; }
+.kj-ending-final { background: rgba(0,0,0,0.5); border: 2px solid gold; border-radius: 14px; padding: 20px; }
+.kj-ending-headline { font-size: 28px; color: gold; margin-bottom: 16px; }
+.kj-ending-section { margin: 12px 0; }
+.kj-ending-section-title { font-size: 16px; color: #ffd34d; margin-bottom: 8px; }
+.kj-ending-badges, .kj-ending-trophies { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+.kj-trophy-chip { background: #2d1b69; color: #fff; padding: 4px 10px; border-radius: 12px; font-size: 14px; }
 
 /* Title screen */
 .kj-title-screen {

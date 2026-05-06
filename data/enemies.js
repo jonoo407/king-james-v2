@@ -283,6 +283,111 @@
         'I... was... not always like this...',
       ],
     },
+
+    // ============================================================
+    //  VOLCANO ARC (Tier 6) — fire / earth trash + Tempered Dragon (2 phases) + Mornox (3 phases)
+    //  HP values are catalog (pre-multiplier). Runtime ×1.3 = effective.
+    // ============================================================
+    {
+      // Fire trash — water moves SE home. Mirror Sun Wisp scaled +Lv 2.
+      id: 'lava_spirit', name: 'Lava Spirit', emoji: '🟠', type: 'fire',
+      level: 8,
+      stats: { hp: 26, atk: 8, def: 3, spd: 9 },
+      moves: ['lava_spit', 'spark'],
+      behavior: { pattern: 'cycle', sequence: [0, 1, 0] },
+      rewards: { xp: 28, gold: [14, 22], drops: [] },
+      quipLines: ['*pop*', 'Hot hot hot!', 'Don\'t splash!', 'Sssssss—'],
+    },
+    {
+      // Earth trash — fire moves SE home. Slow but heavy.
+      id: 'obsidian_golem', name: 'Obsidian Golem', emoji: '🗿', type: 'earth',
+      level: 8,
+      stats: { hp: 38, atk: 10, def: 7, spd: 4 },
+      moves: ['magma_throw', 'club_smash'],
+      behavior: { pattern: 'cycle', sequence: [0, 0, 1, 0] },
+      rewards: { xp: 36, gold: [18, 30], drops: [] },
+      quipLines: ['...', '*RUMBLE*', 'STAY OUT.', '*cracks*'],
+    },
+    {
+      // Tempered Dragon — Phase 1 (fire form). Dragon Scale armor 100% drop.
+      id: 'tempered_dragon_fire', name: 'Tempered Dragon', emoji: '🐲', type: 'fire',
+      level: 9,
+      stats: { hp: 80, atk: 13, def: 9, spd: 7 },
+      moves: ['inferno_breath', 'claw_swipe', 'ember_burst'],
+      behavior: { pattern: 'cycle', sequence: [1, 0, 2, 1] }, // telegraph inferno every 3rd
+      rewards: { xp: 80, gold: [70, 110], drops: [{ gear: 'dragon_scale', chance: 1.0 }] },
+      quipLines: [
+        'YOU. SHALL. NOT.',
+        '*roars*',
+        'I OBEY. I OBEY. I OBEY.',
+        'The chain is hot, little king.',
+        '...he made me.',
+      ],
+    },
+    {
+      // Tempered Dragon — Phase 2 (magic form, transformed). Wind moves SE home.
+      id: 'tempered_dragon_magic', name: 'Tempered Dragon', emoji: '🐲', type: 'magic',
+      level: 9,
+      stats: { hp: 70, atk: 14, def: 8, spd: 9 },
+      moves: ['mind_bend', 'void_pulse', 'shadow_bolt'],
+      behavior: { pattern: 'cycle', sequence: [0, 0, 1] }, // telegraph void_pulse
+      rewards: { xp: 60, gold: [60, 90], drops: [] },
+      quipLines: [
+        '*shifts*',
+        'Different shape. Same chain.',
+        'You can\'t hurt what isn\'t solid.',
+        '...he taught me this trick.',
+        'Almost free.',
+      ],
+    },
+    {
+      // Mornox — Phase 1 (magic primary, fire summons in spirit). Wind SE home.
+      id: 'mornox_p1', name: 'Mornox', emoji: '🧙‍♂️', type: 'magic',
+      level: 10,
+      stats: { hp: 90, atk: 13, def: 10, spd: 8 },
+      moves: ['shadow_bolt', 'ember_burst', 'mind_bend'],
+      behavior: { pattern: 'cycle', sequence: [0, 1, 0, 2] },
+      rewards: { xp: 100, gold: [0, 0], drops: [] }, // gold/drops on final phase only
+      quipLines: [
+        'Tea\'s getting cold, little king.',
+        '*sigh*',
+        'You\'re very loud.',
+        'My back. Oh my back.',
+        '...you remind me of someone.',
+      ],
+    },
+    {
+      // Mornox — Phase 2 (water form, frozen ice-magic). Magic SE home only.
+      id: 'mornox_p2', name: 'Mornox', emoji: '🧙‍♂️', type: 'water',
+      level: 10,
+      stats: { hp: 90, atk: 14, def: 11, spd: 7 },
+      moves: ['frost_lance', 'ice_grip', 'ice_cut'],
+      behavior: { pattern: 'cycle', sequence: [1, 0, 2, 0] },
+      rewards: { xp: 100, gold: [0, 0], drops: [] },
+      quipLines: [
+        'Cold suits me.',
+        'Four. Hundred. Years.',
+        '*shudders*',
+        'You don\'t know what tired means.',
+        'Stop. Just for a moment. Stop.',
+      ],
+    },
+    {
+      // Mornox — Phase 3 (earth+magic). Final phase. Mage Saber drop.
+      id: 'mornox_p3', name: 'Mornox', emoji: '🧙‍♂️', type: 'magic',
+      level: 11,
+      stats: { hp: 100, atk: 15, def: 11, spd: 8 },
+      moves: ['shatter_storm', 'earth_grasp', 'void_pulse'],
+      behavior: { pattern: 'cycle', sequence: [0, 1, 2, 0, 1] }, // telegraph shatter_storm
+      rewards: { xp: 200, gold: [200, 280], drops: [{ gear: 'mage_saber', chance: 1.0 }] },
+      quipLines: [
+        'I\'M TIRED!',
+        'FOUR HUNDRED YEARS!',
+        'LET ME REST!',
+        '...please.',
+        'Thank... you. Finally.',
+      ],
+    },
   ];
 
   E.forEach(e => KJ.Registry.enemies.add(e));

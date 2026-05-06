@@ -10,8 +10,20 @@ KJ.UI.BattleScene = (function () {
   function render(scene, ctx) {
     const state = KJ.State.get();
     const playerTeam = KJ.Combat.buildPlayerTeam(state);
-    const enemyTeam = (scene.enemies || []).map((id, i) => KJ.Combat.enemyToCombatant(id, i)).filter(Boolean);
-    const battle = KJ.Combat.makeBattle({ playerTeam, enemyTeam, rewards: scene.rewards });
+
+    // Multi-phase support: scene.phases = [[enemyId, ...], [enemyId, ...]]
+    // For backward compat, scene.enemies is the single-phase shorthand.
+    const buildPhase = (ids) =>
+      (ids || []).map((id, i) => KJ.Combat.enemyToCombatant(id, i)).filter(Boolean);
+    let enemyTeam, phases;
+    if (Array.isArray(scene.phases) && scene.phases.length) {
+      phases = scene.phases.map(buildPhase);
+      enemyTeam = phases[0];
+    } else {
+      enemyTeam = buildPhase(scene.enemies);
+      phases = null;
+    }
+    const battle = KJ.Combat.makeBattle({ playerTeam, enemyTeam, phases, rewards: scene.rewards });
 
     // First-battle tutorial: inject 2 crown quips into the log (visible in battle log)
     if (!state.progress.flags['tutorial_battle_done']) {

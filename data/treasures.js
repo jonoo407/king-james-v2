@@ -24,7 +24,7 @@
       flavor: 'Burns when you\'re about to give up.' },
 
     { id: 'star_of_friendship', name: 'Star of Friendship', emoji: '🌟',
-      element: 'magic', jamesBonus: { hp: 4 },
+      element: 'magic', jamesBonus: { hp: 4, addMove: 'friends_beacon' },
       unlocksRoom: 'alliance_hall',
       flavor: 'Brighter with each friend.' },
   ];

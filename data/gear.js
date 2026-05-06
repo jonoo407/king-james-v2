@@ -59,6 +59,16 @@
       type: 'magic', stats: { hp: 4, spd: 3 }, move: 'sun_burst', tier: 5, goldValue: 175 },
     { id: 'dune_runners',   name: 'Dune Runners',    slot: 'boots',  emoji: '🏜️',
       type: 'wind',  stats: { spd: 6 }, move: 'mirage_dash', tier: 5, goldValue: 160 },
+
+    // --- VOLCANO DROPS (Tier 6) ---
+    { id: 'mage_saber',    name: 'Mage Saber',     slot: 'weapon', emoji: '✨',
+      type: 'magic', stats: { atk: 8 }, move: 'arcane_slash', tier: 6, goldValue: 260 },
+    { id: 'dragon_scale',  name: 'Dragon Scale',   slot: 'armor',  emoji: '🐉',
+      type: 'fire',  stats: { def: 7, hp: 5 }, move: 'scale_wall', tier: 6, goldValue: 240 },
+    { id: 'star_pendant',  name: 'Star Pendant',   slot: 'trinket',emoji: '💫',
+      type: 'magic', stats: { hp: 5, spd: 4 }, move: 'star_dust', tier: 6, goldValue: 220 },
+    { id: 'phoenix_boots', name: 'Phoenix Boots',  slot: 'boots',  emoji: '🔥',
+      type: 'fire',  stats: { spd: 7, atk: 2 }, move: 'phoenix_dash', tier: 6, goldValue: 210 },
   ];
 
   G.forEach(g => KJ.Registry.gear.add(g));

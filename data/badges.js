@@ -74,6 +74,25 @@
       description: 'See Mornox in person and keep walking.',
       predicate: (s) => s.progress.flags['saw_mornox'] === true,
       hidden: false, goldReward: 40 },
+
+    // Volcano badges (the finale)
+    { id: 'true_king', name: 'True King', emoji: '👑',
+      description: 'Complete the game — any ending.',
+      predicate: (s) => (s.progress.questsCompleted || []).includes('volcano'),
+      hidden: false, goldReward: 200 },
+    { id: 'listen_and_learn', name: 'Listen & Learn', emoji: '👂',
+      description: 'Sit down with Mornox instead of fighting.',
+      predicate: (s) => s.progress.flags['volcano_listened'] === true,
+      hidden: false, goldReward: 100 },
+    { id: 'forgiven', name: 'Forgiven', emoji: '🌅',
+      description: 'See Mornox redeemed (Listen-path ending).',
+      predicate: (s) => s.progress.flags['mornox_redeemed'] === true,
+      hidden: false, goldReward: 100 },
+    { id: 'fully_forged', name: 'Fully Forged', emoji: '⚒️',
+      description: 'Collect all 5 Treasures and upgrade 4+ gear pieces at the Armory.',
+      predicate: (s) => (s.progress.treasures || []).length >= 5
+        && (s.inventory.enhancedGear || []).length >= 4,
+      hidden: false, goldReward: 150 },
   ];
   B.forEach(b => KJ.Registry.badges.add(b));
 })();
