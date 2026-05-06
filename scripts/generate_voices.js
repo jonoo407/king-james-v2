@@ -37,7 +37,7 @@ const VOICES = {
 const questScenes = {};
 global.KJ = { Registry: { quests: { add: (q) => { questScenes[q.id] = q.scenes; } } } };
 
-for (const arc of ['intro', 'forest', 'mountain', 'beach', 'desert']) {
+for (const arc of ['intro', 'forest', 'mountain', 'beach', 'desert', 'volcano']) {
   const p = path.join(__dirname, '..', 'data', 'quests', arc + '.js');
   if (fs.existsSync(p)) eval(fs.readFileSync(p, 'utf8'));
 }
@@ -49,7 +49,17 @@ for (const [, scenes] of Object.entries(questScenes)) {
     if (!scene.beats) continue;
     scene.beats.forEach((beat, i) => {
       if (!VOICES[beat.speaker]) return; // skip unvoiced speakers
-      jobs.push({ speaker: beat.speaker, text: beat.text, scene: scene.id, index: i });
+      // Per-scene stability override: the Crown reveal in Volcano needs a slower,
+      // lower-energy delivery (per arcs/volcano.md §8). Bump stability for Crown
+      // beats in that scene only.
+      let stabilityOverride = null;
+      if (scene.id === 'volcano_crown_reveal' && beat.speaker === 'crown') {
+        stabilityOverride = 0.75;
+      }
+      jobs.push({
+        speaker: beat.speaker, text: beat.text, scene: scene.id, index: i,
+        stabilityOverride,
+      });
     });
   }
 }
@@ -104,7 +114,8 @@ function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
     let attempts = 0;
     while (attempts < 3) {
       try {
-        const res = await tts(v.id, job.text, v.stability, v.similarity);
+        const stab = (job.stabilityOverride != null) ? job.stabilityOverride : v.stability;
+        const res = await tts(v.id, job.text, stab, v.similarity);
         if (res.status === 200) {
           fs.writeFileSync(file, res.body);
           process.stdout.write('OK\n');

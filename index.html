@@ -13,13 +13,13 @@
 -->
 
 <!-- Styles (order doesn't matter much, but we group logically) -->
-<link rel="stylesheet" href="styles/base.css?v=15">
-<link rel="stylesheet" href="styles/animations.css?v=15">
-<link rel="stylesheet" href="styles/hud.css?v=15">
-<link rel="stylesheet" href="styles/castle.css?v=15">
-<link rel="stylesheet" href="styles/scene.css?v=15">
-<link rel="stylesheet" href="styles/battle.css?v=15">
-<link rel="stylesheet" href="styles/character.css?v=15">
+<link rel="stylesheet" href="styles/base.css?v=16">
+<link rel="stylesheet" href="styles/animations.css?v=16">
+<link rel="stylesheet" href="styles/hud.css?v=16">
+<link rel="stylesheet" href="styles/castle.css?v=16">
+<link rel="stylesheet" href="styles/scene.css?v=16">
+<link rel="stylesheet" href="styles/battle.css?v=16">
+<link rel="stylesheet" href="styles/character.css?v=16">
 </head>
 <body>
 
@@ -32,62 +32,62 @@
 -->
 
 <!-- 1. Engine foundation -->
-<script src="engine/constants.js?v=15"></script>
-<script src="engine/events.js?v=15"></script>
-<script src="engine/registry.js?v=15"></script>
-<script src="engine/state.js?v=15"></script>
-<script src="engine/profiles.js?v=15"></script>
-<script src="engine/audio.js?v=15"></script>
-<script src="engine/effects.js?v=15"></script>
-<script src="engine/statuses.js?v=15"></script>
-<script src="engine/traits.js?v=15"></script>
+<script src="engine/constants.js?v=16"></script>
+<script src="engine/events.js?v=16"></script>
+<script src="engine/registry.js?v=16"></script>
+<script src="engine/state.js?v=16"></script>
+<script src="engine/profiles.js?v=16"></script>
+<script src="engine/audio.js?v=16"></script>
+<script src="engine/effects.js?v=16"></script>
+<script src="engine/statuses.js?v=16"></script>
+<script src="engine/traits.js?v=16"></script>
 
 <!-- 2. Engine systems -->
-<script src="engine/scene.js?v=15"></script>
-<script src="engine/combat.js?v=15"></script>
+<script src="engine/scene.js?v=16"></script>
+<script src="engine/combat.js?v=16"></script>
 
 <!-- 3. Engine UI renderers -->
-<script src="engine/ui/hud.js?v=15"></script>
-<script src="engine/ui/castle.js?v=15"></script>
-<script src="engine/ui/map.js?v=15"></script>
-<script src="engine/ui/character.js?v=15"></script>
-<script src="engine/ui/gear-chest.js?v=15"></script>
-<script src="engine/ui/ally-room.js?v=15"></script>
-<script src="engine/ui/trophy-hall.js?v=15"></script>
-<script src="engine/ui/levelup.js?v=15"></script>
-<script src="engine/ui/library.js?v=15"></script>
-<script src="engine/ui/armory.js?v=15"></script>
-<script src="engine/ui/debug.js?v=15"></script>
-<script src="engine/ui/joker.js?v=15"></script>
+<script src="engine/ui/hud.js?v=16"></script>
+<script src="engine/ui/castle.js?v=16"></script>
+<script src="engine/ui/map.js?v=16"></script>
+<script src="engine/ui/character.js?v=16"></script>
+<script src="engine/ui/gear-chest.js?v=16"></script>
+<script src="engine/ui/ally-room.js?v=16"></script>
+<script src="engine/ui/trophy-hall.js?v=16"></script>
+<script src="engine/ui/levelup.js?v=16"></script>
+<script src="engine/ui/library.js?v=16"></script>
+<script src="engine/ui/armory.js?v=16"></script>
+<script src="engine/ui/debug.js?v=16"></script>
+<script src="engine/ui/joker.js?v=16"></script>
 <!-- Scene-type renderers (each registers with Registry.sceneTypes) -->
-<script src="engine/ui/choice.js?v=15"></script>
-<script src="engine/ui/dialogue.js?v=15"></script>
-<script src="engine/ui/puzzle.js?v=15"></script>
-<script src="engine/ui/battle.js?v=15"></script>
-<script src="engine/ui/ending.js?v=15"></script>
+<script src="engine/ui/choice.js?v=16"></script>
+<script src="engine/ui/dialogue.js?v=16"></script>
+<script src="engine/ui/puzzle.js?v=16"></script>
+<script src="engine/ui/battle.js?v=16"></script>
+<script src="engine/ui/ending.js?v=16"></script>
 
 <!-- 4. Data catalogs (order: types before consumers; quests last) -->
-<script src="data/types.js?v=15"></script>
-<script src="data/moves.js?v=15"></script>
-<script src="data/gear.js?v=15"></script>
-<script src="data/allies.js?v=15"></script>
-<script src="data/enemies.js?v=15"></script>
-<script src="data/treasures.js?v=15"></script>
-<script src="data/regions.js?v=15"></script>
-<script src="data/traits.js?v=15"></script>
-<script src="data/badges.js?v=15"></script>
-<script src="data/crown-dialogue.js?v=15"></script>
-<script src="data/scrolls.js?v=15"></script>
+<script src="data/types.js?v=16"></script>
+<script src="data/moves.js?v=16"></script>
+<script src="data/gear.js?v=16"></script>
+<script src="data/allies.js?v=16"></script>
+<script src="data/enemies.js?v=16"></script>
+<script src="data/treasures.js?v=16"></script>
+<script src="data/regions.js?v=16"></script>
+<script src="data/traits.js?v=16"></script>
+<script src="data/badges.js?v=16"></script>
+<script src="data/crown-dialogue.js?v=16"></script>
+<script src="data/scrolls.js?v=16"></script>
 
 <!-- 5. Quests (data). Adding a new quest = one new file + one <script src> here. -->
-<script src="data/quests/intro.js?v=15"></script>
-<script src="data/quests/forest.js?v=15"></script>
-<script src="data/quests/mountain.js?v=15"></script>
-<script src="data/quests/beach.js?v=15"></script>
-<script src="data/quests/desert.js?v=15"></script>
-<script src="data/quests/volcano.js?v=15"></script>
+<script src="data/quests/intro.js?v=16"></script>
+<script src="data/quests/forest.js?v=16"></script>
+<script src="data/quests/mountain.js?v=16"></script>
+<script src="data/quests/beach.js?v=16"></script>
+<script src="data/quests/desert.js?v=16"></script>
+<script src="data/quests/volcano.js?v=16"></script>
 
 <!-- 6. Boot (runs after DOMContentLoaded to mount the game) -->
-<script src="engine/boot.js?v=15"></script>
+<script src="engine/boot.js?v=16"></script>
 </body>
 </html>

@@ -126,11 +126,13 @@ const KNOWN_EFFECTS = new Set([
   'damage_party','heal_party','grant_gear','grant_gold','grant_charms',
   'consume_charm','grant_scroll','recruit_ally','mark_met_ally',
   'grant_treasure','unlock_room','grant_trophy','set_flag','complete_quest',
+  'grant_sparks',
 ]);
 
 const KNOWN_CONDITIONS = new Set([
   'has_gear','ally_in_party','ally_recruited','treasure_owned',
   'flag_set','flag_not_set','level_at_least','gold_at_least','charms_at_least',
+  'volcano_can_listen',
 ]);
 
 // Collect all scenes across all quests
@@ -248,7 +250,7 @@ check(A, `treasure addMove ids exist`, badTreasureMoves === 0);
 const speakerDisplayMap = {
   crown:1,james:1,narrator:1,foxy:1,ribbit:1,owlette:1,gus:1,
   frostbeard:1,yeti:1,wraith:1,pompadour:1,mornox:1,
-  finn:1,drifter:1,joon:1,sirena:1,zephyra:1,
+  finn:1,drifter:1,joon:1,sirena:1,zephyra:1,widow:1,
 };
 const unknownSpeakers = new Set();
 for (const s of allScenes.values()) {
