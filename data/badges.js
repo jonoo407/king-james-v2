@@ -49,7 +49,7 @@
 
     // Beach badges
     { id: 'serpent_friend', name: 'Serpent\'s Friend', emoji: '🐍',
-      description: 'Befriend Sirena instead of fighting her.',
+      description: 'Free the baby sea serpents from the net.',
       predicate: (s) => s.progress.flags['serpent_friend'] === true,
       hidden: false, goldReward: 40 },
     { id: 'village_heart', name: 'Kind Coin', emoji: '🪙',
