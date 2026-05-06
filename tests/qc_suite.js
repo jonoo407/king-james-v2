@@ -127,6 +127,7 @@ const KNOWN_EFFECTS = new Set([
   'consume_charm','grant_scroll','recruit_ally','mark_met_ally',
   'grant_treasure','unlock_room','grant_trophy','set_flag','complete_quest',
   'grant_sparks',
+  'grant_xp',
 ]);
 
 const KNOWN_CONDITIONS = new Set([

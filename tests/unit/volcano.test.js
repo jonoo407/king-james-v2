@@ -245,6 +245,26 @@ describe('grant_sparks scene effect', () => {
 });
 
 // ───────────────────────────────────────────────────────────────────────
+describe('grant_xp scene effect', () => {
+  test('adds xp without exceeding level threshold', () => {
+    KJ.State.reset();
+    KJ.State.get().player.level = 1;
+    KJ.State.get().player.xp = 0;
+    KJ.Scene.applyEffects([{ type: 'grant_xp', amount: 5 }]);
+    expect(KJ.State.get().player.xp).toBe(5);
+    expect(KJ.State.get().player.level).toBe(1);
+  });
+
+  test('cascades level-ups when threshold crossed', () => {
+    KJ.State.reset();
+    KJ.State.get().player.level = 1;
+    KJ.State.get().player.xp = 0;
+    KJ.Scene.applyEffects([{ type: 'grant_xp', amount: 10000 }]);
+    expect(KJ.State.get().player.level).toBeGreaterThan(1);
+    expect(KJ.State.get().player.pendingStatPoints).toBeGreaterThan(0);
+  });
+});
+
 describe('volcano_can_listen condition', () => {
   test('false when flag count < 3', () => {
     KJ.State.reset();

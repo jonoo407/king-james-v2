@@ -184,6 +184,20 @@ KJ.Scene = (function () {
       const add = (params && typeof params.amount === 'number') ? params.amount : cap;
       state.player.sparks = Math.min(cap, cur + add);
     },
+    // Volcano Listen-path parity: grant XP outside of battle. Mirrors the
+    // level-up cascade in engine/ui/battle.js so the kid actually levels.
+    grant_xp(params) {
+      const state = KJ.State.get();
+      state.player.xp = (state.player.xp || 0) + ((params && params.amount) || 0);
+      while (KJ.xpForLevel && state.player.xp >= KJ.xpForLevel(state.player.level + 1)) {
+        state.player.level++;
+        state.player.pendingStatPoints = (state.player.pendingStatPoints || 0) + (KJ.STAT_POINTS_PER_LEVEL || 0);
+        if ((KJ.TRAIT_EVERY_N_LEVELS || 0) > 0 && state.player.level % KJ.TRAIT_EVERY_N_LEVELS === 0) {
+          state.player.pendingTraitPicks = (state.player.pendingTraitPicks || 0) + 1;
+        }
+        KJ.Events.emit('level_up', { newLevel: state.player.level });
+      }
+    },
   };
 
   function applyEffects(effects) {

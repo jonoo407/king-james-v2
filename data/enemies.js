@@ -312,7 +312,7 @@
       // Tempered Dragon — Phase 1 (fire form). Dragon Scale armor 100% drop.
       id: 'tempered_dragon_fire', name: 'Tempered Dragon', emoji: '🐲', type: 'fire',
       level: 9,
-      stats: { hp: 100, atk: 13, def: 9, spd: 7 },
+      stats: { hp: 110, atk: 13, def: 9, spd: 7 },
       moves: ['inferno_breath', 'claw_swipe', 'ember_burst'],
       behavior: { pattern: 'cycle', sequence: [1, 0, 2, 1] }, // telegraph inferno every 3rd
       rewards: { xp: 80, gold: [70, 110], drops: [{ gear: 'dragon_scale', chance: 1.0 }] },
@@ -344,7 +344,7 @@
       // Mornox — Phase 1 (magic primary, fire summons in spirit). Wind SE home.
       id: 'mornox_p1', name: 'Mornox', emoji: '🧙‍♂️', type: 'magic',
       level: 10,
-      stats: { hp: 115, atk: 13, def: 10, spd: 8 },
+      stats: { hp: 130, atk: 13, def: 10, spd: 8 },
       moves: ['shadow_bolt', 'ember_burst', 'mind_bend'],
       behavior: { pattern: 'cycle', sequence: [0, 1, 0, 2] },
       rewards: { xp: 100, gold: [0, 0], drops: [] }, // gold/drops on final phase only
@@ -376,7 +376,7 @@
       // Mornox — Phase 3 (earth+magic). Final phase. Mage Saber drop.
       id: 'mornox_p3', name: 'Mornox', emoji: '🧙‍♂️', type: 'magic',
       level: 11,
-      stats: { hp: 130, atk: 15, def: 11, spd: 8 },
+      stats: { hp: 145, atk: 15, def: 11, spd: 8 },
       moves: ['shatter_storm', 'earth_grasp', 'void_pulse'],
       behavior: { pattern: 'cycle', sequence: [0, 1, 2, 0, 1] }, // telegraph shatter_storm
       rewards: { xp: 200, gold: [200, 280], drops: [{ gear: 'mage_saber', chance: 1.0 }] },

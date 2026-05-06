@@ -122,6 +122,9 @@
       effects: [
         { type: 'grant_gold', amount: 30 },
         { type: 'grant_scroll', id: 'scroll_thunder', amount: 1 },
+        // Phoenix Boots — spec §6 lava-field rare drop, granted here so kids
+        // who took Zephyra's route get fire-typed boots for the climb.
+        { type: 'grant_gear', id: 'phoenix_boots' },
       ],
       next: 'volcano_dragon_pre',
     },
@@ -134,7 +137,7 @@
     {
       id: 'volcano_dragon_pre', type: 'choice', bg: 'volcano',
       art: '🐲🔥\n  🪨🪨  ',
-      caption: 'A massive dragon coils at the gate. It sees you.',
+      caption: 'A huge dragon at the gate.',
       crownLine: 'Big lizard. Sharp lizard. Plan, fast.',
       choices: [
         { label: 'Charge!', icon: '⚔️', next: 'volcano_dragon' },
@@ -254,6 +257,7 @@
       beats: [
         { speaker: 'crown', text: 'Wait. Before we go up.' },
         { speaker: 'crown', text: 'I was his teacher, kid.' },
+        { speaker: 'james', text: 'Wait — what?' },
         { speaker: 'crown', text: 'This crown? It\'s what\'s left of me.' },
         { speaker: 'crown', text: 'He did this. To me.' },
         { speaker: 'james', text: 'Crown...' },
@@ -287,7 +291,7 @@
     {
       id: 'volcano_pre_mornox', type: 'choice', bg: 'volcano',
       art: '🍵🪑🪑\n  🧙‍♂️  ',
-      caption: 'Two chairs. A kettle. He\'s waiting. Choose how you walk in.',
+      caption: 'Two chairs. A kettle. He\'s waiting inside.',
       crownLine: 'No going back from this room.',
       choices: [
         { label: 'Drink the tea', icon: '🍵', next: 'volcano_mornox_meet',
@@ -302,7 +306,7 @@
           ] },
         { label: 'Just walk in', icon: '🚪', next: 'volcano_mornox_meet',
           effects: [
-            { type: 'grant_scroll', id: 'scroll_fire', amount: 1 },
+            { type: 'grant_scroll', id: 'scroll_waterskin', amount: 1 },
             { type: 'set_flag', key: 'walked_in_focused', value: true },
           ] },
       ],
@@ -316,7 +320,7 @@
       crownLine: 'You decide what happens next, kid.',
       choices: [
         { label: 'Fight', icon: '⚔️', next: 'volcano_mornox_battle' },
-        { label: 'Sit down', icon: '👂', next: 'volcano_mornox_listen',
+        { label: 'Sit down', icon: '🪑', next: 'volcano_mornox_listen',
           condition: { type: 'volcano_can_listen' } },
         { label: 'Ask first', icon: '🗨️', next: 'volcano_mornox_ask' },
       ],
@@ -358,6 +362,23 @@
         ['mornox_p3'],
       ],
       rewards: { gold: [200, 280], xp: 400, drops: [{ gear: 'mage_saber', chance: 1.0 }] },
+      next: 'volcano_mornox_break',
+    },
+
+    // Spotlight Mornox's emotional crack — the spec's "I'M TIRED!" trio.
+    // Phase 3 quipLines fire as battle barks (which is good atmosphere) but
+    // those die in damage-number / button-tap noise. This dialogue beat
+    // guarantees the kid SEES the crack between the fight and the death.
+    {
+      id: 'volcano_mornox_break', type: 'dialogue', bg: 'volcano',
+      beats: [
+        { speaker: 'narrator', text: 'Mornox staggers. Robes torn. Still standing.' },
+        { speaker: 'mornox',   text: 'I\'M TIRED!' },
+        { speaker: 'mornox',   text: 'FOUR HUNDRED YEARS!' },
+        { speaker: 'james',    text: '...' },
+        { speaker: 'mornox',   text: 'JUST LET ME REST!' },
+        { speaker: 'narrator', text: 'And then — quiet. He sinks down.' },
+      ],
       next: 'volcano_mornox_defeat',
     },
 
@@ -370,15 +391,15 @@
         { speaker: 'mornox',   text: 'Thank... you.' },
         { speaker: 'mornox',   text: 'Finally.' },
         { speaker: 'narrator', text: 'He crumbles, gentle as ash.' },
-        { speaker: 'crown',    text: '*soft*' },
+        { speaker: 'crown',    text: '...oh, Mor.' },
         { speaker: 'crown',    text: 'Goodbye, old friend.' },
-        { speaker: 'narrator', text: 'A tiny gold star drifts up from the ash.' },
+        { speaker: 'narrator', text: 'A gold star drifts up from the ash.' },
         { speaker: 'james',    text: 'The Star. The last one.' },
         { speaker: 'crown',    text: 'You did it, kid. The kingdom is safe.' },
       ],
       effects: [
         { type: 'grant_treasure', id: 'star_of_friendship' },
-        { type: 'grant_trophy', id: 'mornox' },
+        { type: 'grant_trophy', id: 'mornox_dust' },
         { type: 'set_flag', key: 'mornox_defeated', value: true },
         { type: 'complete_quest', id: 'volcano' },
       ],
@@ -434,6 +455,7 @@
         { speaker: 'narrator', text: 'James sets the four Treasures down.' },
         { speaker: 'mornox',   text: 'I don\'t deserve this.' },
         { speaker: 'mornox',   text: 'I can\'t forgive myself, you know.' },
+        { speaker: 'james',    text: 'Hey.' },
         { speaker: 'mornox',   text: 'Four hundred years. Tried. Couldn\'t.' },
         { speaker: 'crown',    text: 'I forgave you a century ago, Mor.' },
         { speaker: 'crown',    text: 'You just never asked.' },
@@ -449,7 +471,8 @@
       effects: [
         { type: 'grant_treasure', id: 'star_of_friendship' },
         { type: 'grant_gold', amount: 240 },
-        { type: 'grant_trophy', id: 'mornox_redeemed' },
+        { type: 'grant_xp', amount: 400 },
+        { type: 'grant_trophy', id: 'mornox_kettle' },
         { type: 'set_flag', key: 'volcano_listened', value: true },
         { type: 'set_flag', key: 'mornox_redeemed', value: true },
         { type: 'complete_quest', id: 'volcano' },
@@ -488,19 +511,19 @@
       beats: [
         { speaker: 'narrator', text: 'James returns. Castle bells ring.' },
         { speaker: 'narrator', text: 'Everyone he\'s helped is in the courtyard.' },
-        { speaker: 'foxy',     text: 'Knew you had it in you, king.' },
+        { speaker: 'foxy',     text: 'Better thief than me, king.' },
         { speaker: 'ribbit',   text: 'Ribbit ribbit RIBBIT!' },
         { speaker: 'owlette',  text: 'I am very proud, dear.' },
         { speaker: 'gus',      text: 'Hmph. Good kid.' },
         { speaker: 'yeti',     text: 'Hooo... hoooome.' },
         { speaker: 'wraith',   text: '...thank you. Truly.' },
         { speaker: 'frostbeard',text: 'Aye. A king proper.' },
-        { speaker: 'drifter',  text: 'The shore is gentle again.' },
+        { speaker: 'drifter',  text: 'I\'m coming home, James.' },
         { speaker: 'widow',    text: 'My nets are full again.' },
         { speaker: 'finn',     text: 'CANNONBALL!' },
         { speaker: 'zephyra',  text: 'He taught me too. Long ago.' },
         { speaker: 'pompadour',text: 'Darling. Simply DARLING.' },
-        { speaker: 'james',    text: 'Hi, everyone. Hi.' },
+        { speaker: 'james',    text: '...all of you. Wow.' },
       ],
       next: 'volcano_crown_restored',
     },
@@ -527,7 +550,7 @@
       id: 'volcano_end', type: 'ending', bg: 'castle',
       beats: [
         { speaker: 'crown', text: 'You did it, kid.' },
-        { speaker: 'crown', text: 'You\'re the real king now.' },
+        { speaker: 'crown', text: 'You\'re the true king now.' },
         { speaker: 'crown', text: 'Go eat something.' },
         { speaker: 'crown', text: 'I\'ll make tea. It\'ll be awful.' },
         { speaker: 'crown', text: 'I\'m a crown. But I\'ll try.' },
