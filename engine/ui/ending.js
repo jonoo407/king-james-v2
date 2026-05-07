@@ -52,6 +52,13 @@ KJ.UI.EndingScene = (function () {
     }
 
     function showSummary() {
+      // Hide the video — it's done its job by now and the summary card needs
+      // the vertical real-estate for badges + trophies + End button.
+      const v = document.querySelector('.kj-ending-video');
+      if (v) {
+        try { v.pause(); } catch (e) {}
+        v.style.display = 'none';
+      }
       const state = KJ.State.get();
       const earned = (state.progress.badges || [])
         .map(id => KJ.Registry.badges.get(id)).filter(Boolean);

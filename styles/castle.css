@@ -96,11 +96,14 @@
 .kj-ending-video {
   display: block;
   margin: 0 auto 12px;
-  max-width: 360px;
+  max-width: 320px;
+  max-height: 55vh;       /* never eat more than ~55% of the viewport — leaves room for speaker/text/Next on small phones */
   width: 100%;
+  height: auto;
   border-radius: 14px;
   box-shadow: 0 8px 24px rgba(255, 200, 64, 0.35);
   background: #0d0820;
+  object-fit: contain;
 }
 .kj-ending-speaker { font-size: 16px; color: #ffd34d; min-height: 1em; }
 .kj-ending-text { font-size: 22px; color: #fff; min-height: 2em; padding: 14px; line-height: 1.5; text-shadow: 1px 1px 4px rgba(0,0,0,0.8); }
