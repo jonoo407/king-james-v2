@@ -4,6 +4,7 @@ A kids' RPG. Collect magical Crown Treasures, befriend creatures, level up, save
 
 **🎉 Status: All 5 arcs shipped + voiced + post-ship vibe-checked. The game is playable end-to-end.** Live at https://jonoo407.github.io/king-james-v2/.
 
+- **🤖 Working with Claude on this repo:** read [`CLAUDE.md`](CLAUDE.md) FIRST. Red/green TDD is non-negotiable.
 - **Design concept:** see [`CONCEPT.md`](CONCEPT.md)
 - **📖 Plot bible (main villain + treasure weave across all 5 arcs):** see [`PLOT_BIBLE.md`](PLOT_BIBLE.md)
 - **Build architecture:** see [`BUILD_ARCHITECTURE.md`](BUILD_ARCHITECTURE.md)
