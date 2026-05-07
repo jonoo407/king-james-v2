@@ -282,4 +282,78 @@ describe('volcano_can_listen condition', () => {
   });
 });
 
+// ───────────────────────────────────────────────────────────────────────
+describe('Ending scene wiring (data-shape only — DOM behavior tested in browser preview)', () => {
+  function getScene(id) {
+    return KJ.Registry.quests.get('volcano').scenes.find(s => s.id === id);
+  }
+
+  test('volcano_end scene type is "ending"', () => {
+    expect(getScene('volcano_end').type).toBe('ending');
+  });
+
+  test('volcano_end has video pointing at images/volcano_end.mp4', () => {
+    expect(getScene('volcano_end').video).toBe('images/volcano_end.mp4');
+  });
+
+  test('volcano_end shows badges + trophies in summary', () => {
+    const s = getScene('volcano_end');
+    expect(s.showBadges).toBe(true);
+    expect(s.showTrophies).toBe(true);
+  });
+
+  test('volcano_end has the locked 5-beat Crown sign-off', () => {
+    const beats = getScene('volcano_end').beats;
+    expect(beats.length).toBe(5);
+    expect(beats.every(b => b.speaker === 'crown')).toBe(true);
+  });
+
+  test('volcano_mornox_break exists with the locked "I\'M TIRED!" trio', () => {
+    const s = getScene('volcano_mornox_break');
+    expect(s).toBeTruthy();
+    const mornoxLines = s.beats.filter(b => b.speaker === 'mornox').map(b => b.text);
+    expect(mornoxLines).toContain('I\'M TIRED!');
+    expect(mornoxLines).toContain('FOUR HUNDRED YEARS!');
+  });
+});
+
+// ───────────────────────────────────────────────────────────────────────
+describe('Trophy IDs (artifact convention — agent-flagged in round 2)', () => {
+  test('Fight ending grants mornox_dust trophy', () => {
+    const scene = KJ.Registry.quests.get('volcano').scenes
+      .find(s => s.id === 'volcano_mornox_defeat');
+    const trophyEffect = scene.effects.find(e => e.type === 'grant_trophy');
+    expect(trophyEffect).toBeTruthy();
+    expect(trophyEffect.id).toBe('mornox_dust');
+  });
+
+  test('Listen ending grants mornox_kettle trophy', () => {
+    const scene = KJ.Registry.quests.get('volcano').scenes
+      .find(s => s.id === 'volcano_redemption_ritual');
+    const trophyEffect = scene.effects.find(e => e.type === 'grant_trophy');
+    expect(trophyEffect).toBeTruthy();
+    expect(trophyEffect.id).toBe('mornox_kettle');
+  });
+});
+
+// ───────────────────────────────────────────────────────────────────────
+describe('Caption-cap rule (DESIGN_LESSONS — ≤8 words per beat in volcano)', () => {
+  test('every dialogue beat in the volcano arc is ≤8 words', () => {
+    const violations = [];
+    for (const scene of KJ.Registry.quests.get('volcano').scenes) {
+      if (!scene.beats) continue;
+      scene.beats.forEach((b, i) => {
+        if (!b.text) return;
+        // Count words (whitespace-separated, after collapsing punctuation-runs)
+        const words = b.text.trim().split(/\s+/).length;
+        if (words > 8) violations.push(`${scene.id} beat ${i} (${words}w): "${b.text}"`);
+      });
+    }
+    if (violations.length) {
+      throw new Error('Caption-cap violations:\n  ' + violations.join('\n  '));
+    }
+    expect(violations.length).toBe(0);
+  });
+});
+
 if (require.main === module) summarize();

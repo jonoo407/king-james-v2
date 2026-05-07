@@ -421,7 +421,7 @@
         { speaker: 'mornox',   text: 'I broke all three.' },
         { speaker: 'james',    text: '...all three? Same day?' },
         { speaker: 'mornox',   text: 'Same hour, kid.' },
-        { speaker: 'mornox',   text: 'I wanted the throne. So I cast a spell.' },
+        { speaker: 'mornox',   text: 'Wanted the throne. Cast a spell. Wrong.' },
         { speaker: 'mornox',   text: 'It went wrong. It always goes wrong.' },
         { speaker: 'mornox',   text: 'The crown shattered. So did he.' },
         { speaker: 'crown',    text: 'You trapped me in here, Mor.' },
