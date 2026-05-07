@@ -41,6 +41,13 @@
         { speaker: 'crown',    text: 'Long ago I was ONE big crown. The kingdom\'s crown.' },
         { speaker: 'crown',    text: 'Then a wizard named MORNOX tried to steal me. His spell went wrong.' },
         { speaker: 'crown',    text: 'It broke me into FIVE pieces. Called Treasures. Hid them all over the land.' },
+        // Lore clarifier — the kid (and any adult reading along) needs to
+        // understand that the talking crown they're wearing is the EMPTY
+        // BAND and the Treasures are the missing jewels. Otherwise the
+        // model "I'm a crown collecting crowns" reads as a contradiction.
+        { speaker: 'james',    text: 'But I\'m wearing one right now?' },
+        { speaker: 'crown',    text: 'This? I\'m just the empty band.' },
+        { speaker: 'crown',    text: 'The 5 Treasures? Those are MY jewels.' },
         { speaker: 'crown',    text: 'It also cursed him. He\'s been mad about it for 400 years.' },
         { speaker: 'james',    text: 'Whoa. So what do we do?' },
         { speaker: 'crown',    text: 'Find the 5 Treasures. Put me back together. If Mornox gets them first, the whole kingdom falls.' },
