@@ -96,7 +96,7 @@ describe('Multi-phase battle transitions', () => {
       playerTeam: [{
         side: 'player', id: 'james', name: 'James', emoji: '🧒', type: 'earth',
         stats: { hp: 999, atk: 999, def: 0, spd: 5 }, maxHP: 999,
-        moves: ['swing'], statuses: [],
+        moves: ['think_fast'], statuses: [],
       }],
       enemyTeam: phaseA,
       phases: [phaseA, phaseB],
@@ -116,7 +116,7 @@ describe('Multi-phase battle transitions', () => {
     // Kill the lone phase-1 enemy with a one-shot.
     battle.enemyTeam.forEach(e => { e.stats.hp = 1; });
     KJ.Combat.applyAction(battle, {
-      actorId: 'james', moveId: 'swing', targetId: battle.enemyTeam[0].id,
+      actorId: 'james', moveId: 'think_fast', targetId: battle.enemyTeam[0].id,
     });
     expect(battle.state).toBe('IN_PROGRESS');
     expect(battle.currentPhase).toBe(1);
@@ -128,12 +128,12 @@ describe('Multi-phase battle transitions', () => {
     const battle = makeMultiPhase();
     battle.enemyTeam.forEach(e => { e.stats.hp = 1; });
     KJ.Combat.applyAction(battle, {
-      actorId: 'james', moveId: 'swing', targetId: battle.enemyTeam[0].id,
+      actorId: 'james', moveId: 'think_fast', targetId: battle.enemyTeam[0].id,
     });
     // Now in phase 2. Kill those enemies too.
     battle.enemyTeam.forEach(e => { e.stats.hp = 1; });
     KJ.Combat.applyAction(battle, {
-      actorId: 'james', moveId: 'swing', targetId: battle.enemyTeam[0].id,
+      actorId: 'james', moveId: 'think_fast', targetId: battle.enemyTeam[0].id,
     });
     expect(battle.state).toBe('VICTORY');
     expect(battle.currentPhase).toBe(1); // last index
@@ -146,13 +146,13 @@ describe('Multi-phase battle transitions', () => {
       playerTeam: [{
         side: 'player', id: 'james', name: 'James', emoji: '🧒', type: 'earth',
         stats: { hp: 999, atk: 999, def: 0, spd: 5 }, maxHP: 999,
-        moves: ['swing'], statuses: [],
+        moves: ['think_fast'], statuses: [],
       }],
       enemyTeam: [enemy],
       rewards: { gold: [0,0], xp: 0, drops: [] },
     });
     KJ.Combat.applyAction(battle, {
-      actorId: 'james', moveId: 'swing', targetId: enemy.id,
+      actorId: 'james', moveId: 'think_fast', targetId: enemy.id,
     });
     expect(battle.state).toBe('VICTORY');
   });
