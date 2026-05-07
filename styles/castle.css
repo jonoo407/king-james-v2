@@ -93,6 +93,15 @@
 .kj-ending-wrap { padding: 40px 24px; min-height: 100dvh; display: flex; flex-direction: column; align-items: center; gap: 18px; }
 .kj-ending-stage { width: 100%; max-width: 600px; text-align: center; }
 .kj-ending-crown { font-size: 80px; animation: kj-wobble 2s ease-in-out infinite; margin-bottom: 12px; }
+.kj-ending-video {
+  display: block;
+  margin: 0 auto 12px;
+  max-width: 360px;
+  width: 100%;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(255, 200, 64, 0.35);
+  background: #0d0820;
+}
 .kj-ending-speaker { font-size: 16px; color: #ffd34d; min-height: 1em; }
 .kj-ending-text { font-size: 22px; color: #fff; min-height: 2em; padding: 14px; line-height: 1.5; text-shadow: 1px 1px 4px rgba(0,0,0,0.8); }
 .kj-ending-summary { margin-top: 24px; }

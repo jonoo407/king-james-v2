@@ -1,11 +1,13 @@
 // King James 2 — Ending Scene Renderer (Volcano finale curtain)
 // Data shape:
 //   { id, type: 'ending', bg, beats: [{speaker,text}], showBadges, showTrophies,
-//     effects, next }
+//     video?, effects, next }
 //
-// Renders the closing-credit card: a sequence of beats (Crown's sign-off
-// usually), then a summary panel of every badge earned and trophy collected,
-// then a single "End" button that runs effects + goes to next.
+// Renders the closing-credit card: optionally a portrait video header
+// (autoplays once, freezes on last frame) followed by a sequence of beats
+// (Crown's sign-off, voiced) and a summary panel of every badge earned and
+// trophy collected, then a single "End" button that runs effects + goes to
+// next. If no `video` field, falls back to the original 👑 emoji header.
 
 window.KJ = window.KJ || {};
 KJ.UI = KJ.UI || {};
@@ -18,10 +20,18 @@ KJ.UI.EndingScene = (function () {
     const beats = (scene.beats || []).slice();
     let idx = 0;
 
+    // Header: video if specified, else the wobbling crown emoji.
+    // muted + playsinline are required for iOS Safari autoplay; loop is OFF
+    // so the video plays once and the last frame holds while the kid reads
+    // the Crown's sign-off beats.
+    const headerHtml = scene.video
+      ? `<video class="kj-ending-video" src="${scene.video}" autoplay muted playsinline preload="auto"></video>`
+      : `<div class="kj-ending-crown">👑</div>`;
+
     app.innerHTML = `
       <div class="kj-scene-wrap kj-bg-${bg} kj-ending-wrap">
         <div class="kj-ending-stage">
-          <div class="kj-ending-crown">👑</div>
+          ${headerHtml}
           <div class="kj-ending-speaker" id="kj-ending-speaker"></div>
           <div class="kj-ending-text" id="kj-ending-text"></div>
           <div class="kj-ending-summary" id="kj-ending-summary" style="display:none"></div>

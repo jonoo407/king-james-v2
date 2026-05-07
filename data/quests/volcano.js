@@ -548,6 +548,7 @@
     // 25. Ending scene. Final 5-beat sign-off + badges + trophies summary.
     {
       id: 'volcano_end', type: 'ending', bg: 'castle',
+      video: 'images/volcano_end.mp4',
       beats: [
         { speaker: 'crown', text: 'You did it, kid.' },
         { speaker: 'crown', text: 'You\'re the true king now.' },
