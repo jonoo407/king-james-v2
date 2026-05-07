@@ -481,6 +481,7 @@
     // =====================================================================
     {
       id: 'mountain_reward', type: 'dialogue', bg: 'castle',
+      video: 'images/treasure_blade_of_bravery.mp4',
       beats: [
         { speaker: 'narrator', text: 'Back at the village: Papa Yeti lumbers in, Baby Yeti cradled in his giant paws. The villagers freeze. Then they CHEER.' },
         { speaker: 'yeti',     text: 'Baby... *enormous hug* *muffled yeti sobs*' },

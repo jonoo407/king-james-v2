@@ -427,6 +427,7 @@
     // =====================================================================
     {
       id: 'beach_reward', type: 'dialogue', bg: 'castle',
+      video: 'images/treasure_shield_of_kindness.mp4',
       beats: [
         { speaker: 'narrator', text: 'Drifter leads the way back to the village. Slowly. The fishermen stare. The widow stands.' },
         { speaker: 'narrator', text: 'They look at each other for a long time. Then the widow opens her door.' },

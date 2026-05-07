@@ -12,10 +12,20 @@ KJ.UI.DialogueScene = (function () {
     const beats = (scene.beats || []).slice();
     let idx = 0;
 
+    // Optional celebration video — used by per-arc reward scenes
+    // (forest_reward, mountain_reward, beach_reward, desert_reward).
+    // Plays muted + autoplay + playsinline (iOS-safe), no loop, holds on
+    // last frame while the kid reads the dialogue beats. Falls back to
+    // no header if scene.video is unset.
+    const videoHtml = scene.video
+      ? `<video class="kj-dialogue-video" src="${scene.video}" autoplay muted playsinline preload="auto"></video>`
+      : '';
+
     app.innerHTML = `
       ${KJ.UI.HUD.html()}
       <div class="kj-scene-wrap kj-bg-${bg}">
         <div class="kj-dialogue-stage" id="kj-dialogue-stage">
+          ${videoHtml}
           <div class="kj-dialogue-speaker" id="kj-dialogue-speaker"></div>
           <div class="kj-dialogue-text" id="kj-dialogue-text"></div>
         </div>

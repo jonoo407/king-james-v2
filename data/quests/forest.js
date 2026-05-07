@@ -491,6 +491,7 @@
     // =====================================================================
     {
       id: 'forest_reward', type: 'dialogue', bg: 'castle',
+      video: 'images/treasure_gem_of_wisdom.mp4',
       beats: [
         { speaker: 'crown', text: 'The GEM OF WISDOM! Look at that! Actual hero moment!' },
         { speaker: 'crown', text: 'And — OOH — I feel CLEARER. Less bzzt. Nicer.' },

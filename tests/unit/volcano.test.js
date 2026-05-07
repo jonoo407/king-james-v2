@@ -337,6 +337,28 @@ describe('Trophy IDs (artifact convention — agent-flagged in round 2)', () => 
 });
 
 // ───────────────────────────────────────────────────────────────────────
+// ───────────────────────────────────────────────────────────────────────
+describe('Per-arc treasure-reward videos (Forest/Mountain/Beach/Desert)', () => {
+  // Each shipped arc's reward scene gets a celebration video that plays as a
+  // header above the dialogue beats when the kid earns the treasure.
+  // File naming convention: images/treasure_<treasure_id>.mp4
+  const expected = [
+    { quest: 'forest',   sceneId: 'forest_reward',   video: 'images/treasure_gem_of_wisdom.mp4' },
+    { quest: 'mountain', sceneId: 'mountain_reward', video: 'images/treasure_blade_of_bravery.mp4' },
+    { quest: 'beach',    sceneId: 'beach_reward',    video: 'images/treasure_shield_of_kindness.mp4' },
+    { quest: 'desert',   sceneId: 'desert_reward',   video: 'images/treasure_fire_of_courage.mp4' },
+  ];
+
+  for (const { quest, sceneId, video } of expected) {
+    test(`${sceneId} has video pointing at ${video}`, () => {
+      const scene = KJ.Registry.quests.get(quest).scenes.find(s => s.id === sceneId);
+      expect(scene).toBeTruthy();
+      expect(scene.video).toBe(video);
+    });
+  }
+});
+
+// ───────────────────────────────────────────────────────────────────────
 describe('Caption-cap rule (DESIGN_LESSONS — ≤8 words per beat in volcano)', () => {
   test('every dialogue beat in the volcano arc is ≤8 words', () => {
     const violations = [];

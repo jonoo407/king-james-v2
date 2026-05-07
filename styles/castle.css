@@ -93,7 +93,8 @@
 .kj-ending-wrap { padding: 40px 24px; min-height: 100dvh; display: flex; flex-direction: column; align-items: center; gap: 18px; }
 .kj-ending-stage { width: 100%; max-width: 600px; text-align: center; }
 .kj-ending-crown { font-size: 80px; animation: kj-wobble 2s ease-in-out infinite; margin-bottom: 12px; }
-.kj-ending-video {
+.kj-ending-video,
+.kj-dialogue-video {
   display: block;
   margin: 0 auto 12px;
   max-width: 320px;

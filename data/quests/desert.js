@@ -403,6 +403,7 @@
     // =====================================================================
     {
       id: 'desert_reward', type: 'dialogue', bg: 'desert',
+      video: 'images/treasure_fire_of_courage.mp4',
       beats: [
         { speaker: 'narrator', text: 'In the dragon\'s dust, the shrine opens for real. At its center: a lantern shape of living flame, cool to touch, warm to hold.' },
         { speaker: 'crown',    text: 'The Fire of Courage. Fourth treasure. Kid — you DID it.' },
